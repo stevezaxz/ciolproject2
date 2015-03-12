@@ -1,0 +1,17 @@
+#RewriteEngine on
+##RewriteCond $1 !^(index\.php|images|robots\.txt)
+##RewriteRule ^(.*)$ /index.php/$1 [L]
+#RewriteBase /ciol/
+#RewriteCond %{REQUEST_URI} ^system.*
+#RewriteCond $1 !^ (index\.php|images|js|uploads|css|robots\.txt|public)
+#RewriteRule ^(.*)$ /index.php/$1 [L]
+#RewriteCond ${REQUEST_FILENAME} !-f
+#RewriteCond ${REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ index.php/$1 [L]
+#
+
+
+#RewriteEngine on
+#RewriteCond %{REQUEST_FILENAME} ! -f
+#RewriteCond %{REQUEST_FILENAME} ! -d
+#RewriteRule .* index.php/$1 [PT,L]
