@@ -61,7 +61,7 @@ class regc extends CI_Controller {
 
         $categories = $this->input->post("subcat");
         print_r($categories);
-        echo "test";
+       
     }
 
 }
