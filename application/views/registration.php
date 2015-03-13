@@ -347,46 +347,46 @@
                             <h4>Mechanical</h4>
                             <!-- Text input-->
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="mechanical#Pumps, Fans and Blowers" /> Pumps, Fans and Blowers </label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Mechanical#Pumps, Fans and Blowers" /> Pumps, Fans and Blowers </label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="mechanical#Automotive and heavy equipments and parts" /> Automotive and heavy equipments and parts </label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Mechanical#Automotive and heavy equipments and parts" /> Automotive and heavy equipments and parts </label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="mechanical#Conveyors, pulleys, conveyor belts, rollers, sheaves, belts, chain, sprockets, speed reducers, coupling" /> Conveyors, pulleys, conveyor belts, rollers, sheaves, belts, chain, sprockets, speed reducers, coupling</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Mechanical#Conveyors, pulleys, conveyor belts, rollers, sheaves, belts, chain, sprockets, speed reducers, coupling" /> Conveyors, pulleys, conveyor belts, rollers, sheaves, belts, chain, sprockets, speed reducers, coupling</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="mechanical#Lubricants, grease, engine oil, hydraulic oil, transmission oils" /> Lubricants, grease, engine oil, hydraulic oil, transmission oils</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Mechanical#Lubricants, grease, engine oil, hydraulic oil, transmission oils" /> Lubricants, grease, engine oil, hydraulic oil, transmission oils</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="mechanical#Gasket, oil seal, mechanical seal, packing, bush"/> Gasket, oil seal, mechanical seal, packing, bush </label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Mechanical#Gasket, oil seal, mechanical seal, packing, bush"/> Gasket, oil seal, mechanical seal, packing, bush </label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="mechanical#Heating, Cooling, Ventilating, Air Conditioning and Refrigeration equipment and parts" /> Heating, Cooling, Ventilating, Air Conditioning and Refrigeration equipment and parts </label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Mechanical#Heating, Cooling, Ventilating, Air Conditioning and Refrigeration equipment and parts" /> Heating, Cooling, Ventilating, Air Conditioning and Refrigeration equipment and parts </label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="mechanical#Pneumatics and Hydraulics equipment and parts" />Pneumatics and Hydraulics equipment and parts </label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Mechanical#Pneumatics and Hydraulics equipment and parts" />Pneumatics and Hydraulics equipment and parts </label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="mechanical#Pipes, Tubes, Valves and other piping components" /> Pipes, Tubes, Valves and other piping components </label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Mechanical#Pipes, Tubes, Valves and other piping components" /> Pipes, Tubes, Valves and other piping components </label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="mechanical#Bearings (roller, thrust, plummer, pillow block)"/> Bearings (roller, thrust, plummer, pillow block) </label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Mechanical#Bearings (roller, thrust, plummer, pillow block)"/> Bearings (roller, thrust, plummer, pillow block) </label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="mechanical#Power tools,machine shop,fabrication and welding equipments,tools and consumables" /> Power tools,machine shop,fabrication and welding equipments,tools and consumables</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Mechanical#Power tools,machine shop,fabrication and welding equipments,tools and consumables" /> Power tools,machine shop,fabrication and welding equipments,tools and consumables</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="mechanical#Engineering materials"/> Engineering materials </label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Mechanical#Engineering materials"/> Engineering materials </label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="mechanical#Adhesive, Sealants, Solvents, and Removers"/> Adhesive, Sealants, Solvents, and Removers </label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Mechanical#Adhesive, Sealants, Solvents, and Removers"/> Adhesive, Sealants, Solvents, and Removers </label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="mechanical#Internal combustion engines, parts, and accessories" />Internal combustion engines, parts, and accessories</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Mechanical#Internal combustion engines, parts, and accessories" />Internal combustion engines, parts, and accessories</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="mechanical#Boiler and HRSG components and pressure parts"/> Boiler and HRSG components and pressure parts </label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Mechanical#Boiler and HRSG components and pressure parts"/> Boiler and HRSG components and pressure parts </label>
                             </div>
 
                         </fieldset>
@@ -397,22 +397,22 @@
                             <h4>Electrical</h4>
                             <!-- Text input-->
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="electrical#Circuit breakers, power supply, contactors, relays, timer, switch, transducers" /> Circuit breakers, power supply, contactors, relays, timer, switch, transducers</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Electrical#Circuit breakers, power supply, contactors, relays, timer, switch, transducers" /> Circuit breakers, power supply, contactors, relays, timer, switch, transducers</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="electrical#Transformers, fuses, capacitors, resistors, surge suppressor, UPS system, panels" /> Transformers, fuses, capacitors, resistors, surge suppressor, UPS system, panels </label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Electrical#Transformers, fuses, capacitors, resistors, surge suppressor, UPS system, panels" /> Transformers, fuses, capacitors, resistors, surge suppressor, UPS system, panels </label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="electrical#Lighting (CFL, LED, HID, incandescent), lighting controls, ballast, batteries and fixtures" /> Lighting (CFL, LED, HID, incandescent), lighting controls, ballast, batteries and fixtures</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Electrical#Lighting (CFL, LED, HID, incandescent), lighting controls, ballast, batteries and fixtures" /> Lighting (CFL, LED, HID, incandescent), lighting controls, ballast, batteries and fixtures</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="electrical#Induction motors, gearmotors, definite and general purpose motors and HVAC motors"/> Induction motors, gearmotors, definite and general purpose motors and HVAC motors</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Electrical#Induction motors, gearmotors, definite and general purpose motors and HVAC motors"/> Induction motors, gearmotors, definite and general purpose motors and HVAC motors</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="eletrical#Induction motors, gearmotors, definite and general purpose motors and HVAC motors" /> Induction motors, gearmotors, definite and general purpose motors and HVAC motors </label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Eletrical#Induction motors, gearmotors, definite and general purpose motors and HVAC motors" /> Induction motors, gearmotors, definite and general purpose motors and HVAC motors </label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="electrical#Wires and cables, connectors, terminal lugs, fittings, fasteners, receptacle and panels" /> Wires and cables, connectors, terminal lugs, fittings, fasteners, receptacle and panels</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Electrical#Wires and cables, connectors, terminal lugs, fittings, fasteners, receptacle and panels" /> Wires and cables, connectors, terminal lugs, fittings, fasteners, receptacle and panels</label>
                             </div>
                         </fieldset>
                     </div>
@@ -422,16 +422,16 @@
                             <h4>Instrumentation</h4>
                             <!-- Text input-->
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="instrumentation#Meters, Gauges, Transmitters and other measuring equipments"/> Meters, Gauges, Transmitters and other measuring equipments</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Instrumentation#Meters, Gauges, Transmitters and other measuring equipments"/> Meters, Gauges, Transmitters and other measuring equipments</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="instrumentation#Laboratory testing, measuring and analyzing equipments" /> Laboratory testing, measuring and analyzing equipments </label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Instrumentation#Laboratory testing, measuring and analyzing equipments" /> Laboratory testing, measuring and analyzing equipments </label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="instrumentation#Medical testing, measuring and analyzing equipments" /> Medical testing, measuring and analyzing equipments</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Instrumentation#Medical testing, measuring and analyzing equipments" /> Medical testing, measuring and analyzing equipments</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subbat[]" value="instrumentation#Controls, automation and monitoring systems and equipments"/> Controls, automation and monitoring systems and equipments</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subbat[]" value="Instrumentation#Controls, automation and monitoring systems and equipments"/> Controls, automation and monitoring systems and equipments</label>
                             </div>
                         </fieldset>
                     </div>
@@ -441,19 +441,19 @@
                             <h4>Construction</h4>
                             <!-- Text input-->
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="construction#Construction and other hardware materials"/> Construction and other hardware materials</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Construction#Construction and other hardware materials"/> Construction and other hardware materials</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="construction#Prefabricated walls, precast concrete, hardiflex, precast post and beams"/> Prefabricated walls, precast concrete, hardiflex, precast post and beams </label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Construction#Prefabricated walls, precast concrete, hardiflex, precast post and beams"/> Prefabricated walls, precast concrete, hardiflex, precast post and beams </label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="construction#Roofing materials"/> Roofing materials</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Construction#Roofing materials"/> Roofing materials</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="construction#Plumbing and piping materials"/> Plumbing and piping materials</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Construction#Plumbing and piping materials"/> Plumbing and piping materials</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="construction#Painting and finishing materials" /> Painting and finishing materials</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Construction#Painting and finishing materials" /> Painting and finishing materials</label>
                             </div>
                         </fieldset>
                     </div>
@@ -463,16 +463,16 @@
                             <h4>Chemicals</h4>
                             <!-- Text input-->
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="chemicals#Pesticide, Fertilizers, Herbicides, and other agrochemicals"/> Pesticide, Fertilizers, Herbicides, and other agrochemicals</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Chemicals#Pesticide, Fertilizers, Herbicides, and other agrochemicals"/> Pesticide, Fertilizers, Herbicides, and other agrochemicals</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="checmicals#Water and waste treatment chemicals" /> Water and waste treatment chemicals </label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Checmicals#Water and waste treatment chemicals" /> Water and waste treatment chemicals </label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="chemicals#Cleaning and sanitation chemicals"/> Cleaning and sanitation chemicals</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Chemicals#Cleaning and sanitation chemicals"/> Cleaning and sanitation chemicals</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="chemicals#Compressed gases and specialty gases" /> Compressed gases and specialty gases</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Chemicals#Compressed gases and specialty gases" /> Compressed gases and specialty gases</label>
                             </div>
                         </fieldset>
                     </div>
@@ -482,16 +482,16 @@
                             <h4>Safety and Security</h4>
                             <!-- Text input-->
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="safety and security#Personal Protection Equipment and kits" /> Personal Protection Equipment and kits</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Safety and Security#Personal Protection Equipment and kits" /> Personal Protection Equipment and kits</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="safety and security#Electronic Access Devices, CCTV, security surveilance and detection equipments" /> Electronic Access Devices, CCTV, security surveilance and detection equipments</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Safety and Security#Electronic Access Devices, CCTV, security surveilance and detection equipments" /> Electronic Access Devices, CCTV, security surveilance and detection equipments</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="safety and security#Fire and smoke detection and alarm equipments and parts" /> Fire and smoke detection and alarm equipments and parts</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Safety and Security#Fire and smoke detection and alarm equipments and parts" /> Fire and smoke detection and alarm equipments and parts</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="safety and security#First aid, emergency and rescue equipments and kits" /> First aid, emergency and rescue equipments and kits</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Safety and Security#First aid, emergency and rescue equipments and kits" /> First aid, emergency and rescue equipments and kits</label>
                             </div>
                         </fieldset>
                     </div>
@@ -501,16 +501,16 @@
                             <h4>Storage and Cleaning</h4>
                             <!-- Text input-->
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="storage and cleaning#Storage racks, shelves, bin, cabinets, and baskets"/> Storage racks, shelves, bin, cabinets, and baskets</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Storage and Cleaning#Storage racks, shelves, bin, cabinets, and baskets"/> Storage racks, shelves, bin, cabinets, and baskets</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="storage and cleaning#Pallets, skids, guard rails, labels and signages"/> Pallets, skids, guard rails, labels and signages</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Storage and Cleaning#Pallets, skids, guard rails, labels and signages"/> Pallets, skids, guard rails, labels and signages</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="storage and cleaning#Forklift, cranes, pallet trucks, lift trucks and other material handling equipments" /> Forklift, cranes, pallet trucks, lift trucks and other material handling equipments</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Storage and Cleaning#Forklift, cranes, pallet trucks, lift trucks and other material handling equipments" /> Forklift, cranes, pallet trucks, lift trucks and other material handling equipments</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="storage and cleaning#Facilities cleaning and maintenance"/> Facilities cleaning and maintenance</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Storage and Cleaning#Facilities cleaning and maintenance"/> Facilities cleaning and maintenance</label>
                             </div>
                         </fieldset>
                     </div>
@@ -520,13 +520,13 @@
                             <h4>Electronics</h4>
                             <!-- Text input-->
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="electronics#Computers, monitors,speakers, printers and other office equipments"/> Computers, monitors,speakers, printers and other office equipments</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Electronics#Computers, monitors,speakers, printers and other office equipments"/> Computers, monitors,speakers, printers and other office equipments</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" /> Electronic communication devices</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Eletronics#Electronic communication devices" /> Electronic communication devices</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" /> Consumer Electronics</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Eletronics#Consumer Electronics" /> Consumer Electronics</label>
                             </div>
 
                         </fieldset>
@@ -537,16 +537,16 @@
                             <h4>Home</h4>
                             <!-- Text input-->
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" /> Towels, blankets, mattresses, textile and clothing</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Home#Towels, blankets, mattresses, textile and clothing"/> Towels, blankets, mattresses, textile and clothing</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" /> Kitchen and dining wares</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Home#Kitchen and dining wares" /> Kitchen and dining wares</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" /> Furnitures and decors</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Home#Furnitures and decors"/> Furnitures and decors</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" /> Home Appliances</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Home#Home Appliances"/> Home Appliances</label>
                             </div>
 
                         </fieldset>
@@ -557,16 +557,16 @@
                             <h4>Agriculture</h4>
                             <!-- Text input-->
                             <div class="form-group">
-                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" /> Fruits</label>
+                                <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Agriculture#Fruits"/> Fruits</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" /> Vegetables and spices</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subact[]" value="Agriculture#Vegetables and spices"/> Vegetables and spices</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" /> Livestock and meat</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Agriculture#Livestock and meat"/> Livestock and meat</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" /> Tractors and other agricultural equipments, machines and tools</label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Agriculture#Tractors and other agricultural equipments, machines and tools"/> Tractors and other agricultural equipments, machines and tools</label>
                             </div>
 
                         </fieldset>
