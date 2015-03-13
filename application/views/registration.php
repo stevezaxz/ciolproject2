@@ -158,7 +158,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="textinput">Email</label>
                                 <div class="col-md-10">
-                                    <input required type="text" id="head_office_email" name="head_office_email" class="form-control" >
+                                    <input  type="email" id="head_office_email" name="head_office_email" class="form-control" >
                                 </div>
                             </div>
                         </fieldset>

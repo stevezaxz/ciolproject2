@@ -61,12 +61,34 @@ class regc extends CI_Controller {
         $contact_person_sales_mobile_1 = $this->input->post('contact_person_sales_mobile_1');
         $contact_person_sales_mobile_2 = $this->input->post('contact_person_sales_mobile_2');
 
+        $contact_sales = array(
+            'contact_person_id' => '',
+            'contact_person_name' => $contact_person_sales_name,
+            'contact_person_department' => 'Sales',
+            'contact_person_telephone' => $contact_person_sales_telephone,
+            'contact_person_fax' => $contact_person_sales_fax,
+            'contact_person_email' => $contact_person_sales_email,
+            'contact_person_mobile1' => $contact_person_sales_mobile_1,
+            'contact_person_mobile2' => $contact_person_sales_mobile_2
+        );
+
         $contact_person_procurement_name = $this->input->post('contact_person_procurement_name');
         $contact_person_procurement_telephone = $this->input->post('contact_person_procurement_telephone');
         $contact_person_procurement_fax = $this->input->post('contact_person_procurement_fax');
         $contact_person_procurement_email = $this->input->post('contact_person_procurement_email');
         $contact_person_procurement_mobile_1 = $this->input->post('contact_person_procurement_mobile_1');
         $contact_person_procurement_mobile_2 = $this->input->post('contact_person_procurement_mobile_2');
+
+        $contact_procurement = array(
+            'contact_person_id' => '',
+            'contact_person_name' => $contact_person_procurement_name,
+            'contact_person_department' => 'Procurement',
+            'contact_person_telephone' => $contact_person_procurement_telephone,
+            'contact_person_fax' => $contact_person_procurement_fax,
+            'contact_person_email' => $contact_person_procurement_email,
+            'contact_person_mobile1' => $contact_person_procurement_mobile_1,
+            'contact_person_mobile2' => $contact_person_procurement_mobile_2
+        );
 
         $contact_person_account_name = $this->input->post('contact_person_account_name');
         $contact_person_account_telephone = $this->input->post('contact_person_account_telephone');
@@ -75,6 +97,16 @@ class regc extends CI_Controller {
         $contact_person_account_mobile_1 = $this->input->post('contact_person_account_mobile_1');
         $contact_person_account_mobile_2 = $this->input->post('contact_person_account_mobile_2');
 
+        $contact_account = array(
+            'contact_person_id' => '',
+            'contact_person_name' => $contact_person_account_name,
+            'contact_person_department' => 'Account',
+            'contact_person_telephone' => $contact_person_account_telephone,
+            'contact_person_fax' => $contact_person_account_fax,
+            'contact_person_email' => $contact_person_account_email,
+            'contact_person_mobile1' => $contact_person_account_mobile_1,
+            'contact_person_mobile2' => $contact_person_account_mobile_2
+        );
 
         $hook = $this->input->post('hook');
         $branches_contact_person = array();
@@ -100,7 +132,64 @@ class regc extends CI_Controller {
 
         $other_services = $this->input->post("other_services");
 //        print_r($other_services);
-        $this->regm->registersupplier($tblcompany, $tblheadoffice);
+        $return_id = $this->regm->registersupplier($tblcompany, $tblheadoffice, $contact_sales, $contact_procurement, $contact_account, $branches_contact_person, $branches_address, $branches_province, $branches_telephone, $branches_fax, $branches_email, $hook, $categories, $other_services);
+
+        if ($return_id) {
+            $this->load->view("successpage");
+            $config = Array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://smtp.googlemail.com',
+                'smtp_port' => 465,
+                'smtp_user' => 'nevetsjohn@gmail.com',
+                'smtp_pass' => '10118023603aAaAqQ',
+                'mailtype' => 'html',
+                'charset' => 'iso-8859-1'
+            );
+            $this->load->library('email', $config);
+            $this->email->set_newline("\r\n");
+
+            $this->email->from('nevetsjohn@gmail.com', 'Netzwerk Suppliers Network');
+            $this->email->to($head_office_email);
+
+            $this->email->subject('Netzwerk Registration ');
+            $this->email->message("<html>
+                    
+                                        <body>
+                                            Company: " . $registrants_name . "
+                                            Company ID: " . $return_id . "
+                                        </body>
+
+                                   </html>");
+
+            $this->email->send();
+        } else {
+            
+        }
+    }
+
+    public function testmail() {
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'nevetsjohn@gmail.com',
+            'smtp_pass' => '10118023603aAaAqQ',
+            'mailtype' => 'html',
+            'charset' => 'iso-8859-1'
+        );
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+
+        $this->email->from('nevetsjohn@gmail.com', 'Steven');
+        $this->email->to('nevetsjohn@live.com');
+
+        $this->email->subject('Email Test');
+        $this->email->message('Testing the email class.');
+
+        $this->email->send();
+
+// Set to, from, message, etc.
+//        $result = $this->email->send();
     }
 
 }
