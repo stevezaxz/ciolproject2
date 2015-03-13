@@ -100,6 +100,72 @@
                     <div class="form-horizontal" role="form">
                         <fieldset>
                             <!-- Form Name -->
+                            <h4>Head Office</h4>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="textinput">Address</label>
+                                <div class="col-md-10">
+                                    <input required type="text" id="head_office_address" name="head_office_address" class="form-control" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="textinput">City/Municipality</label>
+                                <div class="col-md-10">
+                                    <input required type="text" id="head_office_city_municipality" name="head_office_city_municipality" class="form-control" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="textinput">Province</label>
+                                <div class="col-md-10">
+                                    <input required type="text" id="head_office_province" name="head_office_province" class="form-control" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="textinput"> Region</label>
+                                <div class="col-md-10">
+                                    <input required type="text" id="head_office_region" name="head_office_region" class="form-control" >
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="textinput">Zip Code</label>
+                                <div class="col-md-10">
+                                    <input required type="text" id="head_office_zip" name="head_office_zip" class="form-control" >
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="textinput">Telephone</label>
+                                <div class="col-md-10">
+                                    <input required type="text" id="head_office_telephone" name="head_office_telephone" class="form-control" >
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="textinput">Fax</label>
+                                <div class="col-md-4">
+                                    <input required type="text" id="head_office_fax" name="head_office_fax" class="form-control" >
+                                </div>
+
+                                <!--                    <label class="col-md-2 control-label" for="textinput">Website</label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" placeholder="Post Code" class="form-control">
+                                                    </div>-->
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="textinput">Email</label>
+                                <div class="col-md-10">
+                                    <input required type="text" id="head_office_email" name="head_office_email" class="form-control" >
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-horizontal" role="form">
+                        <fieldset>
+                            <!-- Form Name -->
                             <h4>Contact Person</h4>
                             <!-- Text input-->
                             <div class="form-group">

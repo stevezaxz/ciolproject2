@@ -33,6 +33,27 @@ class regc extends CI_Controller {
             'company_history' => $overview_history
         );
 
+        $head_office_address = $this->input->post('head_office_address');
+        $head_office_city_municipality = $this->input->post('head_office_city_municipality');
+        $head_office_province = $this->input->post('head_office_province');
+        $head_office_region = $this->input->post('head_office_region');
+        $head_office_zip = $this->input->post('head_office_zip');
+        $head_office_telephone = $this->input->post('head_office_telephone');
+        $head_office_fax = $this->input->post('head_office_fax');
+        $head_office_email = $this->input->post('head_office_email');
+
+        $tblheadoffice = array(
+            'head_office_id' => '',
+            'head_office_address' => $head_office_address,
+            'head_office_city_municipality' => $head_office_city_municipality,
+            'head_office_province' => $head_office_province,
+            'head_office_region' => $head_office_region,
+            'head_office_zip' => $head_office_zip,
+            'head_office_telephone' => $head_office_telephone,
+            'head_office_fax' => $head_office_fax,
+            'head_office_email' => $head_office_email
+        );
+
         $contact_person_sales_name = $this->input->post('contact_person_sales_name');
         $contact_person_sales_telephone = $this->input->post('contact_person_sales_telephone');
         $contact_person_sales_fax = $this->input->post('contact_person_sales_fax');
@@ -79,7 +100,7 @@ class regc extends CI_Controller {
 
         $other_services = $this->input->post("other_services");
 //        print_r($other_services);
-        $this->regm->registersupplier($tblcompany);
+        $this->regm->registersupplier($tblcompany, $tblheadoffice);
     }
 
 }
