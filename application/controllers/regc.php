@@ -11,27 +11,42 @@ class regc extends CI_Controller {
     }
 
     public function register() {
+        $this->load->model('regm');
         $registrants_name = $this->input->post('registrants_name');
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $business_trade_name = $this->input->post('business_trade_name');
         $tin_no = $this->input->post('tin_no');
         $bir = $this->input->post('bir');
-
+        $website = $this->input->post('website');
         $overview_history = $this->input->post('overview_history');
+
+        $tblcompany = array(
+            'company_id' => '',
+            'company_registrants_name' => $registrants_name,
+            'company_username' => $username,
+            'company_password' => $password,
+            'company_trade_name' => $business_trade_name,
+            'company_tin' => $tin_no,
+            'company_bir_registration_no' => $bir,
+            'company_website' => $website,
+            'company_history' => $overview_history
+        );
+
         $contact_person_sales_name = $this->input->post('contact_person_sales_name');
         $contact_person_sales_telephone = $this->input->post('contact_person_sales_telephone');
         $contact_person_sales_fax = $this->input->post('contact_person_sales_fax');
         $contact_person_sales_email = $this->input->post('contact_person_sales_email');
         $contact_person_sales_mobile_1 = $this->input->post('contact_person_sales_mobile_1');
-
         $contact_person_sales_mobile_2 = $this->input->post('contact_person_sales_mobile_2');
+
         $contact_person_procurement_name = $this->input->post('contact_person_procurement_name');
         $contact_person_procurement_telephone = $this->input->post('contact_person_procurement_telephone');
         $contact_person_procurement_fax = $this->input->post('contact_person_procurement_fax');
         $contact_person_procurement_email = $this->input->post('contact_person_procurement_email');
         $contact_person_procurement_mobile_1 = $this->input->post('contact_person_procurement_mobile_1');
         $contact_person_procurement_mobile_2 = $this->input->post('contact_person_procurement_mobile_2');
+
         $contact_person_account_name = $this->input->post('contact_person_account_name');
         $contact_person_account_telephone = $this->input->post('contact_person_account_telephone');
         $contact_person_account_fax = $this->input->post('contact_person_account_fax');
@@ -60,8 +75,11 @@ class regc extends CI_Controller {
         }
 
         $categories = $this->input->post("subcat");
-        print_r($categories);
-       
+//        print_r($categories);
+
+        $other_services = $this->input->post("other_services");
+//        print_r($other_services);
+        $this->regm->registersupplier($tblcompany);
     }
 
 }

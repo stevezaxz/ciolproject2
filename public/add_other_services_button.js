@@ -62,7 +62,7 @@ $("#add_services").click(function (e) {
                     <div id="cloneservices" class="cloneservicesremove_' + int_last_num_other_services + '">\n\
                          <div class="form-group">\n\
                             <label class="col-md-2 control-label" for="textinput"> Other Services </label>\n\
-                                <div class="col-md-10"><input  type="text" id="other_services_' + int_last_num_other_services + '" class="form-control">\n\
+                                <div class="col-md-10"><input  type="text" id="other_services_' + int_last_num_other_services + '" name="other_services[]" class="form-control">\n\
                                 </div>\n\
                         </div>\n\
                     </div>');

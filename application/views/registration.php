@@ -82,6 +82,12 @@
                                                     </div>-->
                             </div>
                             <div class="form-group">
+                                <label class="col-md-2 control-label" for="textinput">Website</label>
+                                <div class="col-md-10">
+                                    <input required type="text" id="website" name="website" class="form-control" >
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-md-2 control-label" for="textinput">Overview/ Brief History</label>
                                 <div class="col-md-10">
             <!--                        <input type="textarea" placeholder="City" class="form-control" row='5' col='5'>-->
@@ -588,7 +594,7 @@
                                         <div class="form-group">
                                             <label class="col-md-2 control-label" for="textinput"> Other Services </label>
                                             <div class="col-md-10">
-                                                <input  type="text" id="other_services_0" class="form-control">
+                                                <input  type="text" id="other_services_0" name="other_services[]" class="form-control">
                                             </div>
                                         </div>
                                     </div>
