@@ -155,8 +155,13 @@ class regc extends CI_Controller {
             $this->email->message("<html>
                     
                                         <body>
-                                            Company: " . $registrants_name . "
-                                            Company ID: " . $return_id . "
+Dear ".$username.",\n
+
+<p>We have received your registration to join the Supplier's Network. We thank you for the interest you've shown in our company.
+
+Please be informed that we are in the midst of processing the applications and shall get in touch with you again once your profile is already verified and advertised in our site. 
+
+You will receive an email containing a successful notification.</p>
                                         </body>
 
                                    </html>");

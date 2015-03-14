@@ -731,7 +731,7 @@
     }
 </style>
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
 
         var navListItems = $('div.setup-panel div a'),
                 allWells = $('.setup-content'),
@@ -739,7 +739,7 @@
 
         allWells.hide();
 
-        navListItems.click(function (e) {
+        navListItems.click(function(e) {
             e.preventDefault();
             var $target = $($(this).attr('href')),
                     $item = $(this);
@@ -753,10 +753,12 @@
             }
         });
 
-        allNextBtn.click(function () {
+        allNextBtn.click(function() {
             if ($("#password").val() != $("#repassword").val()) {
                 alert("Password did not match");
-            } else {
+            }
+
+            else {
                 var curStep = $(this).closest(".setup-content"),
                         curStepBtn = curStep.attr("id"),
                         nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
