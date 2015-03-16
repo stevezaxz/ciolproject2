@@ -29,15 +29,39 @@
 
                 <span class="input-group-btn">
                     <!--<button class="btn btn-default" type="button">Go</button>-->
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            Product Category
-                            <span class="caret"></span>
+                    <!--                    <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                Product Category
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#">Mechanical</a></li>
+                                                <li><a href="#">Electrical</a></li>
+                                                <li><a href="#">Instrumentation</a></li>
+                                                <li><a href="#">Construction</a></li>
+                                                <li><a href="#">Chemicals</a></li>
+                                                <li><a href="#">Safety and Security</a></li>
+                                                <li><a href="#">Storage and Cleaning</a></li>
+                                                <li><a href="#">Electronics</a></li>
+                                                <li><a href="#">Home</a></li>
+                                                <li><a href="#">Agriculture</a></li>
+                                            </ul>
+                                        </div>-->
+                    <div class="input-group-btn search-panel">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            <span id="search_concept">Filter by</span> <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">Mechanical</a></li>
                             <li><a href="#">Electrical</a></li>
+                            <li><a href="#">Instrumentation</a></li>
+                            <li><a href="#">Construction</a></li>
+                            <li><a href="#">Chemicals</a></li>
+                            <li><a href="#">Safety and Security</a></li>
+                            <li><a href="#">Storage and Cleaning</a></li>
                             <li><a href="#">Electronics</a></li>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Agriculture</a></li>
                         </ul>
                     </div>
                 </span>
@@ -49,31 +73,44 @@
                             Location
                             <span class="caret"></span>
                         </button>
-
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">Manila</a></li>
                             <li><a href="#">Cebu</a></li>
                             <li><a href="#">Cagayan de Oro</a></li>
                         </ul>
+
                     </div>
+<!--                                        <div class="input-group-btn search-panel1">
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                <span id="search_concept1">Filter by</span> <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu1" role="menu">
+                                                <li><a href="#">Mechanical</a></li>
+                                                <li><a href="#">Electrical</a></li>
+                                                <li><a href="#">Instrumentation</a></li>
+                    
+                                            </ul>
+                                        </div>-->
 
 
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-group-sm btn-info">
-                            Search
-                            <span class=""></span>
-                        </button>
-                        
-<!--
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Manila</a></li>
-                            <li><a href="#">Cebu</a></li>
-                            <li><a href="#">Cagayan de Oro</a></li>
-                        </ul>
--->
-                    </div>
+                    <!--                    <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-group-sm btn-info">
+                                                Search
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </button>
+                    
+                    
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#">Manila</a></li>
+                                                <li><a href="#">Cebu</a></li>
+                                                <li><a href="#">Cagayan de Oro</a></li>
+                                            </ul>
+                    
+                                        </div>-->
 
-
+<!--                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                    </span>-->
 
 
                 </span>
@@ -156,5 +193,24 @@
         </div>
     </div>-->
 </body>
-
+<script type="text/javascript">
+    $(document).ready(function(e) {
+        $('.search-panel .dropdown-menu').find('a').click(function(e) {
+            e.preventDefault();
+            var param = $(this).attr("href").replace("#", "");
+            var concept = $(this).text();
+            $('.search-panel span#search_concept').text(concept);
+            $('.input-group #search_param').val(param);
+        });
+    });
+//    $(document).ready(function(es) {
+//        $('.search-panel1 .dropdown-menu1').find('a').click(function(es) {
+//            es.preventDefault();
+//            var param1 = $(this).attr("href").replace("#", "");
+//            var concept1 = $(this).text();
+//            $('.search-panel1 span#search_concept1').text(concept1);
+//            $('.input-group1 #search_param1').val(param1);
+//        });
+//    });
+</script>
 </html>

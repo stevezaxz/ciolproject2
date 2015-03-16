@@ -24,10 +24,10 @@
                                     <a href="<?php echo site_url('/'); ?>" class="navbar-brand">Logo</a>
                                 </div>
                                 <ul class="nav navbar-nav navbar-right">
-                                    <li class ="active"><a href="<?php echo site_url('regc/index'); ?>">Register Now!</a></li>
-                                    <li><a href="<?php echo site_url('loginc/login'); ?>">Login</a></li>
-                                    <li><a href="<?php echo site_url('aboutc/test');?>">About Us</a></li>
-                                    <li><a href="<?php echo site_url('supplierc/supplierprofile');?>">Contact</a></li>
+                                    <li class ="active"><a href="<?php echo site_url('Regc/index'); ?>">Register Now!</a></li>
+                                    <li><a href="<?php echo site_url('Loginc/login'); ?>">Login</a></li>
+                                    <li><a href="<?php echo site_url('Aboutc/test');?>">About Us</a></li>
+                                    <li><a href="<?php echo site_url('Supplierc/supplierprofile');?>">Contact</a></li>
                                 </ul>
                             </div>
 				

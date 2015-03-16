@@ -19,11 +19,11 @@
         </div>
 
     </div>
-    <form role="form" method="POST" action="<?php echo site_url('regc/register'); ?>">
+    <form id="company" role="form" method="POST" action="<?php echo site_url('Regc/register'); ?>">
         <div class="row setup-content" id="step-1">
             <div class="col-xs-10">
                 <div class="col-md-10">
-                    <div class="form-horizontal" role="form">
+                    <div class="form-horizontal" role="form" >
                         <fieldset>
                             <!-- Form Name -->
                             <h4>Company Details</h4>
@@ -31,13 +31,13 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="textinput">Registrant's Name</label>
                                 <div class="col-md-10">
-                                    <input required type="text" id="registrants_name" name="registrants_name" class="form-control" >
+                                    <input  required type="text" id="registrants_name" name="registrants_name" class="form-control" >
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="textinput">Username</label>
                                 <div class="col-md-10">
-                                    <input required type="text" id="username" name="username" class="form-control" >
+                                    <input required type="text" id="username" name="username" class="form-control" ><span id="username_error" style="color:red"></span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -158,7 +158,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="textinput">Email</label>
                                 <div class="col-md-10">
-                                    <input required type="text" id="head_office_email" name="head_office_email" class="form-control" >
+                                    <input  required type="text" id="head_office_email" name="head_office_email" class="form-control" >
                                 </div>
                             </div>
                         </fieldset>
@@ -731,7 +731,17 @@
     }
 </style>
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
+
+        $("#username").focusout(function() {
+
+            $.post("<?php echo site_url('Regc/checkusername'); ?>", {username: $("#username").val()}, function(res) {
+                alert(res);
+            });
+
+        });
+
+
 
         var navListItems = $('div.setup-panel div a'),
                 allWells = $('.setup-content'),
@@ -739,7 +749,7 @@
 
         allWells.hide();
 
-        navListItems.click(function (e) {
+        navListItems.click(function(e) {
             e.preventDefault();
             var $target = $($(this).attr('href')),
                     $item = $(this);
@@ -753,10 +763,18 @@
             }
         });
 
-        allNextBtn.click(function () {
+        allNextBtn.click(function() {
+            function validateEmail($email) {
+                var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                return emailReg.test($email);
+            }
             if ($("#password").val() != $("#repassword").val()) {
                 alert("Password did not match");
-            } else {
+            }
+            if (!validateEmail($("#head_office_email").val())) {
+                alert("Invalid email");
+            }
+            else {
                 var curStep = $(this).closest(".setup-content"),
                         curStepBtn = curStep.attr("id"),
                         nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
@@ -779,5 +797,7 @@
         $('div.setup-panel div a.btn-primary').trigger('click');
     });
 </script>
+
 <script type="text/javascript" src="<?php echo base_url('public/add_other_services_button.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('public/dist/jquery.validate.js'); ?>"></script>
 </html>
