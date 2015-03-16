@@ -1,6 +1,6 @@
 <?php
 
-class mainc extends CI_Controller {
+class Mainc extends CI_Controller {
 
     public function index() {
         $data = array(

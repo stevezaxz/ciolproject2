@@ -6,7 +6,7 @@ class loginc extends CI_Controller {
         $data = array(
             'title' => 'Login'
         );
-        $this->load->view('header', $data);
+//        $this->load->view('header', $data);
         $this->load->view('loginview');
     }
 
@@ -16,9 +16,8 @@ class loginc extends CI_Controller {
 
         $query = $this->db->query("select  * from tblcompany");
         if ($query->num_rows() > 0) {
-           $res = $query->result();
-           $username = $res[2];
-           
+            $res = $query->result();
+            $username = $res[2];
         } else {
             $useradmin = $this->db->query("select * from tbluseradmin");
             if ($useradmin->num_rows() > 0) {

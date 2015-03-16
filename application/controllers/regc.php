@@ -2,6 +2,11 @@
 
 class regc extends CI_Controller {
 
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('regm');
+    }
+
     public function index() {
         $data = array(
             'title' => 'Registration'
@@ -11,7 +16,7 @@ class regc extends CI_Controller {
     }
 
     public function register() {
-        $this->load->model('regm');
+
         $registrants_name = $this->input->post('registrants_name');
         $username = $this->input->post('username');
         $password = $this->input->post('password');
@@ -155,7 +160,7 @@ class regc extends CI_Controller {
             $this->email->message("<html>
                     
                                         <body>
-Dear ".$username.",\n
+Dear " . $username . ",\n
 
 <p>We have received your registration to join the Supplier's Network. We thank you for the interest you've shown in our company.
 
@@ -172,29 +177,16 @@ You will receive an email containing a successful notification.</p>
         }
     }
 
-    public function testmail() {
-        $config = Array(
-            'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_port' => 465,
-            'smtp_user' => 'nevetsjohn@gmail.com',
-            'smtp_pass' => '10118023603aAaAqQ',
-            'mailtype' => 'html',
-            'charset' => 'iso-8859-1'
-        );
-        $this->load->library('email', $config);
-        $this->email->set_newline("\r\n");
+    public function checkusername() {
 
-        $this->email->from('nevetsjohn@gmail.com', 'Steven');
-        $this->email->to('nevetsjohn@live.com');
-
-        $this->email->subject('Email Test');
-        $this->email->message('Testing the email class.');
-
-        $this->email->send();
-
-// Set to, from, message, etc.
-//        $result = $this->email->send();
+        $username = $this->input->post('username');
+//        echo $username;
+        if ($this->regm->checkusername($username)) {
+            echo "Username already exist";
+        }
+        else {
+            
+        }
     }
 
 }

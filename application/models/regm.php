@@ -85,4 +85,13 @@ class regm extends CI_Model {
         }
     }
 
+    public function checkusername($username) {
+        $query = $this->db->query("select * From tblcompany where company_username = '$username'");
+        if ($query->num_rows > 0) {
+            return true;
+        } else {
+            return FALSE;
+        }
+    }
+
 }
