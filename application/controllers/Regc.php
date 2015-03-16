@@ -183,9 +183,8 @@ You will receive an email containing a successful notification.</p>
 //        echo $username;
         if ($this->regm->checkusername($username)) {
             echo "Username already exist";
-        }
-        else {
-            
+        } else {
+            echo "a";
         }
     }
 

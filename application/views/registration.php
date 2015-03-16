@@ -731,12 +731,13 @@
     }
 </style>
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
 
-        $("#username").focusout(function() {
+        $("#username").focusout(function () {
 
-            $.post("<?php echo site_url('Regc/checkusername'); ?>", {username: $("#username").val()}, function(res) {
+            $.post("<?php echo site_url('Regc/checkusername'); ?>", {username: $("#username").val()}, function (res) {
                 alert(res);
+//                $("#username_error").val(res);
             });
 
         });
@@ -749,7 +750,7 @@
 
         allWells.hide();
 
-        navListItems.click(function(e) {
+        navListItems.click(function (e) {
             e.preventDefault();
             var $target = $($(this).attr('href')),
                     $item = $(this);
@@ -763,7 +764,7 @@
             }
         });
 
-        allNextBtn.click(function() {
+        allNextBtn.click(function () {
             function validateEmail($email) {
                 var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
                 return emailReg.test($email);

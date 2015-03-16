@@ -89,7 +89,7 @@
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-lock"></span> Login</div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" method="POST" action="<?php echo site_url('loginc/auth'); ?>">
+                            <form class="form-horizontal" role="form" method="POST" action="<?php echo site_url('Loginc/auth'); ?>">
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">
                                         Email</label>
