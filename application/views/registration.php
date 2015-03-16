@@ -49,7 +49,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="textinput"> Retype-Password</label>
                                 <div class="col-md-10">
-                                    <input required type="password" id="repassword" class="form-control" >
+                                    <input required type="password" id="repassword" class="form-control" ><span id="password_error" style="color:red"></span>
                                 </div>
                             </div>
 
@@ -158,7 +158,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="textinput">Email</label>
                                 <div class="col-md-10">
-                                    <input  required type="text" id="head_office_email" name="head_office_email" class="form-control" >
+                                    <input  required type="text" id="head_office_email" name="head_office_email" class="form-control" ><span id="head_office_email_error" style="color:red"></span>
                                 </div>
                             </div>
                         </fieldset>
@@ -731,26 +731,57 @@
     }
 </style>
 <script type="text/javascript">
-    $(document).ready(function () {
-
-        $("#username").focusout(function () {
-
-            $.post("<?php echo site_url('Regc/checkusername'); ?>", {username: $("#username").val()}, function (res) {
-                alert(res);
-//                $("#username_error").val(res);
-            });
-
-        });
-
-
-
+    $(document).ready(function() {
         var navListItems = $('div.setup-panel div a'),
                 allWells = $('.setup-content'),
                 allNextBtn = $('.nextBtn');
 
         allWells.hide();
+        function validateEmail($email) {
+            var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            return emailReg.test($email);
+        }
+        $("#head_office_email").focusout(function() {
+            if (!validateEmail($("#head_office_email").val())) {
+                $("#head_office_email_error").text("Invalid email format");
+                allNextBtn.prop('disabled', true);
+            }
+            else {
+                $("#head_office_email_error").text("");
+                allNextBtn.prop('disabled', false);
+            }
+        });
+        $("#username").focusout(function() {
 
-        navListItems.click(function (e) {
+            $.post("<?php echo site_url('Regc/checkusername'); ?>", {username: $("#username").val()}, function(res) {
+
+                if (res == 1) {
+                    $("#username_error").text('Username already exist!');
+                    allNextBtn.prop('disabled', true);
+                }
+                else if (res == 0) {
+
+                    $("#username_error").text("");
+                    allNextBtn.prop('disabled', false);
+                }
+            });
+
+        });
+
+        $("#repassword").focusout(function() {
+            if ($("#password").val() != "" || $("#password").val() != NULL) {
+                if ($("#password").val() != $("#repassword").val()) {
+                    $("#password_error").text("Password did not match");
+                    allNextBtn.prop('disabled', true);
+                }
+                else if ($("#password").val() == $("#repassword").val()) {
+                    $("#password_error").text("");
+                    allNextBtn.prop('disabled', false);
+                }
+            }
+        });
+
+        navListItems.click(function(e) {
             e.preventDefault();
             var $target = $($(this).attr('href')),
                     $item = $(this);
@@ -764,35 +795,24 @@
             }
         });
 
-        allNextBtn.click(function () {
-            function validateEmail($email) {
-                var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-                return emailReg.test($email);
-            }
-            if ($("#password").val() != $("#repassword").val()) {
-                alert("Password did not match");
-            }
-            if (!validateEmail($("#head_office_email").val())) {
-                alert("Invalid email");
-            }
-            else {
-                var curStep = $(this).closest(".setup-content"),
-                        curStepBtn = curStep.attr("id"),
-                        nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-                        curInputs = curStep.find("input[type='text'],input[type='url']"),
-                        isValid = true;
+        allNextBtn.click(function() {
+            var curStep = $(this).closest(".setup-content"),
+                    curStepBtn = curStep.attr("id"),
+                    nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                    curInputs = curStep.find("input[type='text'],input[type='url']"),
+                    isValid = true;
 
-                $(".form-group").removeClass("has-error");
-                for (var i = 0; i < curInputs.length; i++) {
-                    if (!curInputs[i].validity.valid) {
-                        isValid = false;
-                        $(curInputs[i]).closest(".form-group").addClass("has-error");
-                    }
+            $(".form-group").removeClass("has-error");
+            for (var i = 0; i < curInputs.length; i++) {
+                if (!curInputs[i].validity.valid) {
+                    isValid = false;
+                    $(curInputs[i]).closest(".form-group").addClass("has-error");
                 }
-
-                if (isValid)
-                    nextStepWizard.removeAttr('disabled').trigger('click');
             }
+
+            if (isValid)
+                nextStepWizard.removeAttr('disabled').trigger('click');
+
         });
 
         $('div.setup-panel div a.btn-primary').trigger('click');

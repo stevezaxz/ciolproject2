@@ -4,7 +4,7 @@ class regc extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('regm');
+        $this->load->model('Regm');
     }
 
     public function index() {
@@ -137,7 +137,7 @@ class regc extends CI_Controller {
 
         $other_services = $this->input->post("other_services");
 //        print_r($other_services);
-        $return_id = $this->regm->registersupplier($tblcompany, $tblheadoffice, $contact_sales, $contact_procurement, $contact_account, $branches_contact_person, $branches_address, $branches_province, $branches_telephone, $branches_fax, $branches_email, $hook, $categories, $other_services);
+        $return_id = $this->Regm->registersupplier($tblcompany, $tblheadoffice, $contact_sales, $contact_procurement, $contact_account, $branches_contact_person, $branches_address, $branches_province, $branches_telephone, $branches_fax, $branches_email, $hook, $categories, $other_services);
 
         if ($return_id) {
             $this->load->view("successpage");
@@ -180,11 +180,10 @@ You will receive an email containing a successful notification.</p>
     public function checkusername() {
 
         $username = $this->input->post('username');
-//        echo $username;
-        if ($this->regm->checkusername($username)) {
-            echo "Username already exist";
+        if ($this->Regm->checkusername($username)) {
+            echo 1; //Username already exist
         } else {
-            echo "a";
+            echo 0;
         }
     }
 

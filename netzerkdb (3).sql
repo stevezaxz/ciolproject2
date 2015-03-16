@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 14, 2015 at 06:41 AM
+-- Generation Time: Mar 16, 2015 at 09:20 PM
 -- Server version: 5.5.25a
 -- PHP Version: 5.4.4
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `tblbranches` (
   `branches_fax` varchar(30) DEFAULT NULL,
   `branches_email` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`branches_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=43 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
 
 --
 -- Dumping data for table `tblbranches`
@@ -80,7 +80,10 @@ INSERT INTO `tblbranches` (`branches_id`, `branches_person`, `branches_address`,
 (39, '', 'e', 'e', 'e', '', ''),
 (40, '', 'e', 'e', 'e', '', ''),
 (41, '', 'e', 'e', 'e', '', ''),
-(42, 'ljkl', 'lk', 'j', 'lk', 'j', 'lkj');
+(42, 'ljkl', 'lk', 'j', 'lk', 'j', 'lkj'),
+(43, '', '', '', '', '', ''),
+(44, 'asdad', 'd', 'd', '', '', ''),
+(45, '', 'd', 'd', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -93,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `tblcategory` (
   `category_name` varchar(50) DEFAULT NULL,
   `category_sub_cat` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=112 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=120 ;
 
 --
 -- Dumping data for table `tblcategory`
@@ -210,7 +213,15 @@ INSERT INTO `tblcategory` (`category_id`, `category_name`, `category_sub_cat`) V
 (108, 'Mechanical', 'Pneumatics and Hydraulics equipment and parts'),
 (109, 'Mechanical', 'Pipes, Tubes, Valves and other piping components'),
 (110, 'Mechanical', 'Lubricants, grease, engine oil, hydraulic oil, transmission oils'),
-(111, 'Mechanical', 'Pneumatics and Hydraulics equipment and parts');
+(111, 'Mechanical', 'Pneumatics and Hydraulics equipment and parts'),
+(112, 'Mechanical', 'Pipes, Tubes, Valves and other piping components'),
+(113, 'Mechanical', 'Power tools,machine shop,fabrication and welding equipments,tools and consumables'),
+(114, 'Mechanical', 'Adhesive, Sealants, Solvents, and Removers'),
+(115, 'Mechanical', 'Boiler and HRSG components and pressure parts'),
+(116, 'Mechanical', 'Lubricants, grease, engine oil, hydraulic oil, transmission oils'),
+(117, 'Mechanical', 'Adhesive, Sealants, Solvents, and Removers'),
+(118, 'Electrical', 'Wires and cables, connectors, terminal lugs, fittings, fasteners, receptacle and panels'),
+(119, 'Instrumentation', 'Laboratory testing, measuring and analyzing equipments');
 
 -- --------------------------------------------------------
 
@@ -229,7 +240,7 @@ CREATE TABLE IF NOT EXISTS `tblcompany` (
   `company_website` varchar(150) DEFAULT NULL,
   `company_history` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`company_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=48 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
 
 --
 -- Dumping data for table `tblcompany`
@@ -277,7 +288,9 @@ INSERT INTO `tblcompany` (`company_id`, `company_registrants_name`, `company_use
 (44, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'),
 (45, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'),
 (46, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'),
-(47, 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol');
+(47, 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol'),
+(48, 'asd', 'asd', 'asd', 'sad', 'das', 'd', 'd', 'd'),
+(49, 'asd', 'sdfsdf', 'asd', 'asdasd', 'd', 'd', 'd', 'd');
 
 -- --------------------------------------------------------
 
@@ -335,7 +348,10 @@ INSERT INTO `tblcompanybranches` (`company_id`, `branches_id`) VALUES
 (44, 39),
 (45, 40),
 (46, 41),
-(47, 42);
+(47, 42),
+(48, 43),
+(49, 44),
+(49, 45);
 
 -- --------------------------------------------------------
 
@@ -465,7 +481,15 @@ INSERT INTO `tblcompanycategory` (`company_id`, `category_id`) VALUES
 (46, 108),
 (46, 109),
 (47, 110),
-(47, 111);
+(47, 111),
+(48, 112),
+(48, 113),
+(48, 114),
+(48, 115),
+(49, 116),
+(49, 117),
+(49, 118),
+(49, 119);
 
 -- --------------------------------------------------------
 
@@ -592,7 +616,13 @@ INSERT INTO `tblcompanycontactperson` (`company_id`, `contact_person_id`) VALUES
 (46, 117),
 (47, 118),
 (47, 119),
-(47, 120);
+(47, 120),
+(48, 121),
+(48, 122),
+(48, 123),
+(49, 124),
+(49, 125),
+(49, 126);
 
 -- --------------------------------------------------------
 
@@ -648,7 +678,9 @@ INSERT INTO `tblcompanyheadoffice` (`company_id`, `head_office_id`) VALUES
 (44, 43),
 (45, 44),
 (46, 45),
-(47, 46);
+(47, 46),
+(48, 47),
+(49, 48);
 
 -- --------------------------------------------------------
 
@@ -731,7 +763,12 @@ INSERT INTO `tblcompanyservices` (`company_id`, `services_id`) VALUES
 (46, 65),
 (46, 66),
 (47, 67),
-(47, 68);
+(47, 68),
+(48, 69),
+(48, 70),
+(48, 71),
+(49, 72),
+(49, 73);
 
 -- --------------------------------------------------------
 
@@ -749,7 +786,7 @@ CREATE TABLE IF NOT EXISTS `tblcontactperson` (
   `contact_person_mobile1` varchar(30) DEFAULT NULL,
   `contact_person_mobile2` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`contact_person_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=121 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=127 ;
 
 --
 -- Dumping data for table `tblcontactperson`
@@ -863,7 +900,13 @@ INSERT INTO `tblcontactperson` (`contact_person_id`, `contact_person_name`, `con
 (117, '', 'Account', '', '', '', '', ''),
 (118, 'kl', 'Sales', 'lk', 'lk', 'l', 'kl', 'k'),
 (119, 'lk', 'Procurement', 'l', 'kl', 'k', 'l', 'kl'),
-(120, 'k', 'Account', 'lk', 'l', 'kl', 'k', 'l');
+(120, 'k', 'Account', 'lk', 'l', 'kl', 'k', 'l'),
+(121, '', 'Sales', '', '', '', '', ''),
+(122, '', 'Procurement', '', '', '', '', ''),
+(123, '', 'Account', '', '', '', '', ''),
+(124, 'Steven John M Añasco', 'Sales', 'd', 'd', 'd', '', ''),
+(125, '', 'Procurement', '', '', '', '', ''),
+(126, '', 'Account', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -882,7 +925,7 @@ CREATE TABLE IF NOT EXISTS `tblheadoffice` (
   `head_office_fax` varchar(30) DEFAULT NULL,
   `head_office_email` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`head_office_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
 
 --
 -- Dumping data for table `tblheadoffice`
@@ -929,7 +972,9 @@ INSERT INTO `tblheadoffice` (`head_office_id`, `head_office_address`, `head_offi
 (43, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'nevetsjohn@live.com'),
 (44, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'nevetsjohn@live.com'),
 (45, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'nevetsjohn@live.com'),
-(46, 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'norman.armian@gmail.com');
+(46, 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'norman.armian@gmail.com'),
+(47, 'd', 'sad', 'd', 'd', 'd', 'sdfsdf', 'sdf', 'sadasd@asd.asd'),
+(48, 'd', 'd', 'd', 'd', 'd', 'd', '13342', 'nevetsjohn@live.com');
 
 -- --------------------------------------------------------
 
@@ -941,7 +986,7 @@ CREATE TABLE IF NOT EXISTS `tblservices` (
   `services_id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`services_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=69 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=74 ;
 
 --
 -- Dumping data for table `tblservices`
@@ -1015,7 +1060,12 @@ INSERT INTO `tblservices` (`services_id`, `description`) VALUES
 (65, 'asdasd'),
 (66, 'fghf'),
 (67, 'j'),
-(68, 'lkj');
+(68, 'lkj'),
+(69, '1'),
+(70, '2'),
+(71, '3'),
+(72, 'asdasd'),
+(73, 'dsfsdf');
 
 -- --------------------------------------------------------
 
@@ -1031,6 +1081,19 @@ CREATE TABLE IF NOT EXISTS `tbluser` (
   `is_admin` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbluseradmin`
+--
+
+CREATE TABLE IF NOT EXISTS `tbluseradmin` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Constraints for dumped tables
