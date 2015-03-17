@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Mar 16, 2015 at 09:20 PM
--- Server version: 5.5.25a
--- PHP Version: 5.4.4
+-- Host: 127.0.0.1
+-- Generation Time: Mar 17, 2015 at 03:48 PM
+-- Server version: 5.5.40
+-- PHP Version: 5.5.19
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -27,15 +27,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `tblbranches` (
-  `branches_id` int(11) NOT NULL AUTO_INCREMENT,
+`branches_id` int(11) NOT NULL,
   `branches_person` varchar(100) DEFAULT NULL,
   `branches_address` varchar(100) DEFAULT NULL,
   `branches_province` varchar(100) DEFAULT NULL,
   `branches_telephone` varchar(30) DEFAULT NULL,
   `branches_fax` varchar(30) DEFAULT NULL,
-  `branches_email` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`branches_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
+  `branches_email` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblbranches`
@@ -80,10 +79,7 @@ INSERT INTO `tblbranches` (`branches_id`, `branches_person`, `branches_address`,
 (39, '', 'e', 'e', 'e', '', ''),
 (40, '', 'e', 'e', 'e', '', ''),
 (41, '', 'e', 'e', 'e', '', ''),
-(42, 'ljkl', 'lk', 'j', 'lk', 'j', 'lkj'),
-(43, '', '', '', '', '', ''),
-(44, 'asdad', 'd', 'd', '', '', ''),
-(45, '', 'd', 'd', '', '', '');
+(42, 'ljkl', 'lk', 'j', 'lk', 'j', 'lkj');
 
 -- --------------------------------------------------------
 
@@ -92,11 +88,10 @@ INSERT INTO `tblbranches` (`branches_id`, `branches_person`, `branches_address`,
 --
 
 CREATE TABLE IF NOT EXISTS `tblcategory` (
-  `category_id` int(11) NOT NULL AUTO_INCREMENT,
+`category_id` int(11) NOT NULL,
   `category_name` varchar(50) DEFAULT NULL,
-  `category_sub_cat` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=120 ;
+  `category_sub_cat` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblcategory`
@@ -213,15 +208,7 @@ INSERT INTO `tblcategory` (`category_id`, `category_name`, `category_sub_cat`) V
 (108, 'Mechanical', 'Pneumatics and Hydraulics equipment and parts'),
 (109, 'Mechanical', 'Pipes, Tubes, Valves and other piping components'),
 (110, 'Mechanical', 'Lubricants, grease, engine oil, hydraulic oil, transmission oils'),
-(111, 'Mechanical', 'Pneumatics and Hydraulics equipment and parts'),
-(112, 'Mechanical', 'Pipes, Tubes, Valves and other piping components'),
-(113, 'Mechanical', 'Power tools,machine shop,fabrication and welding equipments,tools and consumables'),
-(114, 'Mechanical', 'Adhesive, Sealants, Solvents, and Removers'),
-(115, 'Mechanical', 'Boiler and HRSG components and pressure parts'),
-(116, 'Mechanical', 'Lubricants, grease, engine oil, hydraulic oil, transmission oils'),
-(117, 'Mechanical', 'Adhesive, Sealants, Solvents, and Removers'),
-(118, 'Electrical', 'Wires and cables, connectors, terminal lugs, fittings, fasteners, receptacle and panels'),
-(119, 'Instrumentation', 'Laboratory testing, measuring and analyzing equipments');
+(111, 'Mechanical', 'Pneumatics and Hydraulics equipment and parts');
 
 -- --------------------------------------------------------
 
@@ -230,7 +217,7 @@ INSERT INTO `tblcategory` (`category_id`, `category_name`, `category_sub_cat`) V
 --
 
 CREATE TABLE IF NOT EXISTS `tblcompany` (
-  `company_id` int(11) NOT NULL AUTO_INCREMENT,
+`company_id` int(11) NOT NULL,
   `company_registrants_name` varchar(100) DEFAULT NULL,
   `company_username` varchar(100) DEFAULT NULL,
   `company_password` varchar(100) DEFAULT NULL,
@@ -238,9 +225,8 @@ CREATE TABLE IF NOT EXISTS `tblcompany` (
   `company_tin` varchar(50) DEFAULT NULL,
   `company_bir_registration_no` varchar(150) DEFAULT NULL,
   `company_website` varchar(150) DEFAULT NULL,
-  `company_history` varchar(1000) DEFAULT NULL,
-  PRIMARY KEY (`company_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
+  `company_history` varchar(1000) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblcompany`
@@ -288,9 +274,7 @@ INSERT INTO `tblcompany` (`company_id`, `company_registrants_name`, `company_use
 (44, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'),
 (45, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'),
 (46, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'),
-(47, 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol'),
-(48, 'asd', 'asd', 'asd', 'sad', 'das', 'd', 'd', 'd'),
-(49, 'asd', 'sdfsdf', 'asd', 'asdasd', 'd', 'd', 'd', 'd');
+(47, 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol');
 
 -- --------------------------------------------------------
 
@@ -300,9 +284,7 @@ INSERT INTO `tblcompany` (`company_id`, `company_registrants_name`, `company_use
 
 CREATE TABLE IF NOT EXISTS `tblcompanybranches` (
   `company_id` int(11) DEFAULT NULL,
-  `branches_id` int(11) DEFAULT NULL,
-  KEY `company_id` (`company_id`),
-  KEY `branches_id` (`branches_id`)
+  `branches_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -348,10 +330,7 @@ INSERT INTO `tblcompanybranches` (`company_id`, `branches_id`) VALUES
 (44, 39),
 (45, 40),
 (46, 41),
-(47, 42),
-(48, 43),
-(49, 44),
-(49, 45);
+(47, 42);
 
 -- --------------------------------------------------------
 
@@ -361,9 +340,7 @@ INSERT INTO `tblcompanybranches` (`company_id`, `branches_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `tblcompanycategory` (
   `company_id` int(11) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  KEY `company_id` (`company_id`),
-  KEY `category_id` (`category_id`)
+  `category_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -481,15 +458,7 @@ INSERT INTO `tblcompanycategory` (`company_id`, `category_id`) VALUES
 (46, 108),
 (46, 109),
 (47, 110),
-(47, 111),
-(48, 112),
-(48, 113),
-(48, 114),
-(48, 115),
-(49, 116),
-(49, 117),
-(49, 118),
-(49, 119);
+(47, 111);
 
 -- --------------------------------------------------------
 
@@ -499,9 +468,7 @@ INSERT INTO `tblcompanycategory` (`company_id`, `category_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `tblcompanycontactperson` (
   `company_id` int(11) DEFAULT NULL,
-  `contact_person_id` int(11) DEFAULT NULL,
-  KEY `company_id` (`company_id`),
-  KEY `contact_person_id` (`contact_person_id`)
+  `contact_person_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -616,13 +583,7 @@ INSERT INTO `tblcompanycontactperson` (`company_id`, `contact_person_id`) VALUES
 (46, 117),
 (47, 118),
 (47, 119),
-(47, 120),
-(48, 121),
-(48, 122),
-(48, 123),
-(49, 124),
-(49, 125),
-(49, 126);
+(47, 120);
 
 -- --------------------------------------------------------
 
@@ -632,9 +593,7 @@ INSERT INTO `tblcompanycontactperson` (`company_id`, `contact_person_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `tblcompanyheadoffice` (
   `company_id` int(11) DEFAULT NULL,
-  `head_office_id` int(11) DEFAULT NULL,
-  KEY `head_office_id` (`head_office_id`),
-  KEY `company_id` (`company_id`)
+  `head_office_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -678,9 +637,7 @@ INSERT INTO `tblcompanyheadoffice` (`company_id`, `head_office_id`) VALUES
 (44, 43),
 (45, 44),
 (46, 45),
-(47, 46),
-(48, 47),
-(49, 48);
+(47, 46);
 
 -- --------------------------------------------------------
 
@@ -690,9 +647,7 @@ INSERT INTO `tblcompanyheadoffice` (`company_id`, `head_office_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `tblcompanyservices` (
   `company_id` int(11) DEFAULT NULL,
-  `services_id` int(11) DEFAULT NULL,
-  KEY `company_id` (`company_id`),
-  KEY `services_id` (`services_id`)
+  `services_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -763,12 +718,18 @@ INSERT INTO `tblcompanyservices` (`company_id`, `services_id`) VALUES
 (46, 65),
 (46, 66),
 (47, 67),
-(47, 68),
-(48, 69),
-(48, 70),
-(48, 71),
-(49, 72),
-(49, 73);
+(47, 68);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblcompanyuploads`
+--
+
+CREATE TABLE IF NOT EXISTS `tblcompanyuploads` (
+  `company_id` int(11) DEFAULT NULL,
+  `upload_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -777,16 +738,15 @@ INSERT INTO `tblcompanyservices` (`company_id`, `services_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tblcontactperson` (
-  `contact_person_id` int(11) NOT NULL AUTO_INCREMENT,
+`contact_person_id` int(11) NOT NULL,
   `contact_person_name` varchar(100) DEFAULT NULL,
   `contact_person_department` varchar(50) DEFAULT NULL,
   `contact_person_telephone` varchar(30) DEFAULT NULL,
   `contact_person_fax` varchar(30) DEFAULT NULL,
   `contact_person_email` varchar(50) DEFAULT NULL,
   `contact_person_mobile1` varchar(30) DEFAULT NULL,
-  `contact_person_mobile2` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`contact_person_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=127 ;
+  `contact_person_mobile2` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblcontactperson`
@@ -900,13 +860,7 @@ INSERT INTO `tblcontactperson` (`contact_person_id`, `contact_person_name`, `con
 (117, '', 'Account', '', '', '', '', ''),
 (118, 'kl', 'Sales', 'lk', 'lk', 'l', 'kl', 'k'),
 (119, 'lk', 'Procurement', 'l', 'kl', 'k', 'l', 'kl'),
-(120, 'k', 'Account', 'lk', 'l', 'kl', 'k', 'l'),
-(121, '', 'Sales', '', '', '', '', ''),
-(122, '', 'Procurement', '', '', '', '', ''),
-(123, '', 'Account', '', '', '', '', ''),
-(124, 'Steven John M Añasco', 'Sales', 'd', 'd', 'd', '', ''),
-(125, '', 'Procurement', '', '', '', '', ''),
-(126, '', 'Account', '', '', '', '', '');
+(120, 'k', 'Account', 'lk', 'l', 'kl', 'k', 'l');
 
 -- --------------------------------------------------------
 
@@ -915,7 +869,7 @@ INSERT INTO `tblcontactperson` (`contact_person_id`, `contact_person_name`, `con
 --
 
 CREATE TABLE IF NOT EXISTS `tblheadoffice` (
-  `head_office_id` int(11) NOT NULL AUTO_INCREMENT,
+`head_office_id` int(11) NOT NULL,
   `head_office_address` varchar(500) DEFAULT NULL,
   `head_office_city_municipality` varchar(100) DEFAULT NULL,
   `head_office_province` varchar(100) DEFAULT NULL,
@@ -923,9 +877,8 @@ CREATE TABLE IF NOT EXISTS `tblheadoffice` (
   `head_office_zip` varchar(30) DEFAULT NULL,
   `head_office_telephone` varchar(30) DEFAULT NULL,
   `head_office_fax` varchar(30) DEFAULT NULL,
-  `head_office_email` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`head_office_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
+  `head_office_email` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblheadoffice`
@@ -972,9 +925,7 @@ INSERT INTO `tblheadoffice` (`head_office_id`, `head_office_address`, `head_offi
 (43, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'nevetsjohn@live.com'),
 (44, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'nevetsjohn@live.com'),
 (45, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'nevetsjohn@live.com'),
-(46, 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'norman.armian@gmail.com'),
-(47, 'd', 'sad', 'd', 'd', 'd', 'sdfsdf', 'sdf', 'sadasd@asd.asd'),
-(48, 'd', 'd', 'd', 'd', 'd', 'd', '13342', 'nevetsjohn@live.com');
+(46, 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'norman.armian@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -983,10 +934,9 @@ INSERT INTO `tblheadoffice` (`head_office_id`, `head_office_address`, `head_offi
 --
 
 CREATE TABLE IF NOT EXISTS `tblservices` (
-  `services_id` int(11) NOT NULL AUTO_INCREMENT,
-  `description` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`services_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=74 ;
+`services_id` int(11) NOT NULL,
+  `description` varchar(150) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblservices`
@@ -1060,12 +1010,19 @@ INSERT INTO `tblservices` (`services_id`, `description`) VALUES
 (65, 'asdasd'),
 (66, 'fghf'),
 (67, 'j'),
-(68, 'lkj'),
-(69, '1'),
-(70, '2'),
-(71, '3'),
-(72, 'asdasd'),
-(73, 'dsfsdf');
+(68, 'lkj');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbluploads`
+--
+
+CREATE TABLE IF NOT EXISTS `tbluploads` (
+`upload_id` int(11) NOT NULL,
+  `upload_file_name` varchar(100) DEFAULT NULL,
+  `upload_file_location` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1078,23 +1035,136 @@ CREATE TABLE IF NOT EXISTS `tbluser` (
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
-  `is_admin` varchar(5) DEFAULT NULL,
-  PRIMARY KEY (`user_id`)
+  `is_admin` varchar(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `tbluseradmin`
+-- Indexes for dumped tables
 --
 
-CREATE TABLE IF NOT EXISTS `tbluseradmin` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(50) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+--
+-- Indexes for table `tblbranches`
+--
+ALTER TABLE `tblbranches`
+ ADD PRIMARY KEY (`branches_id`);
 
+--
+-- Indexes for table `tblcategory`
+--
+ALTER TABLE `tblcategory`
+ ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indexes for table `tblcompany`
+--
+ALTER TABLE `tblcompany`
+ ADD PRIMARY KEY (`company_id`);
+
+--
+-- Indexes for table `tblcompanybranches`
+--
+ALTER TABLE `tblcompanybranches`
+ ADD KEY `company_id` (`company_id`), ADD KEY `branches_id` (`branches_id`);
+
+--
+-- Indexes for table `tblcompanycategory`
+--
+ALTER TABLE `tblcompanycategory`
+ ADD KEY `company_id` (`company_id`), ADD KEY `category_id` (`category_id`);
+
+--
+-- Indexes for table `tblcompanycontactperson`
+--
+ALTER TABLE `tblcompanycontactperson`
+ ADD KEY `company_id` (`company_id`), ADD KEY `contact_person_id` (`contact_person_id`);
+
+--
+-- Indexes for table `tblcompanyheadoffice`
+--
+ALTER TABLE `tblcompanyheadoffice`
+ ADD KEY `head_office_id` (`head_office_id`), ADD KEY `company_id` (`company_id`);
+
+--
+-- Indexes for table `tblcompanyservices`
+--
+ALTER TABLE `tblcompanyservices`
+ ADD KEY `company_id` (`company_id`), ADD KEY `services_id` (`services_id`);
+
+--
+-- Indexes for table `tblcompanyuploads`
+--
+ALTER TABLE `tblcompanyuploads`
+ ADD KEY `company_id` (`company_id`), ADD KEY `upload_id` (`upload_id`);
+
+--
+-- Indexes for table `tblcontactperson`
+--
+ALTER TABLE `tblcontactperson`
+ ADD PRIMARY KEY (`contact_person_id`);
+
+--
+-- Indexes for table `tblheadoffice`
+--
+ALTER TABLE `tblheadoffice`
+ ADD PRIMARY KEY (`head_office_id`);
+
+--
+-- Indexes for table `tblservices`
+--
+ALTER TABLE `tblservices`
+ ADD PRIMARY KEY (`services_id`);
+
+--
+-- Indexes for table `tbluploads`
+--
+ALTER TABLE `tbluploads`
+ ADD PRIMARY KEY (`upload_id`);
+
+--
+-- Indexes for table `tbluser`
+--
+ALTER TABLE `tbluser`
+ ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tblbranches`
+--
+ALTER TABLE `tblbranches`
+MODIFY `branches_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
+--
+-- AUTO_INCREMENT for table `tblcategory`
+--
+ALTER TABLE `tblcategory`
+MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=112;
+--
+-- AUTO_INCREMENT for table `tblcompany`
+--
+ALTER TABLE `tblcompany`
+MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=48;
+--
+-- AUTO_INCREMENT for table `tblcontactperson`
+--
+ALTER TABLE `tblcontactperson`
+MODIFY `contact_person_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=121;
+--
+-- AUTO_INCREMENT for table `tblheadoffice`
+--
+ALTER TABLE `tblheadoffice`
+MODIFY `head_office_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=47;
+--
+-- AUTO_INCREMENT for table `tblservices`
+--
+ALTER TABLE `tblservices`
+MODIFY `services_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=69;
+--
+-- AUTO_INCREMENT for table `tbluploads`
+--
+ALTER TABLE `tbluploads`
+MODIFY `upload_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
@@ -1103,36 +1173,43 @@ CREATE TABLE IF NOT EXISTS `tbluseradmin` (
 -- Constraints for table `tblcompanybranches`
 --
 ALTER TABLE `tblcompanybranches`
-  ADD CONSTRAINT `tblcompanybranches_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `tblcompany` (`company_id`),
-  ADD CONSTRAINT `tblcompanybranches_ibfk_2` FOREIGN KEY (`branches_id`) REFERENCES `tblbranches` (`branches_id`);
+ADD CONSTRAINT `tblcompanybranches_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `tblcompany` (`company_id`),
+ADD CONSTRAINT `tblcompanybranches_ibfk_2` FOREIGN KEY (`branches_id`) REFERENCES `tblbranches` (`branches_id`);
 
 --
 -- Constraints for table `tblcompanycategory`
 --
 ALTER TABLE `tblcompanycategory`
-  ADD CONSTRAINT `tblcompanycategory_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `tblcompany` (`company_id`),
-  ADD CONSTRAINT `tblcompanycategory_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `tblcategory` (`category_id`);
+ADD CONSTRAINT `tblcompanycategory_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `tblcompany` (`company_id`),
+ADD CONSTRAINT `tblcompanycategory_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `tblcategory` (`category_id`);
 
 --
 -- Constraints for table `tblcompanycontactperson`
 --
 ALTER TABLE `tblcompanycontactperson`
-  ADD CONSTRAINT `tblcompanycontactperson_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `tblcompany` (`company_id`),
-  ADD CONSTRAINT `tblcompanycontactperson_ibfk_2` FOREIGN KEY (`contact_person_id`) REFERENCES `tblcontactperson` (`contact_person_id`);
+ADD CONSTRAINT `tblcompanycontactperson_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `tblcompany` (`company_id`),
+ADD CONSTRAINT `tblcompanycontactperson_ibfk_2` FOREIGN KEY (`contact_person_id`) REFERENCES `tblcontactperson` (`contact_person_id`);
 
 --
 -- Constraints for table `tblcompanyheadoffice`
 --
 ALTER TABLE `tblcompanyheadoffice`
-  ADD CONSTRAINT `tblcompanyheadoffice_ibfk_1` FOREIGN KEY (`head_office_id`) REFERENCES `tblheadoffice` (`head_office_id`),
-  ADD CONSTRAINT `tblcompanyheadoffice_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `tblcompany` (`company_id`);
+ADD CONSTRAINT `tblcompanyheadoffice_ibfk_1` FOREIGN KEY (`head_office_id`) REFERENCES `tblheadoffice` (`head_office_id`),
+ADD CONSTRAINT `tblcompanyheadoffice_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `tblcompany` (`company_id`);
 
 --
 -- Constraints for table `tblcompanyservices`
 --
 ALTER TABLE `tblcompanyservices`
-  ADD CONSTRAINT `tblcompanyservices_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `tblcompany` (`company_id`),
-  ADD CONSTRAINT `tblcompanyservices_ibfk_2` FOREIGN KEY (`services_id`) REFERENCES `tblservices` (`services_id`);
+ADD CONSTRAINT `tblcompanyservices_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `tblcompany` (`company_id`),
+ADD CONSTRAINT `tblcompanyservices_ibfk_2` FOREIGN KEY (`services_id`) REFERENCES `tblservices` (`services_id`);
+
+--
+-- Constraints for table `tblcompanyuploads`
+--
+ALTER TABLE `tblcompanyuploads`
+ADD CONSTRAINT `tblcompanyuploads_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `tblcompany` (`company_id`),
+ADD CONSTRAINT `tblcompanyuploads_ibfk_2` FOREIGN KEY (`upload_id`) REFERENCES `tbluploads` (`upload_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

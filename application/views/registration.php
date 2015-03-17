@@ -19,7 +19,7 @@
         </div>
 
     </div>
-    <form id="company" role="form" method="POST" action="<?php echo site_url('Regc/register'); ?>">
+    <form enctype="multipart/form-data" id="company" role="form" method="POST" action="<?php echo site_url('Regc/register'); ?>">
         <div class="row setup-content" id="step-1">
             <div class="col-xs-10">
                 <div class="col-md-10">
@@ -159,6 +159,46 @@
                                 <label class="col-md-2 control-label" for="textinput">Email</label>
                                 <div class="col-md-10">
                                     <input  required type="text" id="head_office_email" name="head_office_email" class="form-control" ><span id="head_office_email_error" style="color:red"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="textinput">Document 1</label>
+                                <div class="col-md-10">
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <span class="btn btn-primary btn-file">
+                                                Browse&hellip; <input  type="file" class="uploadclass" multiple id="upload1" name="upload0">
+                                            </span>
+                                        </span>
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
+                                    <!--<span id="">asd</span>-->    
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="textinput">Document 2</label>
+                                <div class="col-md-10">
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <span class="btn btn-primary btn-file">
+                                                Browse&hellip; <input  type="file" class="uploadclass" multiple id="upload2" name="upload1">
+                                            </span>
+                                        </span>
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="textinput">Document 3</label>
+                                <div class="col-md-10">
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <span class="btn btn-primary btn-file">
+                                                Browse&hellip; <input  type="file" class="uploadclass" multiple id="upload3" name="upload2">
+                                            </span>
+                                        </span>
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
                                 </div>
                             </div>
                         </fieldset>
@@ -731,17 +771,29 @@
     }
 </style>
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         var navListItems = $('div.setup-panel div a'),
                 allWells = $('.setup-content'),
                 allNextBtn = $('.nextBtn');
-
         allWells.hide();
+//        var ext = $('#my_file_field').val().split('.').pop().toLowerCase();
+//        if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+//            alert('invalid extension!');
+//        }
+
+//        $(".uploadclass").focusout(function () {
+//            if ($(".uploadclass").val() != "" || $(".uploadclass") != null) {
+//                var ext = $('.uploadclass').val().split('.').pop().toLowerCase();
+//                if ($.inArray(ext, ['doc', 'docx', 'pdf', 'gif', 'jpg', 'png', 'txt']) == -1) {
+//                    alert('invalid extension!');
+//                }
+//            }
+//        });
         function validateEmail($email) {
             var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
             return emailReg.test($email);
         }
-        $("#head_office_email").focusout(function() {
+        $("#head_office_email").focusout(function () {
             if (!validateEmail($("#head_office_email").val())) {
                 $("#head_office_email_error").text("Invalid email format");
                 allNextBtn.prop('disabled', true);
@@ -751,9 +803,9 @@
                 allNextBtn.prop('disabled', false);
             }
         });
-        $("#username").focusout(function() {
+        $("#username").focusout(function () {
 
-            $.post("<?php echo site_url('Regc/checkusername'); ?>", {username: $("#username").val()}, function(res) {
+            $.post("<?php echo site_url('Regc/checkusername'); ?>", {username: $("#username").val()}, function (res) {
 
                 if (res == 1) {
                     $("#username_error").text('Username already exist!');
@@ -765,10 +817,8 @@
                     allNextBtn.prop('disabled', false);
                 }
             });
-
         });
-
-        $("#repassword").focusout(function() {
+        $("#repassword").focusout(function () {
             if ($("#password").val() != "" || $("#password").val() != NULL) {
                 if ($("#password").val() != $("#repassword").val()) {
                     $("#password_error").text("Password did not match");
@@ -780,12 +830,10 @@
                 }
             }
         });
-
-        navListItems.click(function(e) {
+        navListItems.click(function (e) {
             e.preventDefault();
             var $target = $($(this).attr('href')),
                     $item = $(this);
-
             if (!$item.hasClass('disabled')) {
                 navListItems.removeClass('btn-primary').addClass('btn-default');
                 $item.addClass('btn-primary');
@@ -794,14 +842,12 @@
                 $target.find('input:eq(0)').focus();
             }
         });
-
-        allNextBtn.click(function() {
+        allNextBtn.click(function () {
             var curStep = $(this).closest(".setup-content"),
                     curStepBtn = curStep.attr("id"),
                     nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
                     curInputs = curStep.find("input[type='text'],input[type='url']"),
                     isValid = true;
-
             $(".form-group").removeClass("has-error");
             for (var i = 0; i < curInputs.length; i++) {
                 if (!curInputs[i].validity.valid) {
@@ -812,13 +858,55 @@
 
             if (isValid)
                 nextStepWizard.removeAttr('disabled').trigger('click');
+        });
+        $('div.setup-panel div a.btn-primary').trigger('click');
+    });</script>
+<style type="text/css">
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        background: red;
+        cursor: inherit;
+        display: block;
+    }
+    input[readonly] {
+        background-color: white !important;
+        cursor: text !important;
+    }
+
+</style>
+<script type="text/javascript">
+    $(document).on('change', '.btn-file :file', function () {
+        var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        input.trigger('fileselect', [numFiles, label]);
+    });
+    $(document).ready(function () {
+        $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
+
+            var input = $(this).parents('.input-group').find(':text'),
+                    log = numFiles > 1 ? numFiles + ' files selected' : label;
+            if (input.length) {
+                input.val(log);
+            } else {
+                if (log)
+                    alert(log);
+            }
 
         });
-
-        $('div.setup-panel div a.btn-primary').trigger('click');
-    });
-</script>
-
+    });</script>
 <script type="text/javascript" src="<?php echo base_url('public/add_other_services_button.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('public/dist/jquery.validate.js'); ?>"></script>
 </html>

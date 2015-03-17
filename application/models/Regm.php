@@ -7,7 +7,7 @@ class Regm extends CI_Model {
         $this->load->database();
     }
 
-    public function registersupplier($tblcompany, $tblheadoffice, $contact_sales, $contact_procurement, $contact_account, $branches_contact_person, $branches_province, $branches_address, $branches_telephone, $branches_fax, $branches_email, $hook, $categories, $other_services) {
+    public function registersupplier($tblcompany, $tblheadoffice, $contact_sales, $contact_procurement, $contact_account, $branches_contact_person, $branches_province, $branches_address, $branches_telephone, $branches_fax, $branches_email, $hook, $categories, $other_services, $uploads) {
 
         $this->db->trans_begin();
         $this->db->insert('tblcompany', $tblcompany);

@@ -1,0 +1,38 @@
+existing data modified 
+
+befire save modified user id , existing data modified
+
+
+
+
+date modified, date modified user id for leads
+
+
+accounts and contacts 
+
+
+
+date_modified
+modified_user_id
+
+A
+set session for : before_save
+$_SESSION[c6d6939b-5af2-0c53-38b8-546bad9d4f86][date_modified] = existing/old value = date_modified
+$_SESSION[c6d6939b-5af2-0c53-38b8-546bad9d4f86]modified_user_id] = existing/old value = modified_user_id
+
+after_SAVE
+CHECK: current_user -> ROLID -> IF == $sugar_config['bypass_update_users'];
+
+
+e check kung ang user naka butang sa array sa $sugar_config
+
+list of users that can modify ...$sugar_config['bypass_update_users'];
+
+
+
+OK:
+set date_modified/modified_user_id = SESSION;
+SQL query
+
+config_override.php
+$sugar_config['bypass_update_users'] = array('c80c6c7d-c30e-aeeb-1ff6-541d3ac3e713');

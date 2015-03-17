@@ -1,0 +1,64 @@
+accessing database in entrypoint, jquery,json
+
+file: entrytest.php 
+
+global $app_list_strings,$current_user,$db;
+
+
+//print_r($app_list_strings);
+
+//echo print_r($current_user)
+//echo json_encode($current_user);
+$arr;
+	foreach($current_user as $value) {
+		$arr[] = $value;
+	}
+
+//echo $arr[2];
+$SQL = "select * from users where id='$arr[2]'";
+
+$result = $db->query($SQL);
+//$data = array('userdetail');
+while($row = $db->fetchByAssoc($result)) {
+	$data[] = array(
+			'id'=>$row['id'],
+			'first_name'=>$row['first_name'],
+			'last_name'=>$row['last_name']
+	);
+}
+
+//print_r($data);
+die(json_encode($data));
+
+
+file: view.edit.php
+
+<script type='text/javascript'> 
+
+			$(document).ready(function() {
+		
+		$.post('index.php?entryPoint=entrytest',{data:'1'},function(res) {
+
+						var obj = jQuery.parseJSON(res);
+	
+					//var obj = JSON.parse(res);
+		
+				alert(obj.first_name);
+			
+			//alert(res);
+			
+	});
+		
+	});
+		
+	</script> 
+		
+
+
+
+
+
+
+		";
+		
+die();
