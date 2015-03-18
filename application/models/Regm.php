@@ -75,7 +75,18 @@ class Regm extends CI_Model {
                 ));
             }
         }
-
+        for ($x = 0; $x < count($uploads) + 1; $x+=2) {
+            if ($x == (count($uploads) + 1) && $x + 1 < (count($uploads) + 1)) {
+                
+            } else {
+                $this->db->query("insert into tbluploads values('','$uploads[$x]','" . $uploads[$x + 1] . "')");
+                $uploads_last_id = $this->db->insert_id();
+                $this->db->insert("tblcompanyuploads", $tblcompanyuploads = array(
+                    'company_id' => $company_last_id,
+                    'upload_id' => $uploads_last_id
+                ));
+            }
+        }
 
         if ($this->db->trans_status() == FALSE) {
             $this->db->trans_rollback();
