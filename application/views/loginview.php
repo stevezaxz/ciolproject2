@@ -94,14 +94,14 @@
                                     <label for="inputEmail3" class="col-sm-3 control-label">
                                         Email</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="username" placeholder="Username" required>
+                                        <input type="text" class="form-control" id="username" placeholder="Username" required name="username">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword3" class="col-sm-3 control-label">
                                         Password</label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required>
+                                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required name="password">
                                     </div>
                                 </div>
                                 <!--                                <div class="form-group">
@@ -114,6 +114,13 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>-->
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label">
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <span style="color:RED;"><?php if (isset($incorrect_msg)) echo $incorrect_msg; ?></span>          </div>
+                                </div>
+
                                 <div class="form-group last">
                                     <div class="col-sm-offset-3 col-sm-9">
                                         <button type="submit" class="btn btn-success btn-sm">

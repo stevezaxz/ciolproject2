@@ -25,13 +25,16 @@ class regc extends CI_Controller {
         $this->upload->initialize($config);
 
         $uploads = array();
-        for ($x = 0; $x < 3; $x++) {
+        for ($x = 0; $x <= 2; $x++) {
             if ($this->upload->do_upload("upload" . $x)) {
-                $uploads[] = $this->upload->data("file_name");
-                $uploads[] = $this->upload->data("full_path");
+
+                $uploads[] = array(
+                    'upload_file_name' => $this->upload->data("file_name"),
+                    'upload_file_location' => $this->upload->data("full_path"),
+                );
             }
         }
-//        print_r($uploads);
+
         $registrants_name = $this->input->post('registrants_name');
         $username = $this->input->post('username');
         $password = $this->input->post('password');
@@ -45,12 +48,14 @@ class regc extends CI_Controller {
             'company_id' => '',
             'company_registrants_name' => $registrants_name,
             'company_username' => $username,
-            'company_password' => $password,
+            'company_password' => md5($password),
             'company_trade_name' => $business_trade_name,
             'company_tin' => $tin_no,
             'company_bir_registration_no' => $bir,
             'company_website' => $website,
-            'company_history' => $overview_history
+            'company_history' => $overview_history,
+            'is_verified' => '0',
+            'status' => 'Active'
         );
 
         $head_office_address = $this->input->post('head_office_address');
@@ -152,38 +157,8 @@ class regc extends CI_Controller {
         $return_id = $this->Regm->registersupplier($tblcompany, $tblheadoffice, $contact_sales, $contact_procurement, $contact_account, $branches_contact_person, $branches_address, $branches_province, $branches_telephone, $branches_fax, $branches_email, $hook, $categories, $other_services, $uploads);
 
         if ($return_id) {
-            $this->load->view("successpage");
-            $config = Array(
-                'protocol' => 'smtp',
-                'smtp_host' => 'ssl://smtp.googlemail.com',
-                'smtp_port' => 465,
-                'smtp_user' => 'nevetsjohn@gmail.com',
-                'smtp_pass' => '10118023603aAaAqQ',
-                'mailtype' => 'html',
-                'charset' => 'iso-8859-1'
-            );
-            $this->load->library('email', $config);
-            $this->email->set_newline("\r\n");
-
-            $this->email->from('nevetsjohn@gmail.com', 'Netzwerk Suppliers Network');
-            $this->email->to($head_office_email);
-
-            $this->email->subject('Netzwerk Registration ');
-            $this->email->message("<html>
-                    
-                                        <body>
-Dear " . $username . ",\n
-
-<p>We have received your registration to join the Supplier's Network. We thank you for the interest you've shown in our company.
-
-Please be informed that we are in the midst of processing the applications and shall get in touch with you again once your profile is already verified and advertised in our site. 
-
-You will receive an email containing a successful notification.</p>
-                                        </body>
-
-                                   </html>");
-
-            $this->email->send();
+            $this->sendemailclient($head_office_email, $username, $return_id);
+//            $this->sendemailadmin($username, $return_id);
         } else {
             $data = array(
                 'heading' => 'Registration error',
@@ -191,34 +166,6 @@ You will receive an email containing a successful notification.</p>
             );
             $this->load->view("errors/html/error_general", $data);
         }
-//        $config['upload_path'] = 'uploads/';
-//        $config['allowed_types'] = 'doc|docx|pdf|gif|jpg|png|txt';
-//        $config['overwrite'] = 'true';
-//        $config['max_size'] = '2048000';
-//
-//        $this->load->library("upload", $config);
-//        $this->upload->initialize($config);
-////        $up1 = $this->input->post("upload1");
-////        print_r($this->upload->do_upload("upload1"));
-////        print_r($this->upload->do_upload("upload2"));
-////        print_r($this->upload->do_upload("upload3"));
-//        $data = array();
-//        for ($x = 0; $x < 3; $x++) {
-//            if ($this->upload->do_upload("upload" . $x)) {
-//                $data[] = $this->upload->data("file_name");
-//                $data[] = $this->upload->data("full_path");
-//            }
-//        }
-//        print_r($data);
-//        if (!$this->upload->do_upload('upload1')) {
-////            echo "error";
-//            $data[] = $this->upload->display_errors();
-//            print_r($data);
-//        } else {
-//           echo $this->upload->data("file_name");
-////            $data[] = $this->upload->data("full_path");
-////            print_r($data);
-//        }
     }
 
     public function checkusername() {
@@ -237,6 +184,87 @@ You will receive an email containing a successful notification.</p>
             'message' => '<p>There was an error encountered. Please try again.</p>'
         );
         $this->load->view("errors/html/error_general", $data);
+    }
+
+    public function sendemailclient($head_office_email, $username, $return_id) {
+        $this->load->view("successpage");
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'nevetsjohn@gmail.com',
+            'smtp_pass' => '10118023603aAaAqQ',
+            'mailtype' => 'html',
+            'charset' => 'iso-8859-1'
+        );
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+
+        $this->email->from('nevetsjohn@gmail.com', 'Netzwerk Suppliers Network');
+        $this->email->to($head_office_email);
+
+        $this->email->subject('Netzwerk Registration ');
+        $this->email->message("<html>
+                    
+                                        <body>
+Dear " . $username . ",\n
+
+<p>We have received your registration to join the Supplier's Network. We thank you for the interest you've shown in our company.
+
+Please be informed that we are in the midst of processing the applications and shall get in touch with you again once your profile is already verified and advertised in our site. 
+
+You will receive an email containing a successful notification.</p>
+                                        </body>
+
+                                   </html>");
+
+        $this->email->send();
+        $this->email->clear();
+        $this->email->from('nevetsjohn@gmail.com', 'Netzwerk Suppliers Network');
+        $this->email->to('nevetsjohn@gmail.com'); #ADMIN EMAIL ADDRESS
+
+        $this->email->subject('Netzwerk Registration ');
+        $this->email->message("<html>
+                    
+                                        <body>
+                Username " . $username . ",\n
+                Company ID " . $return_id . ",\n
+                 <p>This user needs confirmation, check on the admin module</p>
+                                        </body>
+
+                                   </html>");
+
+        $this->email->send();
+    }
+
+    public function sendemailadmin($username, $return_id) {
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'nevetsjohn@gmail.com',
+            'smtp_pass' => '10118023603aAaAqQ',
+            'mailtype' => 'html',
+            'charset' => 'iso-8859-1'
+        );
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+
+        $this->email->from('nevetsjohn@gmail.com', 'Netzwerk Suppliers Network');
+        $this->email->to('nevetsjohn@gmail.com'); #ADMIN EMAIL ADDRESS
+
+        $this->email->subject('Netzwerk Registration ');
+        $this->email->message("<html>
+                    
+                                        <body>
+                Username " . $username . ",\n
+                Company ID " . $return_id . ",\n
+                 <p>This user needs confirmation, check on the admin module</p>
+                                        </body>
+
+                                   </html>");
+
+        $this->email->send();
     }
 
 }

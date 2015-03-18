@@ -1,0 +1,147 @@
+/var/www/html/HP/SugarPro6516/custom/modules/Users/views/view.edit.php
+/var/www/html/HP/SugarPro6516/custom/modules/Users/metadata/editviewdefs.php
+/var/www/html/HP/SugarPro6516/custom/modules/Opportunities/OpportunityHook.php
+/var/www/html/HP/SugarPro6516/custom/include/language/en_us.lang.php
+
+1. department_category_list
+
+customes/module/users
+
+2. Users/metadata
+
+editviewdefs.php
+
+--> array ( // instead of department_category_list change to department
+            'name' => 'department',
+            'studio' => 'visible',
+            'customCode' => '{$CUSTOM_DEPARTMENT_LIST}',
+          )
+
+
+view.edit.php
+
+--> $dropdown = get_select_options_with_id($app_list_strings['department_category_list'],$this->bean->department);
+	$custom_department_list = "<select id='department' name='department'>$dropdown</select>";
+	$this->ss->assign('CUSTOM_DEPARTMENT_LIST',$custom_department_list); 
+
+
+
+SugarPro6516/custom/include/language/en_us.lang.php
+$GLOBALS['app_list_strings']['department_category_list']=array (
+  'none'=> 'none',
+  'CIC' => 'CIC',
+  'SMB' => 'SMB',
+);
+
+
+
+
+customes/module/Oppoturnities
+
+3. Oppoturnities
+  SugarPro6516/custom/modules/Opportunities/OpportunityHook.php
+   OpportunityHook
+ function after_save_checkUpdateCategory
+
+	global $db, $current_user, $log, $sugar_config; ----$app_list_strings
+
+
+$bean->opportunity_category_c = $current_user->department;
+		 $bean->save();
+
+
+and then comment this line
+	/*	if(empty($bean->opportunity_category_c)){
+			
+			$SQL = "
+				SELECT
+					contacts_cstm.customer_type_c
+				FROM contacts
+				LEFT JOIN contacts_cstm ON contacts_cstm.id_c = contacts.id
+				LEFT JOIN opportunities_contacts ON contacts.id = opportunities_contacts.contact_id
+				WHERE opportunities_contacts.opportunity_id = '{$bean->id}'
+			";
+			$result = $db->query($SQL);
+			$customer_type_c = '';
+			while($row = $db->fetchByAssoc($result)){
+				$customer_type_c = $row['customer_type_c'];
+				if($customer_type_c == 'business'){
+					$customer_type_c = 'SMB';
+				}else if($customer_type_c == 'consumer'){
+					$customer_type_c = 'CIC';
+				}else{
+					$customer_type_c = '';
+				}
+			}
+			
+			if(!empty($customer_type_c)){
+				$SQL = "
+					UPDATE opportunities_cstm SET opportunity_category_c = '{$customer_type_c}' WHERE id_c = '{$bean->id}'
+				";
+				$db->query($SQL);
+			}
+		} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+every module has its own bean
+
+sample
+
+$bean->fromuservars;
+
+$this->ss sugar smarty
+
+
+
+
+
+require_once('include/Dashlets/Dashlet.php');
+require_once('include/Sugar_Smarty.php');
+
+class <dashletName> extends Dashlet {
+    //define any variables here
+    var $height = '200';
+
+    // Constrcutor
+    function <dashletName>($id, $def) {
+        $this->loadLanguage(<dashletName>, 'custom/modules/my_module/Dashlets/'); // load the language strings here
+
+        parent::Dashlet($id); // call parent constructor
+
+        $this->isConfigurable = false; // dashlet is configurable?
+        $this->hasScript = false; // dashlet has javascript attached to it?
+        // if no custom title, use default
+        if(empty($def['title'])) $this->title = $this->dashletStrings['LBL_TITLE'];
+        else $this->title = $def['title'];
+    }
+
+    //Displays the dashlet
+    function display() {
+        $ss = new Sugar_Smarty();
+        //assign variables
+        $ss->assign('greeting', $this->dashletStrings['LBL_GREETING']);
+        $ss->assign('id', $this->id);
+        $ss->assign('height', $this->height);
+
+        $str = $ss->fetch('custom/modules/my_module/Dashlets/<dashletName>/<dashletName>.tpl');
+        return parent::display().$str; // return parent::display for title and such
+    }
+}
+
+
+
+

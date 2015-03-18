@@ -75,11 +75,27 @@ class Regm extends CI_Model {
                 ));
             }
         }
-        for ($x = 0; $x < count($uploads) + 1; $x+=2) {
-            if ($x == (count($uploads) + 1) && $x + 1 < (count($uploads) + 1)) {
-                
-            } else {
-                $this->db->query("insert into tbluploads values('','$uploads[$x]','" . $uploads[$x + 1] . "')");
+//        for ($x = 0; $x < count($uploads) + 1; $x+=2) {
+//            if ($x == (count($uploads) + 1) && $x + 1 < (count($uploads) + 1)) {
+//                
+//            } else {
+//                $this->db->query("insert into tbluploads values('','$uploads[$x]','" . $uploads[$x + 1] . "')");
+//                $uploads_last_id = $this->db->insert_id();
+//                $this->db->insert("tblcompanyuploads", $tblcompanyuploads = array(
+//                    'company_id' => $company_last_id,
+//                    'upload_id' => $uploads_last_id
+//                ));
+//            }
+//        }
+//        if (isset($uploads)) {
+//            foreach($uploads) {
+//                
+//            }
+//        }
+        if (isset($uploads)) {
+            for ($x = 0; $x < count($uploads); $x++) {
+//                 $uploads[$x]['upload_file_name'] . " ...." . $uploads[$x]['upload_file_location'] . "<br/>";
+                $this->db->query("insert into tbluploads value('','" . $uploads[$x]['upload_file_name'] . "','" . $uploads[$x]['upload_file_location'] . "')");
                 $uploads_last_id = $this->db->insert_id();
                 $this->db->insert("tblcompanyuploads", $tblcompanyuploads = array(
                     'company_id' => $company_last_id,

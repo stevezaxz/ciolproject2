@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2015 at 03:48 PM
+-- Generation Time: Mar 18, 2015 at 03:35 PM
 -- Server version: 5.5.40
 -- PHP Version: 5.5.19
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `tblbranches` (
   `branches_telephone` varchar(30) DEFAULT NULL,
   `branches_fax` varchar(30) DEFAULT NULL,
   `branches_email` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblbranches`
@@ -79,7 +79,14 @@ INSERT INTO `tblbranches` (`branches_id`, `branches_person`, `branches_address`,
 (39, '', 'e', 'e', 'e', '', ''),
 (40, '', 'e', 'e', 'e', '', ''),
 (41, '', 'e', 'e', 'e', '', ''),
-(42, 'ljkl', 'lk', 'j', 'lk', 'j', 'lkj');
+(42, 'ljkl', 'lk', 'j', 'lk', 'j', 'lkj'),
+(43, '', '', '', '', '', ''),
+(44, '', '', '', '', '', ''),
+(45, '', '', '', '', '', ''),
+(46, '', '', '', '', '', ''),
+(47, '', '', '', '', '', ''),
+(48, '', '', '', '', '', ''),
+(49, 'test', 'test', 'test', 'test', 'test', '');
 
 -- --------------------------------------------------------
 
@@ -91,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `tblcategory` (
 `category_id` int(11) NOT NULL,
   `category_name` varchar(50) DEFAULT NULL,
   `category_sub_cat` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=126 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblcategory`
@@ -208,7 +215,21 @@ INSERT INTO `tblcategory` (`category_id`, `category_name`, `category_sub_cat`) V
 (108, 'Mechanical', 'Pneumatics and Hydraulics equipment and parts'),
 (109, 'Mechanical', 'Pipes, Tubes, Valves and other piping components'),
 (110, 'Mechanical', 'Lubricants, grease, engine oil, hydraulic oil, transmission oils'),
-(111, 'Mechanical', 'Pneumatics and Hydraulics equipment and parts');
+(111, 'Mechanical', 'Pneumatics and Hydraulics equipment and parts'),
+(112, 'Mechanical', 'Lubricants, grease, engine oil, hydraulic oil, transmission oils'),
+(113, 'Instrumentation', 'Laboratory testing, measuring and analyzing equipments'),
+(114, 'Construction', 'Plumbing and piping materials'),
+(115, 'Mechanical', 'Lubricants, grease, engine oil, hydraulic oil, transmission oils'),
+(116, 'Instrumentation', 'Laboratory testing, measuring and analyzing equipments'),
+(117, 'Construction', 'Plumbing and piping materials'),
+(118, 'Electrical', 'Circuit breakers, power supply, contactors, relays, timer, switch, transducers'),
+(119, 'Electrical', 'Circuit breakers, power supply, contactors, relays, timer, switch, transducers'),
+(120, 'Electrical', 'Circuit breakers, power supply, contactors, relays, timer, switch, transducers'),
+(121, 'Electrical', 'Circuit breakers, power supply, contactors, relays, timer, switch, transducers'),
+(122, 'Mechanical', 'Pumps, Fans and Blowers'),
+(123, 'Mechanical', 'Automotive and heavy equipments and parts'),
+(124, 'Electrical', 'Lighting (CFL, LED, HID, incandescent), lighting controls, ballast, batteries and fixtures'),
+(125, 'Chemicals', 'Pesticide, Fertilizers, Herbicides, and other agrochemicals');
 
 -- --------------------------------------------------------
 
@@ -225,56 +246,65 @@ CREATE TABLE IF NOT EXISTS `tblcompany` (
   `company_tin` varchar(50) DEFAULT NULL,
   `company_bir_registration_no` varchar(150) DEFAULT NULL,
   `company_website` varchar(150) DEFAULT NULL,
-  `company_history` varchar(1000) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
+  `company_history` varchar(1000) DEFAULT NULL,
+  `is_verified` varchar(10) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblcompany`
 --
 
-INSERT INTO `tblcompany` (`company_id`, `company_registrants_name`, `company_username`, `company_password`, `company_trade_name`, `company_tin`, `company_bir_registration_no`, `company_website`, `company_history`) VALUES
-(1, 'dasd', 'd', 'd', 'd', 'd', 'd', 'd', 'd'),
-(2, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'),
-(3, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'),
-(4, 'h', 'jkh', '1', 'h', 'kj', 'hjk', 'h', 'jk'),
-(6, 'sad', 'd', 'd', 'd', 'd', 'd', 'd', 'd'),
-(7, 'sad', 'd', 'd', 'd', 'd', 'd', 'd', 'd'),
-(8, 'asd', 'd', 'd', 'd', 'd', 'd', 'd', 'd'),
-(10, 'klj', 'lk', '1', 'lkj', 'kjqb', 'g', 'gkh', 'bku'),
-(14, 'asd', 'd', 'd', 'd', 'd', 'd', 'dfsdf', 'd'),
-(15, 'dsad', 'd', 'd', 'd', 'd', 'd', 'd', 'd'),
-(16, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'),
-(17, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(18, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(19, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(20, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(21, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(22, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(23, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(24, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(25, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(26, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(27, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(28, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(29, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(31, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(32, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(33, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(34, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(35, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(36, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(37, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd'),
-(38, 'jlkjlkj', 'klj', 'lkj', 'lkj', 'lkj', 'lk', 'j', 'asdasd'),
-(39, 'jlkjlkj', 'klj', 'lkj', 'lkj', 'lkj', 'lk', 'j', 'asdasd'),
-(40, 'jlkjlkj', 'klj', 'lkj', 'lkj', 'lkj', 'lk', 'j', 'asdasd'),
-(41, 'jlkjlkj', 'klj', 'lkj', 'lkj', 'lkj', 'lk', 'j', 'asdasd'),
-(42, 'jlkjlkj', 'klj', 'lkj', 'lkj', 'lkj', 'lk', 'j', 'asdasd'),
-(43, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'),
-(44, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'),
-(45, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'),
-(46, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'),
-(47, 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol');
+INSERT INTO `tblcompany` (`company_id`, `company_registrants_name`, `company_username`, `company_password`, `company_trade_name`, `company_tin`, `company_bir_registration_no`, `company_website`, `company_history`, `is_verified`, `status`) VALUES
+(1, 'dasd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', NULL, NULL),
+(2, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', NULL, NULL),
+(3, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', NULL, NULL),
+(4, 'h', 'jkh', '1', 'h', 'kj', 'hjk', 'h', 'jk', NULL, NULL),
+(6, 'sad', 'd', 'd', 'd', 'd', 'd', 'd', 'd', NULL, NULL),
+(7, 'sad', 'd', 'd', 'd', 'd', 'd', 'd', 'd', NULL, NULL),
+(8, 'asd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', NULL, NULL),
+(10, 'klj', 'lk', '1', 'lkj', 'kjqb', 'g', 'gkh', 'bku', NULL, NULL),
+(14, 'asd', 'd', 'd', 'd', 'd', 'd', 'dfsdf', 'd', NULL, NULL),
+(15, 'dsad', 'd', 'd', 'd', 'd', 'd', 'd', 'd', NULL, NULL),
+(16, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', NULL, NULL),
+(17, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(18, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(19, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(20, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(21, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(22, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(23, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(24, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(25, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(26, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(27, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(28, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(29, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(32, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(33, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(34, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(35, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(36, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(37, 'kljlk', 'j', 'a', 'j', 'lkj', 'lk', 'j', 'lkasdasdasd', NULL, NULL),
+(38, 'jlkjlkj', 'klj', 'lkj', 'lkj', 'lkj', 'lk', 'j', 'asdasd', NULL, NULL),
+(39, 'jlkjlkj', 'klj', 'lkj', 'lkj', 'lkj', 'lk', 'j', 'asdasd', NULL, NULL),
+(40, 'jlkjlkj', 'klj', 'lkj', 'lkj', 'lkj', 'lk', 'j', 'asdasd', NULL, NULL),
+(41, 'jlkjlkj', 'klj', 'lkj', 'lkj', 'lkj', 'lk', 'j', 'asdasd', NULL, NULL),
+(42, 'jlkjlkj', 'klj', 'lkj', 'lkj', 'lkj', 'lk', 'j', 'asdasd', NULL, NULL),
+(43, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', NULL, NULL),
+(44, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', NULL, NULL),
+(45, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', NULL, NULL),
+(46, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', NULL, NULL),
+(47, 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', NULL, NULL),
+(48, 'asdads', 'czxcz', 'asd', 'd', 'd', 'd', 'd', 'asd', NULL, NULL),
+(49, 'asdads', 'czxcz', 'asd', 'd', 'd', 'd', 'd', 'asd', '0', NULL),
+(50, 'd', 'xcv', 'zxc', 'sc', 'd', 'd', 'd', 'd', '0', NULL),
+(51, 'd', 'xcv', 'zxc', 'sc', 'd', 'd', 'd', 'd', '0', NULL),
+(52, 'd', 'xcv', 'zxc', 'sc', 'd', 'd', 'd', 'd', '0', NULL),
+(53, 'd', 'xcv', 'zxc', 'sc', 'd', 'd', 'd', 'd', '0', NULL),
+(54, 'test', 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 'test', 'test', 'test', '0', 'Active');
 
 -- --------------------------------------------------------
 
@@ -330,7 +360,14 @@ INSERT INTO `tblcompanybranches` (`company_id`, `branches_id`) VALUES
 (44, 39),
 (45, 40),
 (46, 41),
-(47, 42);
+(47, 42),
+(48, 43),
+(49, 44),
+(50, 45),
+(51, 46),
+(52, 47),
+(53, 48),
+(54, 49);
 
 -- --------------------------------------------------------
 
@@ -458,7 +495,21 @@ INSERT INTO `tblcompanycategory` (`company_id`, `category_id`) VALUES
 (46, 108),
 (46, 109),
 (47, 110),
-(47, 111);
+(47, 111),
+(48, 112),
+(48, 113),
+(48, 114),
+(49, 115),
+(49, 116),
+(49, 117),
+(50, 118),
+(51, 119),
+(52, 120),
+(53, 121),
+(54, 122),
+(54, 123),
+(54, 124),
+(54, 125);
 
 -- --------------------------------------------------------
 
@@ -583,7 +634,28 @@ INSERT INTO `tblcompanycontactperson` (`company_id`, `contact_person_id`) VALUES
 (46, 117),
 (47, 118),
 (47, 119),
-(47, 120);
+(47, 120),
+(48, 121),
+(48, 122),
+(48, 123),
+(49, 124),
+(49, 125),
+(49, 126),
+(50, 127),
+(50, 128),
+(50, 129),
+(51, 130),
+(51, 131),
+(51, 132),
+(52, 133),
+(52, 134),
+(52, 135),
+(53, 136),
+(53, 137),
+(53, 138),
+(54, 139),
+(54, 140),
+(54, 141);
 
 -- --------------------------------------------------------
 
@@ -637,7 +709,14 @@ INSERT INTO `tblcompanyheadoffice` (`company_id`, `head_office_id`) VALUES
 (44, 43),
 (45, 44),
 (46, 45),
-(47, 46);
+(47, 46),
+(48, 47),
+(49, 48),
+(50, 49),
+(51, 50),
+(52, 51),
+(53, 52),
+(54, 53);
 
 -- --------------------------------------------------------
 
@@ -718,7 +797,16 @@ INSERT INTO `tblcompanyservices` (`company_id`, `services_id`) VALUES
 (46, 65),
 (46, 66),
 (47, 67),
-(47, 68);
+(47, 68),
+(48, 69),
+(49, 70),
+(50, 71),
+(51, 72),
+(52, 73),
+(53, 74),
+(54, 75),
+(54, 76),
+(54, 77);
 
 -- --------------------------------------------------------
 
@@ -730,6 +818,28 @@ CREATE TABLE IF NOT EXISTS `tblcompanyuploads` (
   `company_id` int(11) DEFAULT NULL,
   `upload_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblcompanyuploads`
+--
+
+INSERT INTO `tblcompanyuploads` (`company_id`, `upload_id`) VALUES
+(48, 1),
+(48, 2),
+(48, 3),
+(49, 4),
+(49, 5),
+(49, 6),
+(50, 7),
+(50, 8),
+(51, 9),
+(51, 10),
+(52, 11),
+(52, 12),
+(53, 13),
+(53, 14),
+(54, 15),
+(54, 16);
 
 -- --------------------------------------------------------
 
@@ -746,7 +856,7 @@ CREATE TABLE IF NOT EXISTS `tblcontactperson` (
   `contact_person_email` varchar(50) DEFAULT NULL,
   `contact_person_mobile1` varchar(30) DEFAULT NULL,
   `contact_person_mobile2` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblcontactperson`
@@ -860,7 +970,28 @@ INSERT INTO `tblcontactperson` (`contact_person_id`, `contact_person_name`, `con
 (117, '', 'Account', '', '', '', '', ''),
 (118, 'kl', 'Sales', 'lk', 'lk', 'l', 'kl', 'k'),
 (119, 'lk', 'Procurement', 'l', 'kl', 'k', 'l', 'kl'),
-(120, 'k', 'Account', 'lk', 'l', 'kl', 'k', 'l');
+(120, 'k', 'Account', 'lk', 'l', 'kl', 'k', 'l'),
+(121, '', 'Sales', '', '', '', '', ''),
+(122, '', 'Procurement', '', '', '', '', ''),
+(123, '', 'Account', '', '', '', '', ''),
+(124, '', 'Sales', '', '', '', '', ''),
+(125, '', 'Procurement', '', '', '', '', ''),
+(126, '', 'Account', '', '', '', '', ''),
+(127, 'Steven John M Añasco', 'Sales', '', '', '', '', ''),
+(128, '', 'Procurement', '', '', '', '', ''),
+(129, '', 'Account', '', '', '', '', ''),
+(130, 'Steven John M Añasco', 'Sales', '', '', '', '', ''),
+(131, '', 'Procurement', '', '', '', '', ''),
+(132, '', 'Account', '', '', '', '', ''),
+(133, 'Steven John M Añasco', 'Sales', '', '', '', '', ''),
+(134, '', 'Procurement', '', '', '', '', ''),
+(135, '', 'Account', '', '', '', '', ''),
+(136, 'Steven John M Añasco', 'Sales', '', '', '', '', ''),
+(137, '', 'Procurement', '', '', '', '', ''),
+(138, '', 'Account', '', '', '', '', ''),
+(139, 'Steven John M Añasco', 'Sales', 'test', 'test', 'test', 'test', 'test'),
+(140, '', 'Procurement', '', '', '', '', ''),
+(141, '', 'Account', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -878,7 +1009,7 @@ CREATE TABLE IF NOT EXISTS `tblheadoffice` (
   `head_office_telephone` varchar(30) DEFAULT NULL,
   `head_office_fax` varchar(30) DEFAULT NULL,
   `head_office_email` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblheadoffice`
@@ -925,7 +1056,14 @@ INSERT INTO `tblheadoffice` (`head_office_id`, `head_office_address`, `head_offi
 (43, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'nevetsjohn@live.com'),
 (44, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'nevetsjohn@live.com'),
 (45, 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'nevetsjohn@live.com'),
-(46, 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'norman.armian@gmail.com');
+(46, 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'pol', 'norman.armian@gmail.com'),
+(47, 'd', 'd', 'd', 'd', 'd', 'sdf', 'sdfs', 'd@asdf.gh'),
+(48, 'd', 'd', 'd', 'd', 'd', 'sdf', 'sdfs', 'd@asdf.gh'),
+(49, 'd', 'd', 'd', 'd', 'd', 'd', 'sdasd', 'nevetsjohn@live.com'),
+(50, 'd', 'd', 'd', 'd', 'd', 'd', 'sdasd', 'nevetsjohn@live.com'),
+(51, 'd', 'd', 'd', 'd', 'd', 'd', 'sdasd', 'nevetsjohn@live.com'),
+(52, 'd', 'd', 'd', 'd', 'd', 'd', 'sdasd', 'nevetsjohn@live.com'),
+(53, 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'nevetsjohn@live.com');
 
 -- --------------------------------------------------------
 
@@ -936,7 +1074,7 @@ INSERT INTO `tblheadoffice` (`head_office_id`, `head_office_address`, `head_offi
 CREATE TABLE IF NOT EXISTS `tblservices` (
 `services_id` int(11) NOT NULL,
   `description` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblservices`
@@ -1010,7 +1148,16 @@ INSERT INTO `tblservices` (`services_id`, `description`) VALUES
 (65, 'asdasd'),
 (66, 'fghf'),
 (67, 'j'),
-(68, 'lkj');
+(68, 'lkj'),
+(69, ''),
+(70, ''),
+(71, 'asd'),
+(72, 'asd'),
+(73, 'asd'),
+(74, 'asd'),
+(75, 'test'),
+(76, 'test'),
+(77, 'test');
 
 -- --------------------------------------------------------
 
@@ -1022,7 +1169,29 @@ CREATE TABLE IF NOT EXISTS `tbluploads` (
 `upload_id` int(11) NOT NULL,
   `upload_file_name` varchar(100) DEFAULT NULL,
   `upload_file_location` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbluploads`
+--
+
+INSERT INTO `tbluploads` (`upload_id`, `upload_file_name`, `upload_file_location`) VALUES
+(1, 'jsonentrypointjquerysugar.txt', 'C:/xampp/htdocs/ciolproject2/uploads/jsonentrypointjquerysugar.txt'),
+(2, 'ts06.txt', 'C:/xampp/htdocs/ciolproject2/uploads/ts06.txt'),
+(3, 'ts24.txt', 'C:/xampp/htdocs/ciolproject2/uploads/ts24.txt'),
+(4, 'jsonentrypointjquerysugar.txt', 'C:/xampp/htdocs/ciolproject2/uploads/jsonentrypointjquerysugar.txt'),
+(5, 'ts06.txt', 'C:/xampp/htdocs/ciolproject2/uploads/ts06.txt'),
+(6, 'ts24.txt', 'C:/xampp/htdocs/ciolproject2/uploads/ts24.txt'),
+(7, 'LICENSE.txt', 'C:/xampp/htdocs/ciolproject2/uploads/LICENSE.txt'),
+(8, 'UserManual.txt', 'C:/xampp/htdocs/ciolproject2/uploads/UserManual.txt'),
+(9, 'LICENSE.txt', 'C:/xampp/htdocs/ciolproject2/uploads/LICENSE.txt'),
+(10, 'UserManual.txt', 'C:/xampp/htdocs/ciolproject2/uploads/UserManual.txt'),
+(11, 'LICENSE.txt', 'C:/xampp/htdocs/ciolproject2/uploads/LICENSE.txt'),
+(12, 'UserManual.txt', 'C:/xampp/htdocs/ciolproject2/uploads/UserManual.txt'),
+(13, 'LICENSE.txt', 'C:/xampp/htdocs/ciolproject2/uploads/LICENSE.txt'),
+(14, 'UserManual.txt', 'C:/xampp/htdocs/ciolproject2/uploads/UserManual.txt'),
+(15, 'dapitan.txt', 'C:/xampp/htdocs/ciolproject2/uploads/dapitan.txt'),
+(16, 'TODO.txt', 'C:/xampp/htdocs/ciolproject2/uploads/TODO.txt');
 
 -- --------------------------------------------------------
 
@@ -1031,12 +1200,18 @@ CREATE TABLE IF NOT EXISTS `tbluploads` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbluser` (
-  `user_id` int(11) NOT NULL,
+`user_id` int(11) NOT NULL,
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
-  `status` varchar(20) DEFAULT NULL,
-  `is_admin` varchar(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `status` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbluser`
+--
+
+INSERT INTO `tbluser` (`user_id`, `username`, `password`, `status`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -1134,37 +1309,42 @@ ALTER TABLE `tbluser`
 -- AUTO_INCREMENT for table `tblbranches`
 --
 ALTER TABLE `tblbranches`
-MODIFY `branches_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
+MODIFY `branches_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `tblcategory`
 --
 ALTER TABLE `tblcategory`
-MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=112;
+MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=126;
 --
 -- AUTO_INCREMENT for table `tblcompany`
 --
 ALTER TABLE `tblcompany`
-MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=48;
+MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=55;
 --
 -- AUTO_INCREMENT for table `tblcontactperson`
 --
 ALTER TABLE `tblcontactperson`
-MODIFY `contact_person_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=121;
+MODIFY `contact_person_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=142;
 --
 -- AUTO_INCREMENT for table `tblheadoffice`
 --
 ALTER TABLE `tblheadoffice`
-MODIFY `head_office_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=47;
+MODIFY `head_office_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT for table `tblservices`
 --
 ALTER TABLE `tblservices`
-MODIFY `services_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=69;
+MODIFY `services_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=78;
 --
 -- AUTO_INCREMENT for table `tbluploads`
 --
 ALTER TABLE `tbluploads`
-MODIFY `upload_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `upload_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT for table `tbluser`
+--
+ALTER TABLE `tbluser`
+MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
