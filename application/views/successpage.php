@@ -241,7 +241,7 @@
         }
 
     </style>
-    <?php echo link_tag("public/bootstrap/css/ubuntu.css", "stylesheet", "text/css"); ?> 
+    <?php echo link_tag("public/bootstrap/css/simplex.css", "stylesheet", "text/css"); ?> 
     <script src="<?php echo base_url('public/jquery.min.js'); ?>" type="text/javascript"></script>
     <script src="<?php echo base_url('public/bootstrap/js/bootstrap.min.js'); ?>" type="text/javascript"></script>
 </html>
