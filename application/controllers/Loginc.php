@@ -45,4 +45,9 @@ class loginc extends CI_Controller {
 //        echo $query->num_rows();
     }
 
+    public function logout() {
+        $this->session->sess_destroy();
+        redirect("/");
+    }
+
 }

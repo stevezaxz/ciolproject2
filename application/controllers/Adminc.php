@@ -7,6 +7,7 @@ class Adminc extends CI_Controller {
         if (!$this->session->has_userdata("is_login")) {
             redirect("Loginc/login");
         }
+        $this->load->model("Adminm");
     }
 
     public function index() {
@@ -16,8 +17,9 @@ class Adminc extends CI_Controller {
     }
 
     public function requestreg() {
+        $result = $this->Adminm->getrequestreglist();
         $this->load->view("companyheader");
-        $this->load->view("requestreg");
+        $this->load->view("requestreg", $result);
         $this->load->view("companyfooter");
     }
 
@@ -39,4 +41,14 @@ class Adminc extends CI_Controller {
         $this->load->view("companyfooter");
     }
 
+//    public function getrequestreg() {
+//        $result = $this->Adminm->getrequestreglist();
+//        if($result) {
+//            
+//        }
+//        else {
+//            
+//        }
+////        print_r($result);
+//    }
 }
