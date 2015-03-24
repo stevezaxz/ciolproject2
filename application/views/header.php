@@ -1,21 +1,19 @@
 <html>
     <head>
-
         <title><?php echo $title; ?></title>
-         <?php echo link_tag("public/bootstrap/css/simplex.css", "stylesheet", "text/css"); ?> 
+        <?php echo link_tag("public/bootstrap/css/simplex.css", "stylesheet", "text/css"); ?> 
         <?php // echo link_tag("public/bootstrap/css/ubuntu.css", "stylesheet", "text/css"); ?> 
         <!-- <?php echo link_tag("public/bootstrap/css/superhero.css", "stylesheet", "text/css"); ?> -->		
         <!--< ?php echo link_tag("public/bootstrap/css/flatly.css", "stylesheet", "text/css"); ?>-->
         <script src="<?php echo base_url('public/jquery.min.js'); ?>" type="text/javascript"></script>
         <script src="<?php echo base_url('public/bootstrap/js/bootstrap.min.js'); ?>" type="text/javascript"></script>
-
     </head>
     <body>
         <div class="container-fluid">
             <div class="row">
 
 
-                <nav class="navbar navbar-default navbar-fixed-top ">
+                <nav class="navbar navbar-default navbar-fixed-top">
 
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
