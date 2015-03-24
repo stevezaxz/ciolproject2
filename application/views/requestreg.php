@@ -59,7 +59,7 @@
                                         echo "<td>" . $value['company_bir_registration_no'] . "</td>";
 //                                        echo "<td>" . $value['company_website'] . "</td>";
                                         echo "<td ><button class='approve btn btn-success btn-sm' value='" . $value['company_id'] . "'><span class='glyphicon glyphicon-ok'></span></button></td>";
-                                        echo "<td ><button class='deny btn btn-primary btn-sm' value='" . $value['company_id'] . "'><span class='glyphicon glyphicon-remove'></span></button></td>";
+                                        echo "<td ><button class='disapproved btn btn-primary btn-sm' value='" . $value['company_id'] . "'><span class='glyphicon glyphicon-remove'></span></button></td>";
                                         echo "<td ><button href='#myModal' data-toggle='modal' class='details btn btn-success btn-sm' value='" . $value['company_id'] . "'>View Details</button></td>";
                                         echo "</tr>";
                                     }
@@ -177,12 +177,11 @@
 <!-- /#page-wrapper -->
 <script type="text/javascript">
     $(".approve").click(function(e) {
-//        alert($(this).val());
+
 
         $.post("<?php echo site_url("Adminc/approvecompany"); ?>", {company_id: $(this).val()}, function(res) {
-            //automatic ref div
-//              window.location.reload();
-            if (res == 'success') {
+
+         if (res == 'success') {
 //                alert(1);
                 $("#result").text("Company registration details approved");
                 $("#hidden").fadeIn(5000);
@@ -190,16 +189,32 @@
                     location.reload();
                 });
 
-//                window.location.reload();
+
             }
             else {
 
             }
         });
-//        window.location.reload();
+
     });
-    $(".deny").click(function() {
-        alert($(this).val());
+    $(".disapproved").click(function() {
+        //alert($(this).val());
+		$.post("<?php echo site_url("Adminc/disapprovecompany");?>",{company_id: $(this).val()},function(res) {
+
+			if (res == 'success') {
+
+                $("#result").text("Company registration details disapproved");
+                $("#hidden").fadeIn(5000);
+                $("#hidden").fadeOut(5000).delay(800, function() {
+                    location.reload();
+                });
+
+
+            }
+            else {
+
+            }
+		});
     });
     $(".details").click(function() {
         $.post("<?php echo site_url("Adminc/getcompanydetails"); ?>", {company_id: $(this).val()}, function(json) {
@@ -210,7 +225,8 @@
             $("#company_tin").val(jsonstring.company_tin);
             $("#company_bir_registration_no").val(jsonstring.company_bir_registration_no);
             $("#company_website").val(jsonstring.company_website);
-            $("#company_history").val(jsonstring.company_history);
+            $("#company_history").val(jsonstring.company_history); 
+			
         });
     });
 

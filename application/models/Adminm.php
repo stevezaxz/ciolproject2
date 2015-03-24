@@ -51,5 +51,18 @@ class Adminm extends CI_Model {
             return true;
         }
     }
+	
+	public function disapprovecompany($company_id) {
+		$this->db->trans_begin();
+        $query = $this->db->query("update tblcompany set is_verified ='2' where company_id = '$company_id' ");
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            return false;
+        } else {
+            $this->db->trans_commit();
+            return true;
+        }
+	}
+	
 
 }
