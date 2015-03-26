@@ -21,23 +21,27 @@ class Adminm extends CI_Model {
     }
 
     public function getcompanydetails($company_id) {
+//        $array = array();
+//        $query = $this->db->query("select * From tblcompany where company_id ='$company_id' ");
+//        if ($query->num_rows() > 0) {
+//            foreach ($query->result() as $value) {
+//                $array = array(
+//                    'company_registrants_name' => $value->company_registrants_name,
+//                    'company_username' => $value->company_username,
+//                    'company_trade_name' => $value->company_trade_name,
+//                    'company_tin' => $value->company_tin,
+//                    'company_bir_registration_no' => $value->company_bir_registration_no,
+//                    'company_website' => $value->company_website,
+//                    'company_history' => $value->company_history
+//                );
+//            }
+//            return $array;
+//        } else
+//            return false;
         $array = array();
-        $query = $this->db->query("select * From tblcompany where company_id ='$company_id' ");
-        if ($query->num_rows() > 0) {
-            foreach ($query->result() as $value) {
-                $array = array(
-                    'company_registrants_name' => $value->company_registrants_name,
-                    'company_username' => $value->company_username,
-                    'company_trade_name' => $value->company_trade_name,
-                    'company_tin' => $value->company_tin,
-                    'company_bir_registration_no' => $value->company_bir_registration_no,
-                    'company_website' => $value->company_website,
-                    'company_history' => $value->company_history
-                );
-            }
-            return $array;
-        } else
-            return false;
+        $query = $this->db->query("select a.*,b.*,c.*,d.* from tblcompany as a, tblheadoffice as b, tblservices as c,"
+                . "tbluploads as d, tblcompanyheadoffice as e, tblcompanyservices as f, tblcompanyuploads as g, "
+                . "where a.company_id = e.company_id");
     }
 
     public function approvecompany($company_id) {

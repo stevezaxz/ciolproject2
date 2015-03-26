@@ -85,7 +85,7 @@
                 <div class="modal-content" style="width: 200%; left:-50%;" >
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Confirmation</h4>
+                        <h4 class="modal-title"> <button type="button" class="btn btn-default" data-dismiss="modal">View Company Full Profile</button></h4> 
                     </div>
                     <div class="" >
 
@@ -145,22 +145,22 @@
                                 <!--                                </fieldset>-->
                             </form>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-5">
                             <form class="form-horizontal">
                                 <!--<fieldset>-->
 
                                 <!-- Form Name -->
-                                <h4>  Company Details</h4>
+                                <h4> Head Office Details</h4>
 
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_registrants_name">Registrants Name</label> <label id="company_registrants_name"  class="control-label" ></label> 
+                                    <label class="col-md-6 control-label" for="company_registrants_name">Address</label> <label id="company_registrants_name"  class="control-label" ></label> 
 
                                 </div>
 
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_username">Username</label>  <label id="company_username"  class="control-label" ></label> 
+                                    <label class="col-md-6 control-label" for="company_username">City/Municpality</label>  <label id="company_username"  class="control-label" ></label> 
                                     <!--                                    <div class="col-md-6">
                                                                             <input disabled id="company_username" name="company_username" type="text" placeholder="" class="form-control input-md">
                                     
@@ -169,23 +169,29 @@
 
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_trade_name">Trade Name</label>   <label id="company_trade_name"  class="control-label" ></label> 
+                                    <label class="col-md-6 control-label" for="company_trade_name">Province</label>   <label id="company_trade_name"  class="control-label" ></label> 
 
                                 </div>
 
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_tin">TIN</label>   <label id="company_tin"  class="control-label" ></label> 
+                                    <label class="col-md-6 control-label" for="company_tin">Region</label>   <label id="company_tin"  class="control-label" ></label> 
                                 </div>
 
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_bir_registration_no">BIR Registration No</label>   <label id="company_bir_registration_no"  class="control-label" ></label> 
+                                    <label class="col-md-6 control-label" for="company_bir_registration_no">Zip</label>   <label id="company_bir_registration_no"  class="control-label" ></label> 
                                 </div>
 
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_website">Website</label>  <label id="company_website"  class="control-label" ></label> 
+                                    <label class="col-md-6 control-label" for="company_website">Telephone</label>  <label id="company_website"  class="control-label" ></label> 
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-6 control-label" for="company_website">Email</label>  <label id="company_website"  class="control-label" ></label> 
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-6 control-label" for="company_website">Fax</label>  <label id="company_website"  class="control-label" ></label> 
                                 </div>
 
                                 <!-- Textarea -->
@@ -199,117 +205,52 @@
                                 <!--                                </fieldset>-->
                             </form>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <form class="form-horizontal">
                                 <!--<fieldset>-->
 
                                 <!-- Form Name -->
-                                <h4>  Company Details</h4>
+                                <h4>  Services</h4>
 
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_registrants_name">Registrants Name</label> <label id="company_registrants_name"  class="control-label" ></label> 
+                                    <!--<label class="col-md-6 control-label" for="company_registrants_name">Registrants Name</label> <label id="company_registrants_name"  class="control-label" ></label>--> 
+                                    <div class="col-md-6 ">
+                                        <ul>
+                                            <li>1</li>
+                                            <li>1</li>
+                                            <li>1</li>
+                                            <li>1</li>
+                                        </ul>
+                                    </div>
 
                                 </div>
 
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_username">Username</label>  <label id="company_username"  class="control-label" ></label> 
-                                    <!--                                    <div class="col-md-6">
-                                                                            <input disabled id="company_username" name="company_username" type="text" placeholder="" class="form-control input-md">
-                                    
-                                                                        </div>-->
-                                </div>
 
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_trade_name">Trade Name</label>   <label id="company_trade_name"  class="control-label" ></label> 
-
-                                </div>
-
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_tin">TIN</label>   <label id="company_tin"  class="control-label" ></label> 
-                                </div>
-
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_bir_registration_no">BIR Registration No</label>   <label id="company_bir_registration_no"  class="control-label" ></label> 
-                                </div>
-
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_website">Website</label>  <label id="company_website"  class="control-label" ></label> 
-                                </div>
-
-                                <!-- Textarea -->
-                                <!--                                <div class="form-group">
-                                                                    <label class="col-md-2 control-label" for="company_history">Company History</label>
-                                                                    <div class="col-md-6">                     
-                                                                        <textarea  cols="2" rows="5"  class="form-control" id="company_history" name="company_history"></textarea>
-                                                                    </div>
-                                                                </div>-->
-
-                                <!--                                </fieldset>-->
                             </form>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-1">
                             <form class="form-horizontal">
                                 <!--<fieldset>-->
 
                                 <!-- Form Name -->
-                                <h4>  Company Details</h4>
+                                <h4>  Documents</h4>
 
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_registrants_name">Registrants Name</label> <label id="company_registrants_name"  class="control-label" ></label> 
 
+                                    <ul>
+                                        <li>1</li>
+                                        <li>1</li>
+                                        <li>1</li>
+                                        <li>1</li>
+                                    </ul>    
                                 </div>
-
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_username">Username</label>  <label id="company_username"  class="control-label" ></label> 
-                                    <!--                                    <div class="col-md-6">
-                                                                            <input disabled id="company_username" name="company_username" type="text" placeholder="" class="form-control input-md">
-                                    
-                                                                        </div>-->
-                                </div>
-
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_trade_name">Trade Name</label>   <label id="company_trade_name"  class="control-label" ></label> 
-
-                                </div>
-
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_tin">TIN</label>   <label id="company_tin"  class="control-label" ></label> 
-                                </div>
-
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_bir_registration_no">BIR Registration No</label>   <label id="company_bir_registration_no"  class="control-label" ></label> 
-                                </div>
-
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-6 control-label" for="company_website">Website</label>  <label id="company_website"  class="control-label" ></label> 
-                                </div>
-
-                                <!-- Textarea -->
-                                <!--                                <div class="form-group">
-                                                                    <label class="col-md-2 control-label" for="company_history">Company History</label>
-                                                                    <div class="col-md-6">                     
-                                                                        <textarea  cols="2" rows="5"  class="form-control" id="company_history" name="company_history"></textarea>
-                                                                    </div>
-                                                                </div>-->
-
-                                <!--                                </fieldset>-->
                             </form>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                        <!--                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
                         <!--<button type="button" class="btn btn-primary">Close</button>-->
                     </div>
                 </div>

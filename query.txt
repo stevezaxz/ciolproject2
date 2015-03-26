@@ -1,0 +1,9 @@
+select a.*,b.*,c.*,d.* from tblcompany as a, tblheadoffice as b, tblservices as c, tbluploads as d,tblcompanyheadoffice as e, tblcompanyservices as f, tblcompanyuploads as g
+where a.company_id = e.company_id and b.head_office_id = e.head_office_id and c.services_id = f.services_id and 
+
+
+
+
+
+
+select a.*,b.*,c.*,d.* from tblcompany as a, tblheadoffice as b, tblservices as c,tbluploads as d, tblcompanyheadoffice as e, tblcompanyservices as f, tblcompanyuploads as g where a.company_id = e.company_id and b.head_office_id = e.head_office_id and a.company_id = f.company_id and c.services_id = f.services_id and a.company_id = g.company_id and d.upload_id = g.upload_id and a.company_id = ''
