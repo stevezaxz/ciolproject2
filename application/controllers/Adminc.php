@@ -59,23 +59,23 @@ class Adminc extends CI_Controller {
 
     public function approvecompany() {
         $company_id = $this->input->post("company_id");
-	
-		   $result = $this->Adminm->approvecompany($company_id);
+
+        $result = $this->Adminm->approvecompany($company_id);
         if ($result) {
             echo 'success';
         } else {
             echo 'failed';
-        } 
+        }
     }
-	
-	public function disapprovecompany() {
-		    $company_id = $this->input->post("company_id");
-			$result = $this->Adminm->disapprovecompany($company_id);
-			if ($result) {
+
+    public function disapprovecompany() {
+        $company_id = $this->input->post("company_id");
+        $result = $this->Adminm->disapprovecompany($company_id);
+        if ($result) {
             echo 'success';
         } else {
             echo 'failed';
-        } 
-	}
+        }
+    }
 
 }
