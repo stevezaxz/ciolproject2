@@ -20,6 +20,19 @@ class Adminm extends CI_Model {
         }
     }
 
+    public function getcompanylist() {
+        $query = $this->db->query("select * From tblcompany");
+        $result = array();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $value) {
+                $results['companylist'][] = $value;
+            }
+            return $results;
+        } else {
+            return 0;
+        }
+    }
+
     public function getcompanydetails($company_id) {
 //        $array = array();
 //        $query = $this->db->query("select * From tblcompany where company_id ='$company_id' ");
@@ -39,9 +52,59 @@ class Adminm extends CI_Model {
 //        } else
 //            return false;
         $array = array();
-        $query = $this->db->query("select a.*,b.*,c.*,d.* from tblcompany as a, tblheadoffice as b, tblservices as c,"
-                . "tbluploads as d, tblcompanyheadoffice as e, tblcompanyservices as f, tblcompanyuploads as g, "
-                . "where a.company_id = e.company_id");
+        $query = $this->db->query("SELECT a.*, b.*
+                FROM tblcompany AS a, tblheadoffice AS b, tblcompanyheadoffice AS c
+               WHERE     a.company_id = c.company_id
+                     AND b.head_office_id = c.head_office_id
+                     AND a.company_id = '$company_id'");
+
+
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $value) {
+                $array = array(
+                    'company_registrants_name' => $value->company_registrants_name,
+                    'company_username' => $value->company_username,
+                    'company_trade_name' => $value->company_trade_name,
+                    'company_tin' => $value->company_tin,
+                    'company_bir_registration_no' => $value->company_bir_registration_no,
+                    'company_website' => $value->company_website,
+                    'company_history' => $value->company_history,
+                    'head_office_address' => $value->head_office_address,
+                    'head_office_city_municipality' => $value->head_office_city_municipality,
+                    'head_office_province' => $value->head_office_province,
+                    'head_office_region' => $value->head_office_region,
+                    'head_office_zip' => $value->head_office_zip,
+                    'head_office_telephone' => $value->head_office_telephone,
+                    'head_office_fax' => $value->head_office_fax,
+                    'head_office_email' => $value->head_office_email,
+                );
+            }
+
+            $query1 = $this->db->query("SELECT  distinct(b.category_name)
+                        FROM tblcompany AS a, tblcategory AS b, tblcompanycategory AS c
+                       WHERE     a.company_id = c.company_id
+                             AND b.category_id = c.category_id
+                       AND a.company_id = '$company_id' order by category_name");
+
+            foreach ($query1->result() as $category) {
+                $array['category_name'][] = $category->category_name;
+            }
+
+            $query2 = $this->db->query("SELECT b.upload_file_name,b.upload_file_location
+                        FROM tblcompany AS a, tbluploads AS b, tblcompanyuploads AS c
+                       WHERE     a.company_id = c.company_id
+                             AND b.upload_id = c.upload_id
+                             AND a.company_id = '$company_id'");
+            if ($query2->num_rows() > 0) {
+                foreach ($query2->result() as $uploads) {
+                    $upload_file_loc_array = explode("/", $uploads->upload_file_location);
+                    $upload_location = $upload_file_loc_array[4] . "/" . $upload_file_loc_array[5] . "/" . $upload_file_loc_array[6];
+                    $array['upload_details'][] = $uploads->upload_file_name . "-" . $upload_location;
+                }
+            }
+
+            return $array;
+        }
     }
 
     public function approvecompany($company_id) {

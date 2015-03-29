@@ -6,15 +6,15 @@ class loginc extends CI_Controller {
         $data = array(
             'title' => 'Login'
         );
-//        $this->load->view('header', $data);
+
         $this->load->view('loginview');
     }
 
     public function auth() {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
-//        echo md5($password);
-        $query = $this->db->query("select  * from tblcompany where company_username='$username' and company_password= '" . md5($password) . "' and status='Active'");
+
+        $query = $this->db->query("select  * from tblcompany where company_username='$username' and company_password= '" . md5($password) . "' and status='Active' and is_verified='1'");
         if ($query->num_rows() > 0) {
             $res = $query->result();
             $username = $res[2];

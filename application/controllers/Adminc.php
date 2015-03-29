@@ -78,4 +78,18 @@ class Adminc extends CI_Controller {
         }
     }
 
+    public function viewcompanyprofile() {
+        $result = $this->Adminm->getcompanylist();
+        $this->load->view("companyheader");
+        $this->load->view("viewcompanyprofile", $result);
+        $this->load->view("companyfooter");
+    }
+
+    public function viewcompanydetails() {
+        $company_id = $this->input->post("company_id");
+        $this->load->view("companyheader");
+        $this->load->view("viewcompanydetails");
+        $this->load->view("companyfooter");
+    }
+
 }

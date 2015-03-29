@@ -157,17 +157,17 @@ class regc extends CI_Controller {
 
         $categories = $this->input->post("subcat");
         $other_services = $this->input->post("other_services");
-//        $return_id = $this->Regm->registersupplier($tblcompany, $tblheadoffice, $contact_sales, $contact_procurement, $contact_account, $branches_contact_person, $branches_address, $branches_province, $branches_telephone, $branches_fax, $branches_email, $hook, $categories, $other_services, $uploads);
-//        if ($return_id) {
-//            $this->sendemailclient($head_office_email, $username, $return_id);
-////            $this->sendemailadmin($username, $return_id);
-//        } else {
-//            $data = array(
-//                'heading' => 'Registration error',
-//                'message' => '<p>There was an error encountered. Please try again.</p>'
-//            );
-//            $this->load->view("errors/html/error_general", $data);
-//        }
+        $return_id = $this->Regm->registersupplier($tblcompany, $tblheadoffice, $contact_sales, $contact_procurement, $contact_account, $branches_contact_person, $branches_address, $branches_province, $branches_telephone, $branches_fax, $branches_email, $hook, $categories, $other_services, $uploads);
+        if ($return_id) {
+            $this->sendemailclient($head_office_email, $username, $return_id);
+//            $this->sendemailadmin($username, $return_id);
+        } else {
+            $data = array(
+                'heading' => 'Registration error',
+                'message' => '<p>There was an error encountered. Please try again.</p>'
+            );
+            $this->load->view("errors/html/error_general", $data);
+        }
     }
 
     public function checkusername() {
