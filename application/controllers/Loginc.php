@@ -6,8 +6,13 @@ class loginc extends CI_Controller {
         $data = array(
             'title' => 'Login'
         );
-
-        $this->load->view('loginview');
+        if ($this->session->has_userdata("is_login_admin")) {
+            redirect("Adminc/index");
+        } else if ($this->session->has_userdata("is_login_company")) {
+            redirect("Companyc/index");
+        } else {
+            $this->load->view('loginview');
+        }
     }
 
     public function auth() {
@@ -20,7 +25,7 @@ class loginc extends CI_Controller {
             $username = $res[2];
             $session_var = array(
                 'username' => $username,
-                'is_login' => TRUE
+                'is_login_company' => TRUE
             );
             $this->session->set_userdata($session_var);
             redirect("Companyc/index");
@@ -31,7 +36,7 @@ class loginc extends CI_Controller {
                 $username = $res[2];
                 $session_var = array(
                     'username' => $username,
-                    'is_login' => TRUE
+                    'is_login_admin' => TRUE
                 );
                 $this->session->set_userdata($session_var);
                 redirect("Adminc/index");

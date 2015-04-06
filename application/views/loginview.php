@@ -140,7 +140,7 @@
         <style type="text/css">
             body { 
                 /*background: url(http://lorempixel.com/1920/1920/city/9/) no-repeat center center fixed;*/ 
-                background: url(<?php echo base_url('public/bundeswehr_military_history_museum-wallpaper-2048x1152.jpg'); ?>) no-repeat center center fixed; 
+                background: url(<?php // echo base_url('public/bundeswehr_military_history_museum-wallpaper-2048x1152.jpg'); ?>) no-repeat center center fixed; 
                 -webkit-background-size: cover;
                 -moz-background-size: cover;
                 -o-background-size: cover;

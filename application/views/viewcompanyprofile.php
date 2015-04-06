@@ -16,7 +16,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="fa fa-bar-chart-o fa-fw"></i> List of Applicants
+                        <i class="fa fa-bar-chart-o fa-fw"></i> List of Company
                         <div class="pull-right">
 
                         </div>
@@ -66,8 +66,6 @@
                         <h4 class="modal-title"> <button type="button" class="btn btn-default" data-dismiss="modal">View Company Full Profile</button></h4> 
                     </div>
                     <div class="" >
-<!--                        <p>Do you want to save changes you made to document before closing?</p>
-   <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>-->
                         <div class="col-md-3">
                             <form class="form-horizontal">
                                 <!--<fieldset>-->

@@ -74,8 +74,10 @@
             <div class="modal-dialog" >
                 <div class="modal-content" style="width: 200%; left:-50%;" >
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title"> <button type="button" class="btn btn-default" data-dismiss="modal">View Company Full Profile</button></h4> 
+                        <form action="<?php echo site_url("Adminc/viewcompanydetails"); ?>" method="POST">
+                            <button type="submit" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title"> <button type="submit" class="btn btn-default" name="company_id" id="btn-viewprof" value="">View Company Full Profile</button></h4> 
+                        </form>
                     </div>
                     <div class="" >
 <!--                        <p>Do you want to save changes you made to document before closing?</p>
@@ -245,46 +247,33 @@
 <!-- /#page-wrapper -->
 <script type="text/javascript">
     $(".approve").click(function(e) {
-
-
         $.post("<?php echo site_url("Adminc/approvecompany"); ?>", {company_id: $(this).val()}, function(res) {
-
             if (res == 'success') {
-//                alert(1);
                 $("#result").text("Company registration details approved");
                 $("#hidden").fadeIn(5000);
                 $("#hidden").fadeOut(5000).delay(800, function() {
                     location.reload();
                 });
-
-
             }
             else {
-
             }
         });
-
     });
     $(".disapproved").click(function() {
-        //alert($(this).val());
         $.post("<?php echo site_url("Adminc/disapprovecompany"); ?>", {company_id: $(this).val()}, function(res) {
-
             if (res == 'success') {
-
                 $("#result").text("Company registration details disapproved");
                 $("#hidden").fadeIn(5000);
                 $("#hidden").fadeOut(5000).delay(800, function() {
                     location.reload();
                 });
-
-
             }
             else {
-
             }
         });
     });
     $(".details").click(function() {
+        $("#btn-viewprof").val($(this).val());
         $.post("<?php echo site_url("Adminc/getcompanydetails"); ?>", {company_id: $(this).val()}, function(json) {
             jsonstring = jQuery.parseJSON(json);
             $("#company_registrants_name").text(jsonstring.company_registrants_name);
