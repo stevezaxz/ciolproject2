@@ -38,7 +38,7 @@
 </style>
 <div class="panel-body">
     <div class="row">
-        <form method="POST" action="Searchc/search">
+        <form method="POST" action="<?php echo site_url("Searchc/search"); ?>">
             <div class="col-lg-12">
                 <div class="input-group">
                     <span class="input-group-btn search">
@@ -46,7 +46,7 @@
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                 <span id="search_concept">Filter by</span> <span class="caret"></span>
                             </button>
-                            <ul class="dropdown-menu" role="menu">
+                            <ul class="dropdown-menu" role="menu" name="search_category">
                                 <li><a href="#">Mechanical</a></li>
                                 <li><a href="#">Electrical</a></li>
                                 <li><a href="#">Instrumentation</a></li>
@@ -62,7 +62,7 @@
                     </span>
                     <div id="custom-search-input">
                         <div class="input-group col-md-12">
-                            <input type="text" class="form-control " placeholder="What are you looking for?" />
+                            <input type="text" class="form-control " name="search_item" placeholder="What are you looking for?" />
                             <span class="input-group-btn">
                                 <button class="btn btn-info " type="submit">
                                     <i class="glyphicon glyphicon-search"></i>
@@ -76,7 +76,7 @@
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                 <span id="search_concept1">Location</span> <span class="caret"></span>
                             </button>
-                            <ul class="dropdown-menu dpmenu" role="menu">
+                            <ul class="dropdown-menu dpmenu" role="menu" name="search_region">
                                 <li><a href="#">Manila</a></li>
                                 <li><a href="#">Cebu</a></li>
                                 <li><a href="#">Cagayan de Oro</a></li>
@@ -85,6 +85,8 @@
                     </span>
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
+            <input type='hidden' name='search_category_hidden' id="search_category_hidden" />
+            <input type='hidden' name='search_region_hidden' id="search_region_hidden" />
         </form>
     </div><!-- /.row -->
 </div>
@@ -225,22 +227,24 @@
     </div>-->
 </body>
 <script type="text/javascript">
-    $(document).ready(function(e) {
-        $('.search-panel .dropdown-menu').find('a').click(function(e) {
+    $(document).ready(function (e) {
+        $('.search-panel .dropdown-menu').find('a').click(function (e) {
             e.preventDefault();
             var param = $(this).attr("href").replace("#", "");
             var concept = $(this).text();
             $('.search-panel span#search_concept').text(concept);
+            $("#search_category_hidden").val(concept);
             $('.input-group #search_param').val(param);
         });
 
     });
-    $(document).ready(function(es) {
-        $('.search-panel1 .dpmenu').find('a').click(function(es) {
+    $(document).ready(function (es) {
+        $('.search-panel1 .dpmenu').find('a').click(function (es) {
             es.preventDefault();
             var param1 = $(this).attr("href").replace("#", "");
             var concept1 = $(this).text();
             $('.search-panel1 span#search_concept1').text(concept1);
+            $("#search_region_hidden").val(concept1);
             $('.input-group1 #search_param1').val(param1);
         });
     });
@@ -254,7 +258,7 @@
 //            $('.input-group1 #search_param1').val(param1);
 //        });
 //    });
-    jQuery(document).ready(function($) {
+    jQuery(document).ready(function ($) {
 
         $('#myCarousel').carousel({
             interval: 5000
@@ -263,7 +267,7 @@
         $('#carousel-text').html($('#slide-content-0').html());
 
         //Handles the carousel thumbnails
-        $('[id^=carousel-selector-]').click(function() {
+        $('[id^=carousel-selector-]').click(function () {
             var id = this.id.substr(this.id.lastIndexOf("-") + 1);
             var id = parseInt(id);
             $('#myCarousel').carousel(id);
@@ -271,7 +275,7 @@
 
 
         // When the carousel slides, auto update the text
-        $('#myCarousel').on('slid.bs.carousel', function(e) {
+        $('#myCarousel').on('slid.bs.carousel', function (e) {
             var id = $('.item.active').data('slide-number');
             $('#carousel-text').html($('#slide-content-' + id).html());
         });
