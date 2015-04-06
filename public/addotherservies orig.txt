@@ -48,7 +48,7 @@
 //
 //});
 
-$("#add_services").click(function(e) {
+$("#add_services").click(function (e) {
     e.preventDefault();
     var other_services = $("input[id^='other_services_']").last().attr('id');
     var arr_other_services = other_services.split("_");
@@ -67,7 +67,7 @@ $("#add_services").click(function(e) {
                         </div>\n\
                     </div>');
 });
-$("#remove_services").click(function(e) {
+$("#remove_services").click(function (e) {
     e.preventDefault();
     var cloneservicesremove = $("div[class^='cloneservicesremove_']").last().attr('class');
     var arr_cloneservicesremove = cloneservicesremove.split("_");
@@ -82,7 +82,7 @@ $("#remove_services").click(function(e) {
 
 });
 
-$("#add_branches").click(function(e) {
+$("#add_branches").click(function (e) {
 //    alert(1);
 //    $("#clonebranch").clone().appendTo('.branchhere');
     e.preventDefault();
@@ -114,15 +114,30 @@ $("#add_branches").click(function(e) {
                                 <input type="text" id="branches_address_' + int_last_num + '" name="branches_address_' + int_last_num + '" class="form-control">\n\
                             </div>\n\
                     </div>\n\
-                   \n\
+                    <div class="form-group">\n\
+                        <label class="col-md-2 control-label" for="textinput"> City/Municpality</label>\n\
+                            <div class="col-md-10">\n\
+                                <input type="text" id="branches_city_municipality_' + int_last_num + '" name="branches_city_municipality_' + int_last_num + '" class="form-control">\n\
+                            </div>\n\
+                    </div>\n\
                     <div class="form-group">\n\
                         <label class="col-md-2 control-label" for="textinput"> Province</label>\n\
                             <div class="col-md-4">\n\
                                 <input type="text" id="branches_province_' + int_last_num + '" name="branches_province_' + int_last_num + '"  class="form-control">\n\
                             </div>\n\
                     </div>\n\
-                 \n\
-                 \n\
+                    <div class="form-group">\n\
+                        <label class="col-md-2 control-label" for="textinput"> Region</label>\n\
+                            <div class="col-md-10">\n\
+                                <input type="text" id="branches_region_' + int_last_num + '" name="branches_region_' + int_last_num + '" class="form-control">\n\
+                            </div>\n\
+                    </div>\n\
+                    <div class="form-group">\n\
+                        <label class="col-md-2 control-label" for="textinput"> Zip Code</label>\n\
+                            <div class="col-md-10">\n\
+                                <input type="text" id="branches_zip_' + int_last_num + '" name="branches_zip_' + int_last_num + '" class="form-control">\n\
+                            </div>\n\
+                    </div>\n\
                     <div class="form-group">\n\
                         <label class="col-md-2 control-label" for="textinput"> Telephone no.</label>\n\
                             <div class="col-md-10">\n\
@@ -142,7 +157,7 @@ $("#add_branches").click(function(e) {
                             </div>\n\
                     </div></div>');
 });
-$("#remove_branches").click(function(e) {
+$("#remove_branches").click(function (e) {
 //    alert($(".clonebranchremove").last().index());
 //    if ($(".clonebranchremove").last().index() == 0) {
 //    }

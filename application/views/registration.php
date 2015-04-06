@@ -391,12 +391,12 @@
                                     </div>
 
 
-                                    <div class="form-group">
+<!--                                    <div class="form-group">
                                         <label class="col-md-2 control-label" for="textinput"> City/Municpality</label>
                                         <div class="col-md-10">
                                             <input type="text" id="branches_city_municipality_0" name="branches_city_municipality_0" class="form-control">
                                         </div>
-                                    </div>
+                                    </div>-->
 
 
                                     <div class="form-group">
@@ -406,19 +406,19 @@
                                         </div>
 
                                     </div>
-                                    <div class="form-group">
+<!--                                    <div class="form-group">
                                         <label class="col-md-2 control-label" for="textinput"> Region</label>
                                         <div class="col-md-10">
                                             <input type="text" id="branches_region_0" name="branches_region_0" class="form-control">
                                         </div>
-                                    </div>
+                                    </div>-->
 
-                                    <div class="form-group">
+<!--                                    <div class="form-group">
                                         <label class="col-md-2 control-label" for="textinput"> Zip Code</label>
                                         <div class="col-md-10">
                                             <input type="text" id="branches_zip_0" name="branches_zip_0" class="form-control">
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="textinput"> Telephone no.</label>
                                         <div class="col-md-10">

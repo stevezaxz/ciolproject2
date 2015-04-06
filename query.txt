@@ -14,3 +14,13 @@ select a.*,b.* from tblcompany as a, tbluploads as b, tblcompanyuploads as c whe
 
 
 
+
+select b.* from tblcompany as a, tblservices as b, tblcompanyservices as c where a.company_id = c.company_id and b.services_id= c.services_id and a.company_id = 57
+
+select b.* from tblcompany as a, tblheadoffice as b, tblcompanyheadoffice as c where a.company_id = c.company_id and b.head_office_id= c.head_office_id and a.company_id = 57
+
+select b.* from tblcompany as a, tblcontactperson as b, tblcompanycontactperson as c where a.company_id = c.company_id and b.contact_person_id= c.contact_person_id and a.company_id = 57
+
+select b.* from tblcompany as a, tblcategory as b, tblcompanycategory as c where a.company_id = c.company_id and b.category_id= c.category_id and a.company_id = 57
+
+select b.* from tblcompany as a, tblbranches as b, tblcompanybranches as c where a.company_id = c.company_id and b.branches_id= c.branches_id and a.company_id = 57

@@ -4,7 +4,7 @@ class Adminc extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        if (!$this->session->has_userdata("is_login")) {
+        if (!$this->session->has_userdata("is_login_admin")) {
             redirect("Loginc/login");
         }
         $this->load->model("Adminm");
@@ -31,7 +31,8 @@ class Adminc extends CI_Controller {
 
     public function usermanage() {
         $this->load->view("companyheader");
-        $this->load->view("usermanage");
+        $result = $this->Adminm->usernmanagementlist();
+        $this->load->view("usermanage", $result);
         $this->load->view("companyfooter");
     }
 
@@ -41,16 +42,6 @@ class Adminc extends CI_Controller {
         $this->load->view("companyfooter");
     }
 
-//    public function getrequestreg() {
-//        $result = $this->Adminm->getrequestreglist();
-//        if($result) {
-//            
-//        }
-//        else {
-//            
-//        }
-////        print_r($result);
-//    }
     public function getcompanydetails() {
         $company_id = $this->input->post("company_id");
         $result = $this->Adminm->getcompanydetails($company_id);
@@ -59,10 +50,10 @@ class Adminc extends CI_Controller {
 
     public function approvecompany() {
         $company_id = $this->input->post("company_id");
-
         $result = $this->Adminm->approvecompany($company_id);
         if ($result) {
             echo 'success';
+            $this->sendmail($company_id);
         } else {
             echo 'failed';
         }
@@ -87,9 +78,55 @@ class Adminc extends CI_Controller {
 
     public function viewcompanydetails() {
         $company_id = $this->input->post("company_id");
+        $result = $this->Adminm->getcompanyfulldetails($company_id);
         $this->load->view("companyheader");
-        $this->load->view("viewcompanydetails");
+        $this->load->view("viewcompanydetails", $result);
         $this->load->view("companyfooter");
+    }
+
+    public function sendmail($company_id) {
+//        $company_id = 58;
+        $query = $this->db->query("select a.company_username,b.head_office_email from tblcompany as a, tblheadoffice as b, tblcompanyheadoffice as c where a.company_id = c.company_id and b.head_office_id = c.head_office_id and a.company_id = '$company_id'");
+        $row = $query->row();
+        $company_username = $row->company_username;
+        $company_email = $row->head_office_email;
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'nevetsjohn@gmail.com',
+            'smtp_pass' => '10118023603aAaAqQ',
+            'mailtype' => 'html',
+            'charset' => 'iso-8859-1'
+        );
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+        $this->email->from('nevetsjohn@gmail.com', 'Netzwerk Suppliers Network');
+        $this->email->to($company_email);
+        $this->email->subject('Netzwerk Registration ');
+        $this->email->message("<html>
+                    
+                                        <body>
+Dear " . $company_username . ",\n
+
+<p>
+Your account has been successfully activated in our site. You can now log-on into your profile.</p>
+                                        </body>
+
+                                   </html>");
+        $this->email->send();
+    }
+
+    public function editcompanystatus() {
+        $company_id = $this->input->post("company_id");
+        $flag = $this->input->post("flag");
+
+        $result = $this->Adminm->editcompanystatus($company_id, $flag);
+        if ($result) {
+            echo "Company Status Updated";
+        } else {
+            echo "Company Status not Updated";
+        }
     }
 
 }

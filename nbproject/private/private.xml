@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/C:/xampp/htdocs/ciolproject2/application/views/home.php</file>
+            <file>file:/C:/xampp/htdocs/ciolproject2/application/views/Searchc.php</file>
+            <file>file:/C:/xampp/htdocs/ciolproject2/application/controllers/Mainc.php</file>
+        </group>
+>>>>>>> 6e15d031b7c3083993a3f4af1456abf09b5a25d4
     </open-files>
 </project-private>
