@@ -303,6 +303,9 @@
                                         <a href="<?php echo site_url("Adminc/requestup"); ?>"><i class="fa fa-dashboard fa-fw"></i> Request of Update</a>
                                     </li>
                                     <li>
+                                        <a href="<?php echo site_url("Adminc/viewcompanyprofile"); ?>"><i class="fa fa-dashboard fa-fw"></i> View Company Profile</a>
+                                    </li>
+                                    <li>
                                         <a href="<?php echo site_url("Adminc/usermanage"); ?>"><i class="fa fa-dashboard fa-fw"></i> User Management</a>
                                     </li>
                                     <li>
