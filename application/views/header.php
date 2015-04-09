@@ -11,8 +11,6 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-
-
                 <nav class="navbar navbar-default navbar-fixed-top">
 
                     <div class="container-fluid">
@@ -28,19 +26,11 @@
                                 <li><a href="<?php echo site_url('Supplierc/supplierprofile'); ?>">Contact</a></li>
                             </ul>
                         </div>
-
                     </div>
                 </nav>
-
-
-
-
                 <div class="col-md-2">
-
                 </div>
-
                 <div class="col-md-8">
-
                     <!--                    <nav class="navbar navbar-default navbar-fixed-top ">
                                                     
                                             <div class="container-fluid">
@@ -59,8 +49,6 @@
                                                     
                                             </div>
                                         </nav>-->
-
-
                     <br>
                     <br>
                     <br>

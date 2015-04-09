@@ -38,9 +38,9 @@ class Adminc extends CI_Controller {
         $this->load->view("companyfooter");
     }
 
-    public function featuredsupplier() {
+    public function featuredsupplier($message = null) {
         $this->load->view("companyheader");
-        $this->load->view("featuredsupplier");
+        $this->load->view("featuredsupplier", $message);
         $this->load->view("companyfooter");
     }
 
@@ -128,6 +128,23 @@ Your account has been successfully activated in our site. You can now log-on int
             echo "Company Status Updated";
         } else {
             echo "Company Status not Updated";
+        }
+    }
+
+    public function uploadads() {
+        $base_url = base_url("ads");
+        $config['upload_path'] = "ads/";
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['overwrite'] = 'true';
+        $config['max_size'] = '24048000';
+        $this->load->library("upload", $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload("uploadads")) {
+//            $error = array('error' => $this->upload->display_errors());
+//            $this->featuredsupplier($error);
+            echo "error";
+        } else {
+            $this->featuredsupplier();
         }
     }
 
