@@ -15,6 +15,7 @@
         <ul class="nav nav-tabs">
             <li class="active"><a href="#home" data-toggle="tab">Profile</a></li>
             <li><a href="#profile" data-toggle="tab">Branches</a></li>
+            <li><a href="#photos" data-toggle="tab">Photos</a></li>
         </ul>
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade active in" id="home">
@@ -204,6 +205,99 @@
                 }
                 ?>
             </div>
+            <div class="tab-pane fade" id="photos">
+                <div class="panel-body">
+                    <label class="col-md-2" for="textinput"> Select a Photo:</label>
+                    <div class="col-md-10">
+                        <form action="<?php echo site_url("Adminc/uploadphotos"); ?>" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" id="company_id_upload" name="company_id_upload" value="<?php echo $companydetails['company_id']; ?>" />
+                            <input type="hidden" id="company_id_name" name="company_id_name" value="<?php echo $companydetails['company_registrants_name']; ?>" />
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-primary btn-file">
+                                        Browse&hellip; <input  type="file"   name="uploadads1" id="uploadads">
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+
+                            <br/>
+                            <button type="submit" class="btn btn-primary btn-sm " id="upload">Upload</button>
+                        </form>
+                    </div>
+                    <br/>
+
+                    <div class="col-md-12">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">Thumbnail Gallery</h1>
+                        </div>
+
+                        <!--                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                                        <a class="thumbnail" href="#">
+                                                            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                                                        </a>
+                                                    </div>-->
+                        <?php
+                        if (isset($photos)) {
+//                            print_r($photos);
+                            foreach ($photos as $value) {
+                                $imgarr = explode("/", $value['photos_full_path']);
+                                $path = "photos/" . $imgarr[5] . "/" . $imgarr[6];
+//                                echo $path;
+                                echo " <div class='col-lg-3 col-md-4 col-xs-6 thumb'>
+                                            <a class='thumbnail' href='#'>
+                                              <img value='" . $value['photos_id'] . "'href='#myModal' data-toggle='modal' width='400' height='300' class='img-responsive clickimg' src='" . base_url($path) . "' >
+                                            </a>
+                                           </div>";
+                            }
+                        } else {
+                            echo "<h4>No data found</h4>";
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <!--<a href="#myModal" class="btn btn-lg btn-primary" data-toggle="modal">Launch Demo Modal</a>-->
+                    <!-- Modal HTML -->
+                    <div id="myModal" class="modal fade">
+                        <div class="modal-dialog" >
+                            <div class="modal-content"  >
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Edit Description </h4> 
+                                </div>
+                                <div class="" >
+                                    <!--<div class="col-md-3">-->
+                                    <form class="form-horizontal">
+                                        <!-- Form Name -->
+                                        <!--<legend>Form Name</legend>-->
+                                        <br/>
+
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label" for="ads_title">Title</label>  
+                                            <div class="col-md-4">
+                                                <input id="photos_title" name="photos_title" type="text" placeholder="" class="form-control input-md">
+
+                                            </div>
+                                        </div>
+
+                                        <!-- Textarea -->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label" for="ads_description">Description</label>
+                                            <div class="col-md-4">                     
+                                                <textarea class="form-control" id="photos_description" name="photos_description"></textarea>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <!--                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                                    <button type="button" class="btn btn-primary" id="save"  data-dismiss="modal">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -217,3 +311,95 @@
         display:none;
     </style> 
 
+    <style type="text/css">
+        .btn-file {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            background: red;
+            cursor: inherit;
+            display: block;
+        }
+        input[readonly] {
+            background-color: white !important;
+            cursor: text !important;
+        }
+
+        body {
+            /*padding-top: 70px;  Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+        }
+
+        .thumb {
+            margin-bottom: 30px;
+        }
+
+        footer {
+            margin: 50px 0;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(document).on('change', '.btn-file :file', function() {
+            var input = $(this),
+                    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [numFiles, label]);
+        });
+        $(document).ready(function() {
+            $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+
+                var input = $(this).parents('.input-group').find(':text'),
+                        log = numFiles > 1 ? numFiles + ' files selected' : label;
+                if (input.length) {
+                    input.val(log);
+                } else {
+                    if (log)
+                        alert(log);
+                }
+
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        var ads_id = null;
+        $(".clickimg").click(function() {
+            photos_id = $(this).attr("value");
+//            alert(photos_id);
+            $.post("<?php echo site_url("Adminc/getphotosdetails"); ?>", {photos_id: photos_id}, function(json) {
+                jsonstring = jQuery.parseJSON(json);
+//                alert(jsonstring);
+                $("#photos_title").val(jsonstring.photos_title);
+                $("#photos_description").val(jsonstring.photos_description);
+
+            });
+        });
+        $("#save").click(function() {
+
+            $.post("<?php echo site_url("Adminc/setphotos"); ?>", {photos_id: photos_id, photos_title: $("#photos_title").val(), photos_description: $("#photos_description").val()}, function(res) {
+                if (res === "success") {
+                    $("#result").text("Image details saved");
+                    $("#hidden").fadeIn(5000);
+                    $("#hidden").fadeOut(5000);
+                }
+                else if (res === "error") {
+                    $("#result").text("Image details could not be saved");
+                    $("#hidden").fadeIn(5000);
+                    $("#hidden").fadeOut(5000);
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>
