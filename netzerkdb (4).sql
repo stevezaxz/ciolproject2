@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 09, 2015 at 08:31 PM
+-- Generation Time: Apr 13, 2015 at 07:52 PM
 -- Server version: 5.5.25a
 -- PHP Version: 5.4.4
 
@@ -32,8 +32,20 @@ CREATE TABLE IF NOT EXISTS `tblads` (
   `ads_description` varchar(300) DEFAULT NULL,
   `ads_datefrom` date DEFAULT NULL,
   `ads_dateto` date DEFAULT NULL,
+  `ads_file_name` varchar(200) DEFAULT NULL,
+  `ads_full_path` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`ads_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `tblads`
+--
+
+INSERT INTO `tblads` (`ads_id`, `ads_title`, `ads_description`, `ads_datefrom`, `ads_dateto`, `ads_file_name`, `ads_full_path`) VALUES
+(5, 'aaaaa', 'test', '0000-00-00', '0000-00-00', '02052010081.jpg', 'C:/xampp/htdocs/ciolproject2/ads/02052010081.jpg'),
+(6, 'test', 'tesss111', '0000-00-00', '0000-00-00', '02052010080.jpg', 'C:/xampp/htdocs/ciolproject2/ads/02052010080.jpg'),
+(7, 'asda', 'aaa', '0000-00-00', '0000-00-00', '02052010078.jpg', 'C:/xampp/htdocs/ciolproject2/ads/02052010078.jpg'),
+(8, 'aaa', 'aaa', '0000-00-00', '0000-00-00', '02052010079.jpg', 'C:/xampp/htdocs/ciolproject2/ads/02052010079.jpg');
 
 -- --------------------------------------------------------
 
@@ -122,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `tblcompany` (
 
 INSERT INTO `tblcompany` (`company_id`, `company_registrants_name`, `company_username`, `company_password`, `company_trade_name`, `company_tin`, `company_bir_registration_no`, `company_website`, `company_history`, `is_verified`, `status`) VALUES
 (57, 'test', 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 'test', 'test', 'test', '1', 'Active'),
-(58, 'pol', 'pol', '627a1f8f3e1f8a2a0cbb9aedc33ade8c', 'pol', 'pol', 'pol', 'pol', 'pol', '0', 'Active');
+(58, 'pol', 'pol', '627a1f8f3e1f8a2a0cbb9aedc33ade8c', 'pol', 'pol', 'pol', 'pol', 'pol', '1', 'Active');
 
 -- --------------------------------------------------------
 
@@ -225,6 +237,31 @@ CREATE TABLE IF NOT EXISTS `tblcompanyheadoffice` (
 INSERT INTO `tblcompanyheadoffice` (`company_id`, `head_office_id`) VALUES
 (57, 56),
 (58, 57);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblcompanyphotos`
+--
+
+CREATE TABLE IF NOT EXISTS `tblcompanyphotos` (
+  `company_id` int(11) DEFAULT NULL,
+  `photos_id` int(11) DEFAULT NULL,
+  KEY `company_id` (`company_id`),
+  KEY `photos_id` (`photos_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblcompanyphotos`
+--
+
+INSERT INTO `tblcompanyphotos` (`company_id`, `photos_id`) VALUES
+(57, 4),
+(57, 5),
+(57, 6),
+(58, 7),
+(58, 8),
+(58, 9);
 
 -- --------------------------------------------------------
 
@@ -334,6 +371,36 @@ INSERT INTO `tblheadoffice` (`head_office_id`, `head_office_address`, `head_offi
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tblphotos`
+--
+
+CREATE TABLE IF NOT EXISTS `tblphotos` (
+  `photos_id` int(11) NOT NULL AUTO_INCREMENT,
+  `photos_title` varchar(100) DEFAULT NULL,
+  `photos_description` varchar(300) DEFAULT NULL,
+  `photos_file_name` varchar(200) DEFAULT NULL,
+  `photos_full_path` varchar(300) DEFAULT NULL,
+  PRIMARY KEY (`photos_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `tblphotos`
+--
+
+INSERT INTO `tblphotos` (`photos_id`, `photos_title`, `photos_description`, `photos_file_name`, `photos_full_path`) VALUES
+(1, '', '', '02052010081.jpg', 'C:/xampp/htdocs/ciolproject2/photos/pol/02052010081.jpg'),
+(2, '', '', '02072010325.jpg', 'C:/xampp/htdocs/ciolproject2/photos/test/02072010325.jpg'),
+(3, '', '', '16072010408.jpg', 'C:/xampp/htdocs/ciolproject2/photos/test/16072010408.jpg'),
+(4, 'a', 'b', '02072010325.jpg', 'C:/xampp/htdocs/ciolproject2/photos/test/02072010325.jpg'),
+(5, 'aaaaa', 'bbbbb', '04062010178.jpg', 'C:/xampp/htdocs/ciolproject2/photos/test/04062010178.jpg'),
+(6, 'mmmm', 'nnnnnn', '11052010082.jpg', 'C:/xampp/htdocs/ciolproject2/photos/test/11052010082.jpg'),
+(7, '', '', '02072010325.jpg', 'C:/xampp/htdocs/ciolproject2/photos/pol/02072010325.jpg'),
+(8, '', '', '16072010402.jpg', 'C:/xampp/htdocs/ciolproject2/photos/pol/16072010402.jpg'),
+(9, '', '', '17072010423.jpg', 'C:/xampp/htdocs/ciolproject2/photos/pol/17072010423.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tblservices`
 --
 
@@ -430,6 +497,13 @@ ALTER TABLE `tblcompanycontactperson`
 ALTER TABLE `tblcompanyheadoffice`
   ADD CONSTRAINT `tblcompanyheadoffice_ibfk_1` FOREIGN KEY (`head_office_id`) REFERENCES `tblheadoffice` (`head_office_id`),
   ADD CONSTRAINT `tblcompanyheadoffice_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `tblcompany` (`company_id`);
+
+--
+-- Constraints for table `tblcompanyphotos`
+--
+ALTER TABLE `tblcompanyphotos`
+  ADD CONSTRAINT `tblcompanyphotos_ibfk_2` FOREIGN KEY (`photos_id`) REFERENCES `tblphotos` (`photos_id`),
+  ADD CONSTRAINT `tblcompanyphotos_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `tblcompany` (`company_id`);
 
 --
 -- Constraints for table `tblcompanyservices`

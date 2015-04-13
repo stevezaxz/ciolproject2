@@ -229,25 +229,18 @@
 
                     <div class="col-md-12">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Thumbnail Gallery</h1>
+                            <h1 class="page-header"> Gallery</h1>
                         </div>
 
-                        <!--                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                                                        <a class="thumbnail" href="#">
-                                                            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                                                        </a>
-                                                    </div>-->
                         <?php
                         if (isset($photos)) {
-//                            print_r($photos);
                             foreach ($photos as $value) {
                                 $imgarr = explode("/", $value['photos_full_path']);
                                 $path = "photos/" . $imgarr[5] . "/" . $imgarr[6];
-//                                echo $path;
                                 echo " <div class='col-lg-3 col-md-4 col-xs-6 thumb'>
                                             <a class='thumbnail' href='#'>
                                               <img value='" . $value['photos_id'] . "'href='#myModal' data-toggle='modal' width='400' height='300' class='img-responsive clickimg' src='" . base_url($path) . "' >
-                                            </a>
+                                            </a><button>Delete</button><button>View</button>
                                            </div>";
                             }
                         } else {
@@ -374,10 +367,8 @@
         var ads_id = null;
         $(".clickimg").click(function() {
             photos_id = $(this).attr("value");
-//            alert(photos_id);
             $.post("<?php echo site_url("Adminc/getphotosdetails"); ?>", {photos_id: photos_id}, function(json) {
                 jsonstring = jQuery.parseJSON(json);
-//                alert(jsonstring);
                 $("#photos_title").val(jsonstring.photos_title);
                 $("#photos_description").val(jsonstring.photos_description);
 

@@ -204,7 +204,6 @@ Your account has been successfully activated in our site. You can now log-on int
             } else {
                 $upload_file_name = $this->upload->data("file_name");
                 $upload_file_location = $this->upload->data("full_path");
-//            echo $upload_file_name . " " . $upload_file_location;
                 $this->Adminm->setuploadphotos($upload_file_name, $upload_file_location);
                 $message = array(
                     'message' => $this->upload->display_errors(),
