@@ -191,6 +191,14 @@ class Adminm extends CI_Model {
             }
         }
 
+        $query8 = $this->db->query("select b.* from tblcompany as a, tblphotos as b, tblcompanyphotos as c where a.company_id = c.company_id and b.photos_id= c.photos_id and a.company_id = '$company_id'");
+
+        if ($query8->num_rows() > 0) {
+            foreach ($query8->result_array() as $photos) {
+                $result['photos'][] = $photos;
+            }
+        }
+
 
         return $result;
     }
@@ -213,6 +221,91 @@ class Adminm extends CI_Model {
             # if 2 update from inactive to active
             $query = $this->db->query("update tblcompany set status='Active' where company_id = '$company_id'");
         }
+        return $query;
+    }
+
+    public function setuploadads($upload_file_name, $upload_file_location) {
+        $this->db->trans_begin();
+        $query = $this->db->query("insert into tblads values('','','','','','$upload_file_name','$upload_file_location')");
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            return false;
+        } else {
+            $this->db->trans_commit();
+            return true;
+        }
+    }
+
+    public function getads() {
+        $query = $this->db->query("select * From tblads");
+        $result = array();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $value) {
+                $results['ads'][] = $value;
+            }
+            return $results;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function setads($ads_id, $ads_description, $ads_title) {
+        $query = $this->db->query("update tblads set ads_title='$ads_title',ads_description='$ads_description' where ads_id = '$ads_id'");
+        return $query;
+    }
+
+    public function getadsdetail($ads_id) {
+        $array = array();
+        $query = $this->db->query("select * From tblads where ads_id = '$ads_id'");
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $ads) {
+//                $result['ads_details'][] = $ads;
+                $array = array(
+                    'ads_title' => $ads->ads_title,
+                    'ads_description' => $ads->ads_description
+                );
+            }
+            return $array;
+        }
+    }
+
+    public function gethomeimage() {
+        $result;
+        $query = $this->db->query("select * From tblads");
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $ads) {
+                $result['ads'][] = $ads;
+            }
+            return $result;
+        } else
+            return false;
+    }
+
+    public function setuploadphotos($company_id, $upload_file_name, $upload_file_location) {
+        $this->db->trans_start();
+        $this->db->query("insert into tblphotos values('','','','$upload_file_name','$upload_file_location')");
+        $photo_id = $this->db->insert_id();
+        $this->db->query("insert into tblcompanyphotos values('$company_id','$photo_id')");
+        $this->db->trans_complete();
+    }
+
+    public function getphotosdetails($photos_id) {
+        $array = array();
+        $query = $this->db->query("select * From tblphotos where photos_id = '$photos_id'");
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $photos) {
+//                $result['ads_details'][] = $ads;
+                $array = array(
+                    'photos_title' => $photos->photos_title,
+                    'photos_description' => $photos->photos_description
+                );
+            }
+            return $array;
+        }
+    }
+
+    public function setphotos($photos_id, $photos_description, $photos_title) {
+        $query = $this->db->query("update tblphotos set photos_title='$photos_title',photos_description='$photos_description' where photos_id = '$photos_id'");
         return $query;
     }
 

@@ -38,9 +38,10 @@ class Adminc extends CI_Controller {
         $this->load->view("companyfooter");
     }
 
-    public function featuredsupplier() {
+    public function featuredsupplier($message = null) {
+        $results = $this->Adminm->getads();
         $this->load->view("companyheader");
-        $this->load->view("featuredsupplier");
+        $this->load->view("featuredsupplier", $results);
         $this->load->view("companyfooter");
     }
 
@@ -128,6 +129,131 @@ Your account has been successfully activated in our site. You can now log-on int
             echo "Company Status Updated";
         } else {
             echo "Company Status not Updated";
+        }
+    }
+
+    public function uploadads() {
+        $base_url = base_url("ads");
+        $config['upload_path'] = "ads/";
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['overwrite'] = 'true';
+        $config['max_size'] = '24048000';
+        $this->load->library("upload", $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload("uploadads1")) {
+
+            $message = array(
+                'message' => $this->upload->display_errors(),
+                'flag' => "error"
+            );
+//            $this->featuredsupplier($message);
+            redirect("Adminc/featuredsupplier");
+        } else {
+            $upload_file_name = $this->upload->data("file_name");
+            $upload_file_location = $this->upload->data("full_path");
+//            echo $upload_file_name . " " . $upload_file_location;
+            $this->Adminm->setuploadads($upload_file_name, $upload_file_location);
+
+            $message = array(
+                'message' => $this->upload->display_errors(),
+                'flag' => "success"
+            );
+//            $this->featuredsupplier($message);  
+            redirect("Adminc/featuredsupplier");
+        }
+    }
+
+    public function setads() {
+        $ads_id = $this->input->post("ads_id");
+        $ads_description = $this->input->post("ads_description");
+        $ads_title = $this->input->post("ads_title");
+
+        if ($this->Adminm->setads($ads_id, $ads_description, $ads_title)) {
+            echo "success";
+        } else {
+            echo "error";
+        }
+    }
+
+    public function getadsdetail() {
+        $ads_id = $this->input->post("ads_id");
+        $result = $this->Adminm->getadsdetail($ads_id);
+        echo json_encode($result);
+//        echo $ads_id;
+    }
+
+    public function uploadphotos() {
+        $company_id = $this->input->post("company_id_upload");
+        $company_name = $this->input->post("company_id_name");
+
+        if (!is_dir("photos/$company_name")) {
+            mkdir("photos/$company_name");
+            $config['upload_path'] = "photos/$company_name";
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['overwrite'] = 'true';
+            $config['max_size'] = '24048000';
+            $this->load->library("upload", $config);
+            $this->upload->initialize($config);
+
+            if (!$this->upload->do_upload("uploadads1")) {
+                $message = array(
+                    'message' => $this->upload->display_errors(),
+                    'flag' => "error"
+                );
+                redirect("Adminc/viewcompanyprofile");
+            } else {
+                $upload_file_name = $this->upload->data("file_name");
+                $upload_file_location = $this->upload->data("full_path");
+                $this->Adminm->setuploadphotos($upload_file_name, $upload_file_location);
+                $message = array(
+                    'message' => $this->upload->display_errors(),
+                    'flag' => "success"
+                );
+                redirect("Adminc/viewcompanyprofile");
+            }
+        } else {
+            $config['upload_path'] = "photos/$company_name";
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['overwrite'] = 'true';
+            $config['max_size'] = '24048000';
+            $this->load->library("upload", $config);
+            $this->upload->initialize($config);
+
+            if (!$this->upload->do_upload("uploadads1")) {
+                $message = array(
+                    'message' => $this->upload->display_errors(),
+                    'flag' => "error"
+                );
+                redirect("Adminc/viewcompanyprofile");
+            } else {
+                $upload_file_name = $this->upload->data("file_name");
+                $upload_file_location = $this->upload->data("full_path");
+                $this->Adminm->setuploadphotos($company_id, $upload_file_name, $upload_file_location);
+                $message = array(
+                    'message' => $this->upload->display_errors(),
+                    'flag' => "success"
+                );
+                redirect("Adminc/viewcompanyprofile");
+            }
+        }
+    }
+
+    public function getphotosdetails() {
+        $photos_id = $this->input->post("photos_id");
+        $result = $this->Adminm->getphotosdetails($photos_id);
+        echo json_encode($result);
+//        echo $ads_id;
+    }
+
+    public function setphotos() {
+        $photos_id = $this->input->post("photos_id");
+        $photos_description = $this->input->post("photos_description");
+        $photos_title = $this->input->post("photos_title");
+
+        if ($this->Adminm->setphotos($photos_id, $photos_description, $photos_title)) {
+            echo "success";
+        } else {
+            echo "error";
         }
     }
 
