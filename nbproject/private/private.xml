@@ -2,19 +2,8 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/views/registration.php</file>
             <file>file:/C:/xampp/htdocs/ciolproject2/application/views/viewcompanydetails.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/views/usermanage.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/models/Adminm.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/views/companyheader.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/controllers/Mainc.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/views/featuredsupplier.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/controllers/Adminc.php</file>
         </group>
->>>>>>> a5cb3e4bb1e88cc4615d8a04333b1e51f142cc5e
     </open-files>
 </project-private>

@@ -191,7 +191,7 @@ class Adminm extends CI_Model {
             }
         }
 
-        $query8 = $this->db->query("select b.* from tblcompany as a, tblphotos as b, tblcompanyphotos as c where a.company_id = c.company_id and b.photos_id= c.photos_id and a.company_id = '$company_id'");
+        $query8 = $this->db->query("select b.* from tblcompany as a, tblphotos as b, tblcompanyphotos as c where a.company_id = c.company_id and b.photos_id= c.photos_id and a.company_id = '$company_id' and b.deleted='0'");
 
         if ($query8->num_rows() > 0) {
             foreach ($query8->result_array() as $photos) {
@@ -283,7 +283,7 @@ class Adminm extends CI_Model {
 
     public function setuploadphotos($company_id, $upload_file_name, $upload_file_location) {
         $this->db->trans_start();
-        $this->db->query("insert into tblphotos values('','','','$upload_file_name','$upload_file_location')");
+        $this->db->query("insert into tblphotos values('','','','$upload_file_name','$upload_file_location','0')");
         $photo_id = $this->db->insert_id();
         $this->db->query("insert into tblcompanyphotos values('$company_id','$photo_id')");
         $this->db->trans_complete();
@@ -291,7 +291,7 @@ class Adminm extends CI_Model {
 
     public function getphotosdetails($photos_id) {
         $array = array();
-        $query = $this->db->query("select * From tblphotos where photos_id = '$photos_id'");
+        $query = $this->db->query("select * From tblphotos where photos_id = '$photos_id' and deleted='0'");
         if ($query->num_rows() > 0) {
             foreach ($query->result() as $photos) {
 //                $result['ads_details'][] = $ads;
@@ -306,6 +306,11 @@ class Adminm extends CI_Model {
 
     public function setphotos($photos_id, $photos_description, $photos_title) {
         $query = $this->db->query("update tblphotos set photos_title='$photos_title',photos_description='$photos_description' where photos_id = '$photos_id'");
+        return $query;
+    }
+
+    public function removephoto($photo_id_delete) {
+        $query = $this->db->query("update tblphotos set deleted='1' where photos_id= '$photo_id_delete'");
         return $query;
     }
 

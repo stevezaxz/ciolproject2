@@ -237,11 +237,13 @@
                             foreach ($photos as $value) {
                                 $imgarr = explode("/", $value['photos_full_path']);
                                 $path = "photos/" . $imgarr[5] . "/" . $imgarr[6];
-                                echo " <div class='col-lg-3 col-md-4 col-xs-6 thumb'>
-                                            <a class='thumbnail' href='#'>
+                                if (file_exists($path)) {
+                                    echo " <div class='col-lg-3 col-md-4 col-xs-6 thumb'>
+                                            <a class='thumbnail' href='" . base_url($path) . "' data-lightbox='photos' >
                                               <img value='" . $value['photos_id'] . "' width='400' height='300' class='img-responsive' src='" . base_url($path) . "' data-lightbox='photos' >
-                                            </a><button>Delete</button ><button value='" . $value['photos_id'] . "'href='#myModal' data-toggle='modal' width='400' height='300' class='clickedit'>Edit</button>
+                                            </a><button button value='" . $value['photos_id'] . "'href='#myModaldel' data-toggle='modal' class='clickdelete'>Delete</button ><button value='" . $value['photos_id'] . "'href='#myModal' data-toggle='modal' class='clickedit'>Edit</button>
                                            </div>";
+                                } 
                             }
                         } else {
                             echo "<h4>No data found</h4>";
@@ -261,10 +263,7 @@
                                 <div class="" >
                                     <!--<div class="col-md-3">-->
                                     <form class="form-horizontal">
-                                        <!-- Form Name -->
-                                        <!--<legend>Form Name</legend>-->
                                         <br/>
-
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="ads_title">Title</label>  
                                             <div class="col-md-4">
@@ -285,6 +284,23 @@
                                 <div class="modal-footer">
                                     <!--                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
                                     <button type="button" class="btn btn-primary" id="save"  data-dismiss="modal">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!--<a href="#myModal" class="btn btn-lg btn-primary" data-toggle="modal">Launch Demo Modal</a>-->
+                    <!-- Modal HTML -->
+                    <div id="myModaldel" class="modal fade">
+                        <div class="modal-dialog" >
+                            <div class="modal-content"  >
+                                <div class="modal-body" >
+                                    <h4>Are you sure to delete this photo?</h4>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" id="deletephoto" data-dismiss="modal">Delete</button>
+                                    <button type="button" class="btn btn-primary"  data-dismiss="modal">Cancel</button>
                                 </div>
                             </div>
                         </div>
@@ -342,14 +358,14 @@
     </style>
 
     <script type="text/javascript">
-        $(document).on('change', '.btn-file :file', function() {
+        $(document).on('change', '.btn-file :file', function () {
             var input = $(this),
                     numFiles = input.get(0).files ? input.get(0).files.length : 1,
                     label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
             input.trigger('fileselect', [numFiles, label]);
         });
-        $(document).ready(function() {
-            $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+        $(document).ready(function () {
+            $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
 
                 var input = $(this).parents('.input-group').find(':text'),
                         log = numFiles > 1 ? numFiles + ' files selected' : label;
@@ -364,19 +380,19 @@
         });
     </script>
     <script type="text/javascript">
-        var ads_id = null;
-        $(".clickedit").click(function() {
+        var photo_id = null;
+        $(".clickedit").click(function () {
             photos_id = $(this).attr("value");
-            $.post("<?php echo site_url("Adminc/getphotosdetails"); ?>", {photos_id: photos_id}, function(json) {
+            $.post("<?php echo site_url("Adminc/getphotosdetails"); ?>", {photos_id: photos_id}, function (json) {
                 jsonstring = jQuery.parseJSON(json);
                 $("#photos_title").val(jsonstring.photos_title);
                 $("#photos_description").val(jsonstring.photos_description);
 
             });
         });
-        $("#save").click(function() {
+        $("#save").click(function () {
 
-            $.post("<?php echo site_url("Adminc/setphotos"); ?>", {photos_id: photos_id, photos_title: $("#photos_title").val(), photos_description: $("#photos_description").val()}, function(res) {
+            $.post("<?php echo site_url("Adminc/setphotos"); ?>", {photos_id: photos_id, photos_title: $("#photos_title").val(), photos_description: $("#photos_description").val()}, function (res) {
                 if (res === "success") {
                     $("#result").text("Image details saved");
                     $("#hidden").fadeIn(5000);
@@ -390,7 +406,37 @@
             });
 
         });
+
+
+
+
     </script>
+    <script type="text/javascript">
+        var photo_id_delete = null;
+        $(".clickdelete").click(function () {
+            photo_id_delete = $(this).attr("value");
+        });
+
+        $("#deletephoto").click(function () {
+            $.post("<?php echo site_url("Adminc/deletephoto"); ?>", {photo_id_delete: photo_id_delete}, function (res) {
+//                alert(res);
+                if (res === "success") {
+                    $("#result").text("Image removed ");
+                    $("#hidden").fadeIn(2000);
+                    $("#hidden").fadeOut(2000).delay(800, function () {
+                        location.reload();
+                    });
+                }
+                else if (res === "error") {
+                    $("#result").text("Image details could not be saved");
+                    $("#hidden").fadeIn(5000);
+                    $("#hidden").fadeOut(5000);
+                }
+            });
+        });
+    </script>
+
+
     <!--lightbox js-->
 
     <script src="<?php echo base_url("public/universal/js/lightbox.js"); ?>"></script>

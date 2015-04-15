@@ -242,7 +242,6 @@ Your account has been successfully activated in our site. You can now log-on int
         $photos_id = $this->input->post("photos_id");
         $result = $this->Adminm->getphotosdetails($photos_id);
         echo json_encode($result);
-//        echo $ads_id;
     }
 
     public function setphotos() {
@@ -251,6 +250,15 @@ Your account has been successfully activated in our site. You can now log-on int
         $photos_title = $this->input->post("photos_title");
 
         if ($this->Adminm->setphotos($photos_id, $photos_description, $photos_title)) {
+            echo "success";
+        } else {
+            echo "error";
+        }
+    }
+
+    public function deletephoto() {
+        $photo_id_delete = $this->input->post("photo_id_delete");
+        if ($this->Adminm->removephoto($photo_id_delete)) {
             echo "success";
         } else {
             echo "error";
