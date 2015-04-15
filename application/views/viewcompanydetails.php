@@ -239,8 +239,8 @@
                                 $path = "photos/" . $imgarr[5] . "/" . $imgarr[6];
                                 echo " <div class='col-lg-3 col-md-4 col-xs-6 thumb'>
                                             <a class='thumbnail' href='#'>
-                                              <img value='" . $value['photos_id'] . "'href='#myModal' data-toggle='modal' width='400' height='300' class='img-responsive clickimg' src='" . base_url($path) . "' >
-                                            </a><button>Delete</button><button>View</button>
+                                              <img value='" . $value['photos_id'] . "' width='400' height='300' class='img-responsive' src='" . base_url($path) . "' data-lightbox='photos' >
+                                            </a><button>Delete</button ><button value='" . $value['photos_id'] . "'href='#myModal' data-toggle='modal' width='400' height='300' class='clickedit'>Edit</button>
                                            </div>";
                             }
                         } else {
@@ -365,7 +365,7 @@
     </script>
     <script type="text/javascript">
         var ads_id = null;
-        $(".clickimg").click(function() {
+        $(".clickedit").click(function() {
             photos_id = $(this).attr("value");
             $.post("<?php echo site_url("Adminc/getphotosdetails"); ?>", {photos_id: photos_id}, function(json) {
                 jsonstring = jQuery.parseJSON(json);
@@ -391,6 +391,9 @@
 
         });
     </script>
+    <!--lightbox js-->
+
+    <script src="<?php echo base_url("public/universal/js/lightbox.js"); ?>"></script>
 
 </body>
 </html>
