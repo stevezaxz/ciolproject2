@@ -80,6 +80,18 @@
                                 <li><a href="#">Manila</a></li>
                                 <li><a href="#">Cebu</a></li>
                                 <li><a href="#">Cagayan de Oro</a></li>
+                                <li><a href="#">Davao</a></li>
+                                <li><a href="#">Batangas</a></li>
+                                <li><a href="#">Benguet</a></li>
+                                <li><a href="#">Cavite</a></li>
+                                <li><a href="#">Laguna</a></li>
+                                <li><a href="#">Misamis Oriental</a></li>
+                                <li><a href="#">Nueva Ecija</a></li>
+                                <li><a href="#">Pampanga</a></li>
+                                <li><a href="#">Pangasinan</a></li>
+                                <li><a href="#">Rizal</a></li>
+                                <li><a href="#">Tarlac</a></li>
+                                <li><a href="#">Zamboanga</a></li>
                             </ul>
                         </div>
                     </span>
