@@ -1,0 +1,2 @@
+select distinct(a.company_id),a.* from tblcompany as a, tblcategory as b, tblheadoffice as c, tblbranches as d, tblcompanycategory as e, tblcompanyheadoffice as f, tblcompanybranches as g where
+a.company_id = e.company_id and b.category_id = e.category_id and a.company_id = f.company_id and c.head_office_id = f.head_office_id and a.company_id = g.company_id and d.branches_id = g.branches_id and (c.head_office_address like '&&' or d.branches_address like '%%' ) and b.category_name like '%%' and b.category_sub_cat like '%%' 
