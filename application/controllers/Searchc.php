@@ -16,8 +16,11 @@ class Searchc extends CI_Controller {
         $search_category = $this->input->post("search_category_hidden");
         $seach_item = $this->input->post("search_item");
         $seach_region = $this->input->post("search_region_hidden");
+        $results = $this->Searchm->getsearch($search_category, $seach_item, $seach_region);
+//        print_r($result);
+        $results['searchkeyword'] = $seach_item;
         $this->load->view("header", $data);
-        $this->load->view("searchresults");
+        $this->load->view("searchresults", $results);
     }
 
 }
