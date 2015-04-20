@@ -83,6 +83,18 @@
                                     <li><a href="#">Manila</a></li>
                                     <li><a href="#">Cebu</a></li>
                                     <li><a href="#">Cagayan de Oro</a></li>
+                                    <li><a href="#">Davao</a></li>
+                                    <li><a href="#">Batangas</a></li>
+                                    <li><a href="#">Benguet</a></li>
+                                    <li><a href="#">Cavite</a></li>
+                                    <li><a href="#">Laguna</a></li>
+                                    <li><a href="#">Misamis Oriental</a></li>
+                                    <li><a href="#">Nueva Ecija</a></li>
+                                    <li><a href="#">Pampanga</a></li>
+                                    <li><a href="#">Pangasinan</a></li>
+                                    <li><a href="#">Rizal</a></li>
+                                    <li><a href="#">Tarlac</a></li>
+                                    <li><a href="#">Zamboanga</a></li>
                                 </ul>
                             </div>
                         </span>
@@ -90,65 +102,53 @@
                 </div><!-- /.col-lg-6 -->
             </form>
         </div><!-- /.row -->
-        <h2 class="lead"><strong class="text-danger">3</strong> results were found for the search for <strong class="text-danger">Lorem</strong></h2>								
+
+        <h2 class="lead"><strong class="text-danger"><?php
+                if (isset($searchresults))
+                    echo count($searchresults);
+                else {
+                    echo "0";
+                }
+                ?></strong> results were found for the search for <strong class="text-danger"><?php echo $searchkeyword; ?></strong></h2>								
     </hgroup>
     <section class="col-xs-12 col-sm-6 col-md-12">
-        <article class="search-result row">
+        <!--                <article class="search-result row">
+                            <div class="col-xs-12 col-sm-12 col-md-3">
+                                <a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-2">
+                                <ul class="meta-search">
+                                    <li><i class="glyphicon glyphicon-calendar"></i> <span>02/15/2014</span></li>
+                                    <li><i class="glyphicon glyphicon-time"></i> <span>4:28 pm</span></li>
+                                    <li><i class="glyphicon glyphicon-tags"></i> <span>People</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                                <h3><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
+                                <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
+                            </div>
+                            <span class="clearfix borda"></span>
+                        </article>-->
+        <?php
+        if (isset($searchresults)) {
+            foreach ($searchresults as $searchvalues) {
+                $array = explode("/", $searchvalues['photos_full_path']);
+                $photo_full_path = base_url() . $array[4] . "/" . $array[5] . "/" . $array[6];
+                echo ' <article class="search-result row">
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
+                <a href="#" title="Lorem ipsum" class="thumbnail"><img src="' . $photo_full_path . '" alt="Lorem ipsum" /></a>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-2">
-                <ul class="meta-search">
-                    <li><i class="glyphicon glyphicon-calendar"></i> <span>02/15/2014</span></li>
-                    <li><i class="glyphicon glyphicon-time"></i> <span>4:28 pm</span></li>
-                    <li><i class="glyphicon glyphicon-tags"></i> <span>People</span></li>
-                </ul>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                <h3><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
-                <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
-            </div>
-            <span class="clearfix borda"></span>
-        </article>
-
-        <article class="search-result row">
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/food" alt="Lorem ipsum" /></a>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-2">
-                <ul class="meta-search">
-                    <li><i class="glyphicon glyphicon-calendar"></i> <span>02/13/2014</span></li>
-                    <li><i class="glyphicon glyphicon-time"></i> <span>8:32 pm</span></li>
-                    <li><i class="glyphicon glyphicon-tags"></i> <span>Food</span></li>
-                </ul>
-            </div>
+          
             <div class="col-xs-12 col-sm-12 col-md-7">
-                <h3><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
-                <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
-            </div>
-            <span class="clearfix borda"></span>
-        </article>
-
-        <article class="search-result row">
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/sports" alt="Lorem ipsum" /></a>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-2">
-                <ul class="meta-search">
-                    <li><i class="glyphicon glyphicon-calendar"></i> <span>01/11/2014</span></li>
-                    <li><i class="glyphicon glyphicon-time"></i> <span>10:13 am</span></li>
-                    <li><i class="glyphicon glyphicon-tags"></i> <span>Sport</span></li>
-                </ul>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-7">
-                <h3><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
-                <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
+                <h3><a href="#" title="">' . $searchvalues['company_trade_name'] . '</a></h3>
+                <p>' . $searchvalues['company_history'] . '</p> 
             </div>
             <span class="clearfix border"></span>
-        </article>			
+        </article>	';
+            }
+        }
+        ?>
 
     </section>
 </div>
