@@ -3,22 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/views/registration.php</file>
             <file>file:/C:/xampp/htdocs/ciolproject2/application/views/viewcompanydetails.php</file>
             <file>file:/C:/xampp/htdocs/ciolproject2/application/views/usermanage.php</file>
             <file>file:/C:/xampp/htdocs/ciolproject2/application/models/Adminm.php</file>
+            <file>file:/C:/xampp/htdocs/ciolproject2/application/views/header.php</file>
             <file>file:/C:/xampp/htdocs/ciolproject2/application/views/companyheader.php</file>
+            <file>file:/C:/xampp/htdocs/ciolproject2/application/views/searchresults.php</file>
             <file>file:/C:/xampp/htdocs/ciolproject2/application/controllers/Mainc.php</file>
             <file>file:/C:/xampp/htdocs/ciolproject2/application/views/featuredsupplier.php</file>
             <file>file:/C:/xampp/htdocs/ciolproject2/application/controllers/Adminc.php</file>
-=======
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/views/home.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/models/Searchm.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/models/Adminm.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/controllers/Searchc.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/views/searchresults.php</file>
->>>>>>> 3692960207c587e0c3bd62a92eba2799887baa70
         </group>
     </open-files>
 </project-private>

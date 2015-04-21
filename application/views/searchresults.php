@@ -136,16 +136,16 @@
                 $array = explode("/", $searchvalues['photos_full_path']);
                 $photo_full_path = base_url() . $array[4] . "/" . $array[5] . "/" . $array[6];
                 echo ' <article class="search-result row">
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <a href="#" title="Lorem ipsum" class="thumbnail"><img src="' . $photo_full_path . '" alt="Lorem ipsum" /></a>
-            </div>
+                        <div class="col-xs-12 col-sm-12 col-md-3">
+                            <a href="#" title="Lorem ipsum" class="thumbnail"><img src="' . $photo_full_path . '" alt="Lorem ipsum"  /></a>
+                        </div>
           
-            <div class="col-xs-12 col-sm-12 col-md-7">
-                <h3><a href="#" title="">' . $searchvalues['company_trade_name'] . '</a></h3>
-                <p>' . $searchvalues['company_history'] . '</p> 
-            </div>
-            <span class="clearfix border"></span>
-        </article>	';
+                        <div class="col-xs-12 col-sm-12 col-md-7">
+                            <h3><a href="#" title="">' . $searchvalues['company_trade_name'] . '</a></h3>
+                            <p>' . $searchvalues['company_history'] . '</p> 
+                        </div>
+                       <span class="clearfix border"></span>
+                     </article>	';
             }
         }
         ?>
@@ -155,8 +155,8 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function (e) {
-        $('.search-panel .dropdown-menu').find('a').click(function (e) {
+    $(document).ready(function(e) {
+        $('.search-panel .dropdown-menu').find('a').click(function(e) {
             e.preventDefault();
             var param = $(this).attr("href").replace("#", "");
             var concept = $(this).text();
@@ -165,8 +165,8 @@
         });
 
     });
-    $(document).ready(function (es) {
-        $('.search-panel1 .dpmenu').find('a').click(function (es) {
+    $(document).ready(function(es) {
+        $('.search-panel1 .dpmenu').find('a').click(function(es) {
             es.preventDefault();
             var param1 = $(this).attr("href").replace("#", "");
             var concept1 = $(this).text();

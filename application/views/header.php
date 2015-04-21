@@ -7,12 +7,23 @@
         <!--< ?php echo link_tag("public/bootstrap/css/flatly.css", "stylesheet", "text/css"); ?>-->
         <script src="<?php echo base_url('public/jquery.min.js'); ?>" type="text/javascript"></script>
         <script src="<?php echo base_url('public/bootstrap/js/bootstrap.min.js'); ?>" type="text/javascript"></script>
+        <style type="text/css">
+            .navbar .navbar-nav {
+                display: inline-block;
+                float: none;
+            }
+
+            .navbar .navbar-collapse {
+                text-align: center;
+            }
+
+
+        </style>
     </head>
     <body>
         <div class="container-fluid">
             <div class="row">
                 <nav class="navbar navbar-default navbar-fixed-top">
-
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                             <div class="navbar-header">    

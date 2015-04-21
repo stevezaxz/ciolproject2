@@ -521,7 +521,7 @@
                                 <div class="col-xs-1"></div>   <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Electrical#Induction motors, gearmotors, definite and general purpose motors and HVAC motors"/> Induction motors, gearmotors, definite and general purpose motors and HVAC motors</label>
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Eletrical#Induction motors, gearmotors, definite and general purpose motors and HVAC motors" /> Induction motors, gearmotors, definite and general purpose motors and HVAC motors </label>
+                                <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Electrical#Induction motors, gearmotors, definite and general purpose motors and HVAC motors" /> Induction motors, gearmotors, definite and general purpose motors and HVAC motors </label>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-1"></div>  <label class="col-md-7 " for="textinput"><input type="checkbox" name="subcat[]" value="Electrical#Wires and cables, connectors, terminal lugs, fittings, fasteners, receptacle and panels" /> Wires and cables, connectors, terminal lugs, fittings, fasteners, receptacle and panels</label>
