@@ -73,7 +73,7 @@
     <head>
 
         <title>Login</title>
-         <?php echo link_tag("public/bootstrap/css/simplex.css", "stylesheet", "text/css"); ?> 
+        <?php echo link_tag("public/bootstrap/css/simplex.css", "stylesheet", "text/css"); ?> 
         <?php // echo link_tag("public/bootstrap/css/ubuntu.css", "stylesheet", "text/css"); ?> 
         <!-- <?php echo link_tag("public/bootstrap/css/superhero.css", "stylesheet", "text/css"); ?> -->		
         <!--< ?php echo link_tag("public/bootstrap/css/flatly.css", "stylesheet", "text/css"); ?>-->
@@ -84,7 +84,7 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-md-offset-3 ">
+                <div class="col-md-6 col-md-offset-3 login ">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-lock"></span> Login</div>
@@ -123,7 +123,7 @@
 
                                 <div class="form-group last">
                                     <div class="col-sm-offset-3 col-sm-9">
-                                        <button type="submit" class="btn btn-success btn-sm">
+                                        <button type="submit" class="btn btn-primary btn-sm">
                                             Sign in</button>
                                         <!--                                        <button type="reset" class="btn btn-default btn-sm">
                                                                                     Reset</button>-->
@@ -140,7 +140,7 @@
         <style type="text/css">
             body { 
                 /*background: url(http://lorempixel.com/1920/1920/city/9/) no-repeat center center fixed;*/ 
-                background: url(<?php // echo base_url('public/bundeswehr_military_history_museum-wallpaper-2048x1152.jpg'); ?>) no-repeat center center fixed; 
+                background: url(<?php // echo base_url('public/bundeswehr_military_history_museum-wallpaper-2048x1152.jpg');   ?>) no-repeat center center fixed; 
                 -webkit-background-size: cover;
                 -moz-background-size: cover;
                 -o-background-size: cover;
@@ -152,5 +152,9 @@
                 margin-top:30px;
             }
             .form-group.last { margin-bottom:0px; }
+
+            .login {
+                margin-top:15%;
+            }
         </style>
 </html>
