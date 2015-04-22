@@ -6,41 +6,76 @@
                 <div id="myCarousel" class="carousel slide" data-ride="carousel" >
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                        <?php
+                        for ($x = 0; $x < count($photos); $x++) {
+                            if ($x == 0) {
+                                echo "<li data-target = '#myCarousel' data-slide-to = '$x' class = 'active'></li>";
+                            } else {
+                                echo "<li data-target = '#myCarousel' data-slide-to = '$x'></li>";
+                            }
+                        }
+                        ?>
+                        <!--                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                                                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                                                        <li data-target="#myCarousel" data-slide-to="3"></li>-->
                     </ol>
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <img src="<?php echo base_url('public/1.jpg'); ?>"  alt="Chania">
-                            <div class="carousel-caption">
-                                <h3>Chania</h3>
-                                <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="<?php echo base_url('public/2.jpg'); ?>"alt="Chania">
-                            <div class="carousel-caption">
-                                <h3>Chania</h3>
-                                <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="<?php echo base_url('public/3.jpg'); ?>"  alt="Flower">
-                            <div class="carousel-caption">
-                                <h3>Flowers</h3>
-                                <p>Beatiful flowers in Kolymbari, Crete.</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="<?php echo base_url('public/4.jpg'); ?>"  alt="Flower">
-                            <div class="carousel-caption">
-                                <h3>Flowers</h3>
-                                <p>Beatiful flowers in Kolymbari, Crete.</p>
-                            </div>
-                        </div>
+                        <?php
+                        $x = 0;
+                        foreach ($photos as $carouselphotos) {
+                            $array = explode("/", $carouselphotos['photos_full_path']);
+                            $photo_full_path = base_url() . $array[4] . "/" . $array[5] . "/" . $array[6];
+                            if ($x == 0) {
+                                echo " <div class='item active'>
+                                     <img src='$photo_full_path'  />
+                                         <div class='carousel-caption'>
+                                            <h3>" . $carouselphotos['photos_title'] . "</h3>
+                                           <p>" . $carouselphotos['photos_description'] . "</p>
+                                          </div>
+                                    </div>";
+                                $x++;
+                            } else {
+                                echo "<div class = 'item'>
+                                          <img src='$photo_full_path' />
+                                        <div class = 'carousel-caption'>
+                                             <h3>" . $carouselphotos['photos_title'] . "</h3>
+                                           <p>" . $carouselphotos['photos_description'] . "</p>
+                                        </div>
+                                    </div>";
+                                $x++;
+                            }
+                        }
+                        ?>
+                        <!--                        <div class="item active">
+                                                    <img src="<?php echo base_url('public/1.jpg'); ?>"  alt="Chania">
+                                                    <div class="carousel-caption">
+                                                        <h3>Chania</h3>
+                                                        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                                                    </div>
+                                                </div>-->
+                        <!--                        <div class="item">
+                                                    <img src="<?php echo base_url('public/2.jpg'); ?>"alt="Chania">
+                                                    <div class="carousel-caption">
+                                                        <h3>Chania</h3>
+                                                        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <img src="<?php echo base_url('public/3.jpg'); ?>"  alt="Flower">
+                                                    <div class="carousel-caption">
+                                                        <h3>Flowers</h3>
+                                                        <p>Beatiful flowers in Kolymbari, Crete.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <img src="<?php echo base_url('public/4.jpg'); ?>"  alt="Flower">
+                                        <div class="carousel-caption">
+                                            <h3>Flowers</h3>
+                                            <p>Beatiful flowers in Kolymbari, Crete.</p>
+                                        </div>
+                                    </div>-->
                     </div>
                     <!-- Left and right controls -->
                     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -97,7 +132,7 @@
         Donec feugiat, orci non pretium congue, mi est pellentesque sem, vestibulum blandit mi libero vel diam. Etiam id lectus tempus, feugiat tortor nec, semper mi. Curabitur pretium placerat eros id vehicula. Nunc eget molestie metus, in lobortis ante. Morbi lobortis nulla non ultrices ullamcorper. Fusce fringilla et dolor ut ullamcorper. Vestibulum consectetur mi vitae consectetur tempor. Aenean a felis ac ipsum viverra sodales. Integer vel odio pulvinar, volutpat arcu id, ornare lectus. Nunc interdum eleifend elit nec fringilla. Nullam rutrum sed lorem quis maximus. Nam mattis libero sed bibendum vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus bibendum lobortis mollis.
 
         Vestibulum ultricies odio dolor, a bibendum sapien auctor et. Nunc eleifend est feugiat urna porta, ut faucibus odio bibendum. Praesent venenatis odio nec imperdiet ornare. Sed volutpat pellentesque lorem eu maximus. Phasellus id suscipit magna. Fusce ac lectus lobortis, ultrices erat et, aliquet quam. Etiam condimentum posuere ante, non mattis nulla sodales vel. Curabitur erat magna, tincidunt nec vehicula eget, posuere ullamcorper turpis. Duis a ipsum orci. Interdum et malesuada fames     </div>
-  
+
 </div>
 
 <div class="col-md-2"></div>
