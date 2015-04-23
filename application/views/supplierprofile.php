@@ -144,7 +144,7 @@
             <div class="row">
                 <div class="col-md-11">
                     <h4>Contact Persons</h4>
-                    <table class="table table-hover table-responsive">
+                    <table class="table table-hover table-responsive" style="font-size: 13">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -185,7 +185,7 @@
                 <div class="col-md-10">
                     <h4>Company Category and Sub Category</h4>
 
-                    <table class="table table-hover table-responsive">
+                    <table class="table table-hover table-responsive" style="font-size: 13">
                         <thead>
                             <tr>
                                 <th>Category</th>
@@ -254,50 +254,73 @@
             }
             ?>
             <div class="row">
-                <div class="col-md-12 ">
+                <div class="col-md-12  ">
                     <!--<div class="well well-sm">-->
-                    <form class="form-horizontal" action="" method="post">
+                    <div class="form-horizontal ">
                         <fieldset>
                             <!--<legend class="text-center">Contact us</legend>-->
                             <h4>Contact us</h4> 
 
                             <!-- Name input-->
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="name">Name</label>
-                                <div class="col-md-9">
+                                <label class="col-md-2 control-label" for="name">Name</label>
+                                <div class="col-md-10">
                                     <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
                                 </div>
                             </div>
 
                             <!-- Email input-->
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="email">Your E-mail</label>
-                                <div class="col-md-9">
+                                <label class="col-md-2 control-label" for="email">Your E-mail</label>
+                                <div class="col-md-10">
                                     <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
                                 </div>
                             </div>
 
                             <!-- Message body -->
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="message">Your message</label>
-                                <div class="col-md-9">
+                                <label class="col-md-2 control-label" for="message">Your message</label>
+                                <div class="col-md-10">
                                     <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5"></textarea>
                                 </div>
                             </div>
 
                             <!-- Form actions -->
                             <div class="form-group">
-                                <div class="col-md-12 text-right">
-                                    <button type="submit" class="btn btn-primary ">Submit</button>
+                                <div class="col-md-2"></div>
+
+                                <div class="col-md-5 text-right">
+                                    <button type="submit" class="btn btn-primary " href='#myModalsendmessage' data-toggle='modal' id="submitmessage" >Submit</button>
                                 </div>
                             </div>
                         </fieldset>
-                    </form>
+                    </div>
                     <!--</div>-->
                 </div>
             </div>
         </div>
-
+        <!--MODAL FOR MESSAGE SENT-->
+        <div class="row">
+            <!--<a href="#myModal" class="btn btn-lg btn-primary" data-toggle="modal">Launch Demo Modal</a>-->
+            <!-- Modal HTML -->
+            <div id="myModalsendmessage" class="modal fade">
+                <div class="modal-dialog" >
+                    <div class="modal-content"  >
+                        <div class="modal-body" >
+                            <!--<h4>Are you sure to delete this photo?</h4>-->
+                            <div id="loadingmessage" style="display:none">
+                                <center><img src="<?php echo base_url("public/universal/loading_spinner.gif"); ?>" width="50px" height="50px " /></center> 
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" id="company_id" value="<?php echo $companydetails['company_id']; ?>" />
+                            <!--<button type="button" class="btn btn-default" id="deletephoto" data-dismiss="modal">Delete</button>-->
+                            <button type="button" class="btn btn-primary"  data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -309,5 +332,31 @@
         </div>
     </div>-->
 </body>
+<script type="text/javascript">
+//    $("#myModalsendmessage").click(function (e) {
+//        e.preventDefault;
+//    });
+//    $(document).ready(function () {
+//        $("#myModalsendmessage").modal("show");
+//    });
 
+    $("#submitmessage").click(function () {
+        $("#loadingmessage").show();
+        $.ajax({
+            url: "<?php echo site_url("Supplierc/sendmessage"); ?>",
+            type: "POST",
+            data: {
+                company_id: $("#company_id").val(),
+                name: $("#name").val(),
+                email: $("#email").val(),
+                message: $("#message").val()
+            },
+            success: function (res) {
+                alert(res);
+                $("#loadingmessage").hide();
+            }
+        });
+//        alert($("#company_id").val());
+    });
+</script>
 </html>

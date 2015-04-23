@@ -7,6 +7,7 @@ class Supplierc extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model("Searchm");
+        $this->load->model("Emailm");
     }
 
     public function supplierprofile($company_trade_name) {
@@ -18,6 +19,18 @@ class Supplierc extends CI_Controller {
         );
         $this->load->view('header', $data);
         $this->load->view('supplierprofile', $results);
+    }
+
+    public function sendmessage() {
+        $company_id = $this->input->post("company_id");
+        $name = $this->input->post("name");
+        $email = $this->input->post("email");
+        $message = $this->input->post("message");
+        if ($this->Searchm->setmessages($company_id, $name, $email, $message)) {
+//            send email
+        } else {
+//            error noti
+        }
     }
 
 }

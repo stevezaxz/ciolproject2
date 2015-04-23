@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2015 at 01:53 PM
+-- Generation Time: Apr 23, 2015 at 01:52 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `tblbranches` (
   `branches_telephone` varchar(30) DEFAULT NULL,
   `branches_fax` varchar(30) DEFAULT NULL,
   `branches_email` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblbranches`
@@ -72,7 +72,8 @@ INSERT INTO `tblbranches` (`branches_id`, `branches_person`, `branches_address`,
 (56, 'pol', 'pol', 'pol', 'pol', 'pol', 'pol'),
 (57, 'pol1', 'pol1', 'pol1', 'pol1', 'pol1', 'pol1'),
 (58, '', '', '', '', '', ''),
-(59, '', '', '', '', '', '');
+(59, '', '', '', '', '', ''),
+(60, '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -84,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `tblcategory` (
 `category_id` int(11) NOT NULL,
   `category_name` varchar(50) DEFAULT NULL,
   `category_sub_cat` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=155 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblcategory`
@@ -110,7 +111,10 @@ INSERT INTO `tblcategory` (`category_id`, `category_name`, `category_sub_cat`) V
 (148, 'Safety and Security', 'Fire and smoke detection and alarm equipments and parts'),
 (149, 'Electrical', 'Lighting (CFL, LED, HID, incandescent), lighting controls, ballast, batteries and fixtures'),
 (150, 'Electrical', 'Wires and cables, connectors, terminal lugs, fittings, fasteners, receptacle and panels'),
-(151, 'Safety and Security', 'Fire and smoke detection and alarm equipments and parts');
+(151, 'Safety and Security', 'Fire and smoke detection and alarm equipments and parts'),
+(152, 'Electrical', 'Circuit breakers, power supply, contactors, relays, timer, switch, transducers'),
+(153, 'Eletrical', 'Induction motors, gearmotors, definite and general purpose motors and HVAC motors'),
+(154, 'Electrical', 'Wires and cables, connectors, terminal lugs, fittings, fasteners, receptacle and panels');
 
 -- --------------------------------------------------------
 
@@ -130,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `tblcompany` (
   `company_history` varchar(1000) DEFAULT NULL,
   `is_verified` varchar(10) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblcompany`
@@ -139,8 +143,9 @@ CREATE TABLE IF NOT EXISTS `tblcompany` (
 INSERT INTO `tblcompany` (`company_id`, `company_registrants_name`, `company_username`, `company_password`, `company_trade_name`, `company_tin`, `company_bir_registration_no`, `company_website`, `company_history`, `is_verified`, `status`) VALUES
 (57, 'test', 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 'test', 'test', 'test', '1', 'Active'),
 (58, 'pol', 'pol', '627a1f8f3e1f8a2a0cbb9aedc33ade8c', 'pol', 'pol', 'pol', 'pol', 'pol', '1', 'Inactive'),
-(59, 'CX', 'cx', '0bdff8095c8bf1b38775bf35547a1317', 'cx', '12312', '232', 'asd', 'sdfsdf', '0', 'Active'),
-(60, 'CX', 'cx', '0bdff8095c8bf1b38775bf35547a1317', 'cx', '12312', '232', 'asd', 'sdfsdf', '1', 'Active');
+(59, 'CX', 'cx', '0bdff8095c8bf1b38775bf35547a1317', 'cx', '12312', '232', 'asd', 'sdfsdf', '2', 'Active'),
+(60, 'CX', 'cx', '0bdff8095c8bf1b38775bf35547a1317', 'cx', '12312', '232', 'asd', 'sdfsdf', '1', 'Active'),
+(61, 'agri', 'agri', '02054b032812a9731d4385eebc9a39a9', 'agri', '3434', 'agri', 'agri', 'asssssssssssssssssssssssssssssssssssssssssssssssssdas dasd asda lorem upasda dasd asdad asdas asd a ds asd ad a das da ad asd a', '1', 'Active');
 
 -- --------------------------------------------------------
 
@@ -163,7 +168,8 @@ INSERT INTO `tblcompanybranches` (`company_id`, `branches_id`) VALUES
 (58, 56),
 (58, 57),
 (59, 58),
-(60, 59);
+(60, 59),
+(61, 60);
 
 -- --------------------------------------------------------
 
@@ -200,7 +206,10 @@ INSERT INTO `tblcompanycategory` (`company_id`, `category_id`) VALUES
 (59, 148),
 (60, 149),
 (60, 150),
-(60, 151);
+(60, 151),
+(61, 152),
+(61, 153),
+(61, 154);
 
 -- --------------------------------------------------------
 
@@ -229,7 +238,10 @@ INSERT INTO `tblcompanycontactperson` (`company_id`, `contact_person_id`) VALUES
 (59, 156),
 (60, 157),
 (60, 158),
-(60, 159);
+(60, 159),
+(61, 160),
+(61, 161),
+(61, 162);
 
 -- --------------------------------------------------------
 
@@ -250,7 +262,19 @@ INSERT INTO `tblcompanyheadoffice` (`company_id`, `head_office_id`) VALUES
 (57, 56),
 (58, 57),
 (59, 58),
-(60, 59);
+(60, 59),
+(61, 60);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblcompanymessages`
+--
+
+CREATE TABLE IF NOT EXISTS `tblcompanymessages` (
+  `company_id` int(11) DEFAULT NULL,
+  `message_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -350,7 +374,8 @@ INSERT INTO `tblcompanyphotos` (`company_id`, `photos_id`) VALUES
 (57, 83),
 (57, 84),
 (60, 86),
-(60, 87);
+(60, 87),
+(61, 89);
 
 -- --------------------------------------------------------
 
@@ -375,7 +400,8 @@ INSERT INTO `tblcompanyservices` (`company_id`, `services_id`) VALUES
 (58, 88),
 (58, 89),
 (59, 90),
-(60, 91);
+(60, 91),
+(61, 92);
 
 -- --------------------------------------------------------
 
@@ -396,7 +422,8 @@ INSERT INTO `tblcompanyuploads` (`company_id`, `upload_id`) VALUES
 (57, 17),
 (57, 18),
 (58, 19),
-(58, 20);
+(58, 20),
+(61, 21);
 
 -- --------------------------------------------------------
 
@@ -413,7 +440,7 @@ CREATE TABLE IF NOT EXISTS `tblcontactperson` (
   `contact_person_email` varchar(50) DEFAULT NULL,
   `contact_person_mobile1` varchar(30) DEFAULT NULL,
   `contact_person_mobile2` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=160 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblcontactperson`
@@ -431,7 +458,10 @@ INSERT INTO `tblcontactperson` (`contact_person_id`, `contact_person_name`, `con
 (156, '', 'Account', '', '', '', '', ''),
 (157, '', 'Sales', '', '', '', '', ''),
 (158, '', 'Procurement', '', '', '', '', ''),
-(159, '', 'Account', '', '', '', '', '');
+(159, '', 'Account', '', '', '', '', ''),
+(160, 'asd', 'Sales', 'd', 'd', 'd', 'd', 'd'),
+(161, 'd', 'Procurement', 'd', 'd', '', '', ''),
+(162, '', 'Account', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -449,7 +479,7 @@ CREATE TABLE IF NOT EXISTS `tblheadoffice` (
   `head_office_telephone` varchar(30) DEFAULT NULL,
   `head_office_fax` varchar(30) DEFAULT NULL,
   `head_office_email` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblheadoffice`
@@ -459,7 +489,22 @@ INSERT INTO `tblheadoffice` (`head_office_id`, `head_office_address`, `head_offi
 (56, 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'dssdf@test.asd'),
 (57, 'pol', 'pol', 'pol', 'pol', '8705', 'v', 'pol', 'nevetsjohn@live.com'),
 (58, 'Cagayan de oro', 'cdo', 'cdo', 'asdasd', '9000', '1321', '3rwe', 'steve_zaxzjohn@yahoo.com'),
-(59, 'Cagayan de oro', 'cdo', 'cdo', 'asdasd', '9000', '1321', '3rwe', 'steve_zaxzjohn@yahoo.com');
+(59, 'Cagayan de oro', 'cdo', 'cdo', 'asdasd', '9000', '1321', '3rwe', 'steve_zaxzjohn@yahoo.com'),
+(60, 'Cagayan de oro', 'Cagayan de Oro', 'cdo', 'cdo', '134242', '232', '4354', 'steve_zaxzjohn@yahoo.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblmessages`
+--
+
+CREATE TABLE IF NOT EXISTS `tblmessages` (
+`message_id` int(11) NOT NULL,
+  `message_sender_name` varchar(100) DEFAULT NULL,
+  `message_sender_email` varchar(100) DEFAULT NULL,
+  `message_messages` varchar(520) DEFAULT NULL,
+  `message_date_entered` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -474,7 +519,7 @@ CREATE TABLE IF NOT EXISTS `tblphotos` (
   `photos_file_name` varchar(200) DEFAULT NULL,
   `photos_full_path` varchar(300) DEFAULT NULL,
   `deleted` int(3) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblphotos`
@@ -566,7 +611,8 @@ INSERT INTO `tblphotos` (`photos_id`, `photos_title`, `photos_description`, `pho
 (83, '', '', 'Chrysanthemum.jpg', 'C:/xampp/htdocs/ciolproject2/photos/test/Chrysanthemum.jpg', 0),
 (84, 'aaa', 'aasdsd', 'Hydrangeas.jpg', 'C:/xampp/htdocs/ciolproject2/photos/test/Hydrangeas.jpg', 1),
 (86, '', '', 'Lighthouse.jpg', 'C:/xampp/htdocs/ciolproject2/photos/CX/Lighthouse.jpg', 0),
-(87, '', '', 'Chrysanthemum.jpg', 'C:/xampp/htdocs/ciolproject2/photos/CX/Chrysanthemum.jpg', 0);
+(87, '', '', 'Chrysanthemum.jpg', 'C:/xampp/htdocs/ciolproject2/photos/CX/Chrysanthemum.jpg', 0),
+(89, 'cathy', 'cathy', 'images_(1).jpg', 'C:/xampp/htdocs/ciolproject2/photos/agri/images_(1).jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -577,7 +623,7 @@ INSERT INTO `tblphotos` (`photos_id`, `photos_title`, `photos_description`, `pho
 CREATE TABLE IF NOT EXISTS `tblservices` (
 `services_id` int(11) NOT NULL,
   `description` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblservices`
@@ -591,7 +637,8 @@ INSERT INTO `tblservices` (`services_id`, `description`) VALUES
 (88, 'pol2'),
 (89, 'pol2'),
 (90, ''),
-(91, '');
+(91, ''),
+(92, '');
 
 -- --------------------------------------------------------
 
@@ -603,7 +650,7 @@ CREATE TABLE IF NOT EXISTS `tbluploads` (
 `upload_id` int(11) NOT NULL,
   `upload_file_name` varchar(100) DEFAULT NULL,
   `upload_file_location` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbluploads`
@@ -613,7 +660,8 @@ INSERT INTO `tbluploads` (`upload_id`, `upload_file_name`, `upload_file_location
 (17, 'web101.docx', 'C:/xampp/htdocs/ciolproject2/uploads/test/web101.docx'),
 (18, 'SupplierProfileandSearchResults.doc', 'C:/xampp/htdocs/ciolproject2/uploads/test/SupplierProfileandSearchResults.doc'),
 (19, 'Application_letter.docx', 'C:/xampp/htdocs/ciolproject2/uploads/pol/Application_letter.docx'),
-(20, 'Application_SPC.docx', 'C:/xampp/htdocs/ciolproject2/uploads/pol/Application_SPC.docx');
+(20, 'Application_SPC.docx', 'C:/xampp/htdocs/ciolproject2/uploads/pol/Application_SPC.docx'),
+(21, 'application_marketics.docx', 'C:/xampp/htdocs/ciolproject2/uploads/agri/application_marketics.docx');
 
 -- --------------------------------------------------------
 
@@ -688,6 +736,12 @@ ALTER TABLE `tblcompanyheadoffice`
  ADD KEY `head_office_id` (`head_office_id`), ADD KEY `company_id` (`company_id`);
 
 --
+-- Indexes for table `tblcompanymessages`
+--
+ALTER TABLE `tblcompanymessages`
+ ADD KEY `company_id` (`company_id`), ADD KEY `message_id` (`message_id`);
+
+--
 -- Indexes for table `tblcompanyphotos`
 --
 ALTER TABLE `tblcompanyphotos`
@@ -716,6 +770,12 @@ ALTER TABLE `tblcontactperson`
 --
 ALTER TABLE `tblheadoffice`
  ADD PRIMARY KEY (`head_office_id`);
+
+--
+-- Indexes for table `tblmessages`
+--
+ALTER TABLE `tblmessages`
+ ADD PRIMARY KEY (`message_id`);
 
 --
 -- Indexes for table `tblphotos`
@@ -754,42 +814,47 @@ MODIFY `ads_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 -- AUTO_INCREMENT for table `tblbranches`
 --
 ALTER TABLE `tblbranches`
-MODIFY `branches_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=60;
+MODIFY `branches_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT for table `tblcategory`
 --
 ALTER TABLE `tblcategory`
-MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=152;
+MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=155;
 --
 -- AUTO_INCREMENT for table `tblcompany`
 --
 ALTER TABLE `tblcompany`
-MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
+MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=62;
 --
 -- AUTO_INCREMENT for table `tblcontactperson`
 --
 ALTER TABLE `tblcontactperson`
-MODIFY `contact_person_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=160;
+MODIFY `contact_person_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=163;
 --
 -- AUTO_INCREMENT for table `tblheadoffice`
 --
 ALTER TABLE `tblheadoffice`
-MODIFY `head_office_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=60;
+MODIFY `head_office_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
+--
+-- AUTO_INCREMENT for table `tblmessages`
+--
+ALTER TABLE `tblmessages`
+MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tblphotos`
 --
 ALTER TABLE `tblphotos`
-MODIFY `photos_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=88;
+MODIFY `photos_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=90;
 --
 -- AUTO_INCREMENT for table `tblservices`
 --
 ALTER TABLE `tblservices`
-MODIFY `services_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=92;
+MODIFY `services_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=93;
 --
 -- AUTO_INCREMENT for table `tbluploads`
 --
 ALTER TABLE `tbluploads`
-MODIFY `upload_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+MODIFY `upload_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `tbluser`
 --
@@ -826,6 +891,13 @@ ADD CONSTRAINT `tblcompanycontactperson_ibfk_2` FOREIGN KEY (`contact_person_id`
 ALTER TABLE `tblcompanyheadoffice`
 ADD CONSTRAINT `tblcompanyheadoffice_ibfk_1` FOREIGN KEY (`head_office_id`) REFERENCES `tblheadoffice` (`head_office_id`),
 ADD CONSTRAINT `tblcompanyheadoffice_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `tblcompany` (`company_id`);
+
+--
+-- Constraints for table `tblcompanymessages`
+--
+ALTER TABLE `tblcompanymessages`
+ADD CONSTRAINT `tblcompanymessages_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `tblcompany` (`company_id`),
+ADD CONSTRAINT `tblcompanymessages_ibfk_2` FOREIGN KEY (`message_id`) REFERENCES `tblmessages` (`message_id`);
 
 --
 -- Constraints for table `tblcompanyphotos`

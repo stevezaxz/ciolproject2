@@ -106,4 +106,30 @@ class Searchm extends CI_Model {
         return $result;
     }
 
+    public function setmessages($company_id, $name, $email, $message) {
+        $this->db->trans_start();
+        $date = date('Y-m-d H:i:s');
+        $data = array(
+            'message_id' => '',
+            'message_sender_name' => $name,
+            'message_sender_email' => $email,
+            'message_messages' => $message,
+            'message_data_entered' => $date
+        );
+        $this->db->insert("tblmessages", $data);
+        $message_id = $this->db->insert_id();
+        $datachildtable = array(
+            'company_id' => $company_id,
+            'message_id' => $message_id
+        );
+        $this->db->insert("tblcompanymessages", $datachildtable);
+        if ($this->db->trans_status == FALSE) {
+            $this->db->trans_rollback();
+            return FALSE;
+        } else {
+            $this->db->trans_commit();
+            return TRUE;
+        }
+    }
+
 }
