@@ -88,4 +88,30 @@ You will receive an email containing a successful notification.</p>
         $this->email->send();
     }
 
+    public function sendmailconnection() {
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'nevetsjohn@gmail.com',
+            'smtp_pass' => '10118023603aAaAqQ',
+            'mailtype' => 'html',
+            'charset' => 'iso-8859-1'
+        );
+        return $config;
+    }
+
+    public function sendmailmessage($company_id, $name, $email, $message, $company_email) {
+        $this->load->library("email", $this->sendmailconnection());
+        $this->email->set_newline("\r\n");
+        $this->email->from("nevetsjohn@gmail.com", "Suppliers Netzwerk");
+        $this->email->to($company_email);
+        $this->email->subject("Message Notification");
+        $this->email->message("<html>
+                                <body>
+                                     <p>You have a new message, please check you account. </p>
+                                </body>
+                               </html>");
+    }
+
 }

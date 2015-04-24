@@ -107,14 +107,14 @@ class Searchm extends CI_Model {
     }
 
     public function setmessages($company_id, $name, $email, $message) {
-        $this->db->trans_start();
+        $this->db->trans_begin();
         $date = date('Y-m-d H:i:s');
         $data = array(
             'message_id' => '',
             'message_sender_name' => $name,
             'message_sender_email' => $email,
             'message_messages' => $message,
-            'message_data_entered' => $date
+            'message_date_entered' => $date
         );
         $this->db->insert("tblmessages", $data);
         $message_id = $this->db->insert_id();
@@ -123,7 +123,7 @@ class Searchm extends CI_Model {
             'message_id' => $message_id
         );
         $this->db->insert("tblcompanymessages", $datachildtable);
-        if ($this->db->trans_status == FALSE) {
+        if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();
             return FALSE;
         } else {

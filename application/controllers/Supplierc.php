@@ -26,11 +26,15 @@ class Supplierc extends CI_Controller {
         $name = $this->input->post("name");
         $email = $this->input->post("email");
         $message = $this->input->post("message");
+        $company_email = $this->input->post("company_email");
         if ($this->Searchm->setmessages($company_id, $name, $email, $message)) {
-//            send email
+            echo "success";
+            $this->Emailm->sendmailmessage($company_id, $name, $email, $message, $company_email);
         } else {
-//            error noti
+            echo "error";
         }
     }
+    
+   
 
 }

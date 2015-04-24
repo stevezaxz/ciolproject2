@@ -16,6 +16,7 @@
             <li class="active"><a href="#home" data-toggle="tab">Profile</a></li>
             <li><a href="#profile" data-toggle="tab">Branches</a></li>
             <li><a href="#photos" data-toggle="tab">Photos</a></li>
+            <li><a href="#messages" data-toggle="tab">Messages</a></li>
         </ul>
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade active in" id="home">
@@ -307,6 +308,75 @@
                     </div>
                 </div>
             </div>
+            <div class="tab-pane fade" id="messages">
+                <br/>
+
+                <div class="row">
+                    <form action="<?php echo site_url("Adminc/viewcompanydetails"); ?>" method="POST">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i> Messages
+                                    <div class="pull-right">
+
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="dataTable_wrapper">
+                                        <table class="table table-striped table-hover table_message" id="dataTables-example">
+                                            <thead>
+                                                <tr>
+                                                    <th>From</th>
+                                                    <th>Email</th>
+                                                    <th>Date</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+//                                                print_r($messages);
+                                                if (isset($messages)) {
+                                                    foreach ($messages as $company_messages) {
+                                                        echo "<tr class='messagetr'  id= " . $company_messages['message_id'] . ">";
+                                                        echo "<td>" . $company_messages['message_sender_name'] . "</td>";
+                                                        echo "<td>" . $company_messages['message_sender_email'] . "</td>";
+                                                        echo "<td>" . $company_messages['message_date_entered'] . "</td>";
+                                                        echo "</tr>";
+                                                    }
+                                                }
+                                                ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <!--<a href="#myModal" class="btn btn-lg btn-primary" data-toggle="modal">Launch Demo Modal</a>-->
+                    <!-- Modal HTML -->
+                    <div id="myModalmessages" class="modal fade">
+                        <div class="modal-dialog" >
+                            <div class="modal-content"  >
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Message Details </h4> 
+                                </div>
+                                <div class="" >
+                                    <!--<div class="col-md-3">-->
+
+                                </div>
+                                <div class="modal-footer">
+                                    <!--                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                                    <button type="button" class="btn btn-primary" id="message_close"  data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -358,14 +428,14 @@
     </style>
 
     <script type="text/javascript">
-        $(document).on('change', '.btn-file :file', function() {
+        $(document).on('change', '.btn-file :file', function () {
             var input = $(this),
                     numFiles = input.get(0).files ? input.get(0).files.length : 1,
                     label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
             input.trigger('fileselect', [numFiles, label]);
         });
-        $(document).ready(function() {
-            $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+        $(document).ready(function () {
+            $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
 
                 var input = $(this).parents('.input-group').find(':text'),
                         log = numFiles > 1 ? numFiles + ' files selected' : label;
@@ -381,18 +451,18 @@
     </script>
     <script type="text/javascript">
         var photo_id = null;
-        $(".clickedit").click(function() {
+        $(".clickedit").click(function () {
             photos_id = $(this).attr("value");
-            $.post("<?php echo site_url("Adminc/getphotosdetails"); ?>", {photos_id: photos_id}, function(json) {
+            $.post("<?php echo site_url("Adminc/getphotosdetails"); ?>", {photos_id: photos_id}, function (json) {
                 jsonstring = jQuery.parseJSON(json);
                 $("#photos_title").val(jsonstring.photos_title);
                 $("#photos_description").val(jsonstring.photos_description);
 
             });
         });
-        $("#save").click(function() {
+        $("#save").click(function () {
 
-            $.post("<?php echo site_url("Adminc/setphotos"); ?>", {photos_id: photos_id, photos_title: $("#photos_title").val(), photos_description: $("#photos_description").val()}, function(res) {
+            $.post("<?php echo site_url("Adminc/setphotos"); ?>", {photos_id: photos_id, photos_title: $("#photos_title").val(), photos_description: $("#photos_description").val()}, function (res) {
                 if (res === "success") {
                     $("#result").text("Image details saved");
                     $("#hidden").fadeIn(5000);
@@ -413,17 +483,17 @@
     </script>
     <script type="text/javascript">
         var photo_id_delete = null;
-        $(".clickdelete").click(function() {
+        $(".clickdelete").click(function () {
             photo_id_delete = $(this).attr("value");
         });
 
-        $("#deletephoto").click(function() {
-            $.post("<?php echo site_url("Adminc/deletephoto"); ?>", {photo_id_delete: photo_id_delete}, function(res) {
+        $("#deletephoto").click(function () {
+            $.post("<?php echo site_url("Adminc/deletephoto"); ?>", {photo_id_delete: photo_id_delete}, function (res) {
 //                alert(res);
                 if (res === "success") {
                     $("#result").text("Image removed ");
                     $("#hidden").fadeIn(2000);
-                    $("#hidden").fadeOut(2000).delay(800, function() {
+                    $("#hidden").fadeOut(2000).delay(800, function () {
                         location.reload();
                     });
                 }
@@ -431,6 +501,25 @@
                     $("#result").text("Image details could not be saved");
                     $("#hidden").fadeIn(5000);
                     $("#hidden").fadeOut(5000);
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(".table_message  .messagetr").click(function () {
+//            $(this).attr("id");
+//            $("#myModalmessages").modal("show");
+            $.ajax({
+                url: "<?php echo site_url("Adminc/getmessagedetails"); ?>",
+                type: "POST",
+                data: {
+                    message_id: $(this).attr("id")
+                },
+                success: function (res) {
+//                    alert(res);
+                    var messages = jQuery.parseJSON(res);
+                    alert(messages.message_id);
                 }
             });
         });

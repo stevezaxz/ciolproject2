@@ -199,7 +199,12 @@ class Adminm extends CI_Model {
             }
         }
 
-
+        $query9 = $this->db->query("select b.* from tblcompany as a, tblmessages as b, tblcompanymessages as c where a.company_id = c.company_id and b.message_id= c.message_id and a.company_id = '$company_id' order by message_date_entered desc");
+        if ($query9->num_rows() > 0) {
+            foreach ($query9->result_array() as $messages) {
+                $result['messages'][] = $messages;
+            }
+        }
         return $result;
     }
 
@@ -312,6 +317,17 @@ class Adminm extends CI_Model {
     public function removephoto($photo_id_delete) {
         $query = $this->db->query("update tblphotos set deleted='1' where photos_id= '$photo_id_delete'");
         return $query;
+    }
+
+    public function getmessagedetails($message_id) {
+        $company_messages;
+        $query = $this->db->get_where("tblmessages", array("message_id" => $message_id));
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $messages) {
+                $company_messages['messagedetails'][] = $messages;
+            }
+        }
+        return $company_messages;
     }
 
 }

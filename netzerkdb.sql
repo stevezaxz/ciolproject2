@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2015 at 01:52 PM
+-- Generation Time: Apr 24, 2015 at 01:52 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -276,6 +276,14 @@ CREATE TABLE IF NOT EXISTS `tblcompanymessages` (
   `message_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tblcompanymessages`
+--
+
+INSERT INTO `tblcompanymessages` (`company_id`, `message_id`) VALUES
+(61, 8),
+(61, 9);
+
 -- --------------------------------------------------------
 
 --
@@ -504,7 +512,15 @@ CREATE TABLE IF NOT EXISTS `tblmessages` (
   `message_sender_email` varchar(100) DEFAULT NULL,
   `message_messages` varchar(520) DEFAULT NULL,
   `message_date_entered` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblmessages`
+--
+
+INSERT INTO `tblmessages` (`message_id`, `message_sender_name`, `message_sender_email`, `message_messages`, `message_date_entered`) VALUES
+(8, 's', 'ss', 'ssss', '2015-04-24 09:21:12'),
+(9, 'steve', 'steve_zaxzjohn@yahoo.com', 'test', '2015-04-24 13:15:49');
 
 -- --------------------------------------------------------
 
@@ -839,7 +855,7 @@ MODIFY `head_office_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
 -- AUTO_INCREMENT for table `tblmessages`
 --
 ALTER TABLE `tblmessages`
-MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tblphotos`
 --

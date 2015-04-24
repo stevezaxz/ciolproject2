@@ -309,13 +309,14 @@
                         <div class="modal-body" >
                             <!--<h4>Are you sure to delete this photo?</h4>-->
                             <div id="loadingmessage" style="display:none">
-                                <center><img src="<?php echo base_url("public/universal/loading_spinner.gif"); ?>" width="50px" height="50px " /></center> 
+                                <center><img id="loadingimage" src="<?php echo base_url("public/universal/loading_spinner.gif"); ?>" width="50px" height="50px " /></center> 
                             </div>
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" id="company_id" value="<?php echo $companydetails['company_id']; ?>" />
+                            <input type="hidden" id="company_email" value="<?php echo $head_office['head_office_email']; ?>" />
                             <!--<button type="button" class="btn btn-default" id="deletephoto" data-dismiss="modal">Delete</button>-->
-                            <button type="button" class="btn btn-primary"  data-dismiss="modal">Close</button>
+                            <button id="modal_close" type="button" class="btn btn-primary"  data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
@@ -333,13 +334,6 @@
     </div>-->
 </body>
 <script type="text/javascript">
-//    $("#myModalsendmessage").click(function (e) {
-//        e.preventDefault;
-//    });
-//    $(document).ready(function () {
-//        $("#myModalsendmessage").modal("show");
-//    });
-
     $("#submitmessage").click(function () {
         $("#loadingmessage").show();
         $.ajax({
@@ -349,14 +343,28 @@
                 company_id: $("#company_id").val(),
                 name: $("#name").val(),
                 email: $("#email").val(),
-                message: $("#message").val()
+                message: $("#message").val(),
+                company_email: $("#company_email").val()
             },
             success: function (res) {
-                alert(res);
-                $("#loadingmessage").hide();
+                if (res == "success") {
+                    $("#loadingimage").hide();
+                    $("#loadingmessage").html("<center><h4>Thank you! Your Message has been sent!</h4></center>");
+                    $("#name").val("");
+                    $("#email").val("");
+                    $("#message").val("");
+                }
+                else if (res == "error") {
+                    $("#loadingimage").hide();
+                    $("#loadingmessage").html("<center><h4>We cannot send your message right now, please try again later</h4></center>");
+                }
             }
         });
-//        alert($("#company_id").val());
+    });
+    $("#myModalsendmessage").on("hidden.bs.modal", function (e) {
+        $("#loadingmessage").html(' <center><img id="loadingimage" src="<?php echo base_url("public/universal/loading_spinner.gif"); ?>" width="50px" height="50px " /></center> ');
+        $("#loadingimage").show();
+
     });
 </script>
 </html>
