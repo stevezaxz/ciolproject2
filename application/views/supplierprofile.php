@@ -268,6 +268,12 @@
                                     <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="name">Mobile/Tel No.</label>
+                                <div class="col-md-10">
+                                    <input id="mobiletelno" name="mobiletelno" type="text" placeholder="Your mobile/tel no." class="form-control">
+                                </div>
+                            </div>
 
                             <!-- Email input-->
                             <div class="form-group">
@@ -334,7 +340,7 @@
     </div>-->
 </body>
 <script type="text/javascript">
-    $("#submitmessage").click(function () {
+    $("#submitmessage").click(function() {
         $("#loadingmessage").show();
         $.ajax({
             url: "<?php echo site_url("Supplierc/sendmessage"); ?>",
@@ -342,15 +348,17 @@
             data: {
                 company_id: $("#company_id").val(),
                 name: $("#name").val(),
+                mobiletelno: $("#mobiletelno").val(),
                 email: $("#email").val(),
                 message: $("#message").val(),
                 company_email: $("#company_email").val()
             },
-            success: function (res) {
+            success: function(res) {
                 if (res == "success") {
                     $("#loadingimage").hide();
                     $("#loadingmessage").html("<center><h4>Thank you! Your Message has been sent!</h4></center>");
                     $("#name").val("");
+                    $("#mobiletelno").val("");
                     $("#email").val("");
                     $("#message").val("");
                 }
@@ -361,7 +369,7 @@
             }
         });
     });
-    $("#myModalsendmessage").on("hidden.bs.modal", function (e) {
+    $("#myModalsendmessage").on("hidden.bs.modal", function(e) {
         $("#loadingmessage").html(' <center><img id="loadingimage" src="<?php echo base_url("public/universal/loading_spinner.gif"); ?>" width="50px" height="50px " /></center> ');
         $("#loadingimage").show();
 

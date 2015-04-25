@@ -199,7 +199,7 @@ class Adminm extends CI_Model {
             }
         }
 
-        $query9 = $this->db->query("select b.* from tblcompany as a, tblmessages as b, tblcompanymessages as c where a.company_id = c.company_id and b.message_id= c.message_id and a.company_id = '$company_id' order by message_date_entered desc");
+        $query9 = $this->db->query("select b.message_id,b.message_sender_name,b.message_sender_mobiletelno,b.message_sender_email,b.message_messages, DATE_FORMAT(b.message_date_entered,' %M %e, %Y  %h:%i %p') as message_date_entered from tblcompany as a, tblmessages as b, tblcompanymessages as c where a.company_id = c.company_id and b.message_id= c.message_id and a.company_id = '$company_id' order by message_date_entered desc");
         if ($query9->num_rows() > 0) {
             foreach ($query9->result_array() as $messages) {
                 $result['messages'][] = $messages;
@@ -321,10 +321,26 @@ class Adminm extends CI_Model {
 
     public function getmessagedetails($message_id) {
         $company_messages;
-        $query = $this->db->get_where("tblmessages", array("message_id" => $message_id));
+
+        function getnull($var) {
+            if ($var === "null" || $var === "NULL" || $var === null) {
+                return "N/A";
+            } else
+                return $var;
+        }
+
+//        $query = $this->db->get_where("tblmessages", array("message_id" => $message_id));
+        $query = $this->db->query("select message_id,message_sender_name,message_sender_mobiletelno,message_sender_email,message_messages, DATE_FORMAT(message_date_entered,' %M %e, %Y  %h:%i %p') as message_date_entered from tblmessages where message_id = '$message_id'");
         if ($query->num_rows() > 0) {
-            foreach ($query->result_array() as $messages) {
-                $company_messages['messagedetails'][] = $messages;
+            foreach ($query->result() as $messages) {
+                $company_messages = array(
+                    'message_id' => getnull($messages->message_id),
+                    'message_sender_name' => getnull($messages->message_sender_name),
+                    'message_sender_mobiletelno' => getnull($messages->message_sender_mobiletelno),
+                    'message_sender_email' => getnull($messages->message_sender_email),
+                    'message_messages' => getnull($messages->message_messages),
+                    'message_date_entered' => getnull($messages->message_date_entered)
+                );
             }
         }
         return $company_messages;

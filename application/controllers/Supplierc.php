@@ -24,17 +24,16 @@ class Supplierc extends CI_Controller {
     public function sendmessage() {
         $company_id = $this->input->post("company_id");
         $name = $this->input->post("name");
+        $mobiletelno = $this->input->post("mobiletelno");
         $email = $this->input->post("email");
         $message = $this->input->post("message");
         $company_email = $this->input->post("company_email");
-        if ($this->Searchm->setmessages($company_id, $name, $email, $message)) {
+        if ($this->Searchm->setmessages($company_id, $name,$mobiletelno, $email, $message)) {
             echo "success";
             $this->Emailm->sendmailmessage($company_id, $name, $email, $message, $company_email);
         } else {
             echo "error";
         }
     }
-    
-   
 
 }

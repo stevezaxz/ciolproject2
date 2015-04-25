@@ -106,12 +106,13 @@ class Searchm extends CI_Model {
         return $result;
     }
 
-    public function setmessages($company_id, $name, $email, $message) {
+    public function setmessages($company_id, $name, $mobiletelno, $email, $message) {
         $this->db->trans_begin();
         $date = date('Y-m-d H:i:s');
         $data = array(
             'message_id' => '',
             'message_sender_name' => $name,
+            'message_sender_mobiletelno' => $mobiletelno,
             'message_sender_email' => $email,
             'message_messages' => $message,
             'message_date_entered' => $date

@@ -96,6 +96,7 @@
                                 <div class="form-group">
                                     <label class="col-md-6 control-label" >Email:</label>  <label   class="control-label" ><?php if (isset($head_office['head_office_email'])) echo $head_office['head_office_email']; ?></label> 
                                 </div>
+                            </fieldset>
                         </form>
                     </div>
                 </div>
@@ -327,6 +328,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>From</th>
+                                                    <th>Mobile/Tel no</th>
                                                     <th>Email</th>
                                                     <th>Date</th>
 
@@ -339,6 +341,7 @@
                                                     foreach ($messages as $company_messages) {
                                                         echo "<tr class='messagetr'  id= " . $company_messages['message_id'] . ">";
                                                         echo "<td>" . $company_messages['message_sender_name'] . "</td>";
+                                                        echo "<td>" . $company_messages['message_sender_mobiletelno'] . "</td>";
                                                         echo "<td>" . $company_messages['message_sender_email'] . "</td>";
                                                         echo "<td>" . $company_messages['message_date_entered'] . "</td>";
                                                         echo "</tr>";
@@ -365,8 +368,28 @@
                                     <h4 class="modal-title">Message Details </h4> 
                                 </div>
                                 <div class="" >
-                                    <!--<div class="col-md-3">-->
-
+                                    <div class="col-md-11" >
+                                        <form class="form-horizontal">
+                                            <fieldset>
+                                                <!--<h4> Head Office</h4>-->
+                                                <div class="form-group " style="margin-left:-40%">
+                                                    <label class="col-md-6 control-label" >Sender Name:</label> <label  class="control-label" id="message_sender_name" ></label> 
+                                                </div>
+                                                <div class="form-group " style="margin-left:-40%">
+                                                    <label class="col-md-6 control-label" >Sender Mobile/Telno:</label> <label  class="control-label" id="message_sender_mobiletelno" ></label> 
+                                                </div>
+                                                <div class="form-group" style="margin-left:-40%">
+                                                    <label class="col-md-6 control-label" >Sender Email:</label>  <label  class="control-label" id="message_sender_email"></label> 
+                                                </div>
+                                                <div class="form-group" style="margin-left:-40%">
+                                                    <label class="col-md-6 control-label" >Date Sent:</label>  <label  class="control-label" id="message_sender_date"></label> 
+                                                </div>
+                                                <div class="form-group" style="margin-left:-40%">
+                                                    <label class="col-md-6 control-label" >Message:</label>  <textarea  rows="10" cols="40" disabled="true" id="message_messages"></textarea> 
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <!--                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
@@ -425,17 +448,21 @@
         footer {
             margin: 50px 0;
         }
+        .table_message .messagetr:hover {
+            cursor:pointer;
+        }
+
     </style>
 
     <script type="text/javascript">
-        $(document).on('change', '.btn-file :file', function () {
+        $(document).on('change', '.btn-file :file', function() {
             var input = $(this),
                     numFiles = input.get(0).files ? input.get(0).files.length : 1,
                     label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
             input.trigger('fileselect', [numFiles, label]);
         });
-        $(document).ready(function () {
-            $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
+        $(document).ready(function() {
+            $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
 
                 var input = $(this).parents('.input-group').find(':text'),
                         log = numFiles > 1 ? numFiles + ' files selected' : label;
@@ -451,18 +478,18 @@
     </script>
     <script type="text/javascript">
         var photo_id = null;
-        $(".clickedit").click(function () {
+        $(".clickedit").click(function() {
             photos_id = $(this).attr("value");
-            $.post("<?php echo site_url("Adminc/getphotosdetails"); ?>", {photos_id: photos_id}, function (json) {
+            $.post("<?php echo site_url("Adminc/getphotosdetails"); ?>", {photos_id: photos_id}, function(json) {
                 jsonstring = jQuery.parseJSON(json);
                 $("#photos_title").val(jsonstring.photos_title);
                 $("#photos_description").val(jsonstring.photos_description);
 
             });
         });
-        $("#save").click(function () {
+        $("#save").click(function() {
 
-            $.post("<?php echo site_url("Adminc/setphotos"); ?>", {photos_id: photos_id, photos_title: $("#photos_title").val(), photos_description: $("#photos_description").val()}, function (res) {
+            $.post("<?php echo site_url("Adminc/setphotos"); ?>", {photos_id: photos_id, photos_title: $("#photos_title").val(), photos_description: $("#photos_description").val()}, function(res) {
                 if (res === "success") {
                     $("#result").text("Image details saved");
                     $("#hidden").fadeIn(5000);
@@ -483,17 +510,17 @@
     </script>
     <script type="text/javascript">
         var photo_id_delete = null;
-        $(".clickdelete").click(function () {
+        $(".clickdelete").click(function() {
             photo_id_delete = $(this).attr("value");
         });
 
-        $("#deletephoto").click(function () {
-            $.post("<?php echo site_url("Adminc/deletephoto"); ?>", {photo_id_delete: photo_id_delete}, function (res) {
+        $("#deletephoto").click(function() {
+            $.post("<?php echo site_url("Adminc/deletephoto"); ?>", {photo_id_delete: photo_id_delete}, function(res) {
 //                alert(res);
                 if (res === "success") {
                     $("#result").text("Image removed ");
                     $("#hidden").fadeIn(2000);
-                    $("#hidden").fadeOut(2000).delay(800, function () {
+                    $("#hidden").fadeOut(2000).delay(800, function() {
                         location.reload();
                     });
                 }
@@ -507,19 +534,24 @@
     </script>
 
     <script type="text/javascript">
-        $(".table_message  .messagetr").click(function () {
+        $(".table_message  .messagetr").click(function() {
 //            $(this).attr("id");
-//            $("#myModalmessages").modal("show");
+            $("#myModalmessages").modal("show");
             $.ajax({
                 url: "<?php echo site_url("Adminc/getmessagedetails"); ?>",
                 type: "POST",
                 data: {
                     message_id: $(this).attr("id")
                 },
-                success: function (res) {
-//                    alert(res);
+                success: function(res) {
+//                    alert(res.messagedetails);
                     var messages = jQuery.parseJSON(res);
-                    alert(messages.message_id);
+//                    alert(messages.message_id);
+                    $("#message_sender_name").text(messages.message_sender_name);
+                    $("#message_sender_mobiletelno").text(messages.message_sender_mobiletelno);
+                    $("#message_sender_email").text(messages.message_sender_email);
+                    $("#message_messages").text(messages.message_messages);
+                    $("#message_sender_date").text(messages.message_date_entered);
                 }
             });
         });
