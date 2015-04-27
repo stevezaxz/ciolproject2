@@ -368,7 +368,10 @@
                                     <h4 class="modal-title">Message Details </h4> 
                                 </div>
                                 <div class="" >
-                                    <div class="col-md-11" >
+                                    <div class="loadingdiv">
+                                        <center><img src="<?php echo base_url("public/universal/loading_spinner.gif"); ?>" width="50px" height="50px"/></center>
+                                    </div>
+                                    <div class="col-md-11 messagemaindiv" >
                                         <form class="form-horizontal">
                                             <fieldset>
                                                 <!--<h4> Head Office</h4>-->
@@ -455,14 +458,14 @@
     </style>
 
     <script type="text/javascript">
-        $(document).on('change', '.btn-file :file', function() {
+        $(document).on('change', '.btn-file :file', function () {
             var input = $(this),
                     numFiles = input.get(0).files ? input.get(0).files.length : 1,
                     label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
             input.trigger('fileselect', [numFiles, label]);
         });
-        $(document).ready(function() {
-            $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+        $(document).ready(function () {
+            $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
 
                 var input = $(this).parents('.input-group').find(':text'),
                         log = numFiles > 1 ? numFiles + ' files selected' : label;
@@ -478,18 +481,18 @@
     </script>
     <script type="text/javascript">
         var photo_id = null;
-        $(".clickedit").click(function() {
+        $(".clickedit").click(function () {
             photos_id = $(this).attr("value");
-            $.post("<?php echo site_url("Adminc/getphotosdetails"); ?>", {photos_id: photos_id}, function(json) {
+            $.post("<?php echo site_url("Adminc/getphotosdetails"); ?>", {photos_id: photos_id}, function (json) {
                 jsonstring = jQuery.parseJSON(json);
                 $("#photos_title").val(jsonstring.photos_title);
                 $("#photos_description").val(jsonstring.photos_description);
 
             });
         });
-        $("#save").click(function() {
+        $("#save").click(function () {
 
-            $.post("<?php echo site_url("Adminc/setphotos"); ?>", {photos_id: photos_id, photos_title: $("#photos_title").val(), photos_description: $("#photos_description").val()}, function(res) {
+            $.post("<?php echo site_url("Adminc/setphotos"); ?>", {photos_id: photos_id, photos_title: $("#photos_title").val(), photos_description: $("#photos_description").val()}, function (res) {
                 if (res === "success") {
                     $("#result").text("Image details saved");
                     $("#hidden").fadeIn(5000);
@@ -510,17 +513,16 @@
     </script>
     <script type="text/javascript">
         var photo_id_delete = null;
-        $(".clickdelete").click(function() {
+        $(".clickdelete").click(function () {
             photo_id_delete = $(this).attr("value");
         });
 
-        $("#deletephoto").click(function() {
-            $.post("<?php echo site_url("Adminc/deletephoto"); ?>", {photo_id_delete: photo_id_delete}, function(res) {
-//                alert(res);
+        $("#deletephoto").click(function () {
+            $.post("<?php echo site_url("Adminc/deletephoto"); ?>", {photo_id_delete: photo_id_delete}, function (res) {
                 if (res === "success") {
                     $("#result").text("Image removed ");
                     $("#hidden").fadeIn(2000);
-                    $("#hidden").fadeOut(2000).delay(800, function() {
+                    $("#hidden").fadeOut(2000).delay(800, function () {
                         location.reload();
                     });
                 }
@@ -534,8 +536,10 @@
     </script>
 
     <script type="text/javascript">
-        $(".table_message  .messagetr").click(function() {
-//            $(this).attr("id");
+        $(document).ready(function () {
+            $(".messagemaindiv").hide();
+        });
+        $(".table_message  .messagetr").click(function () {
             $("#myModalmessages").modal("show");
             $.ajax({
                 url: "<?php echo site_url("Adminc/getmessagedetails"); ?>",
@@ -543,17 +547,21 @@
                 data: {
                     message_id: $(this).attr("id")
                 },
-                success: function(res) {
-//                    alert(res.messagedetails);
+                success: function (res) {
                     var messages = jQuery.parseJSON(res);
-//                    alert(messages.message_id);
                     $("#message_sender_name").text(messages.message_sender_name);
                     $("#message_sender_mobiletelno").text(messages.message_sender_mobiletelno);
                     $("#message_sender_email").text(messages.message_sender_email);
                     $("#message_messages").text(messages.message_messages);
                     $("#message_sender_date").text(messages.message_date_entered);
+                    $(".loadingdiv").hide();
+                    $(".messagemaindiv").show();
                 }
             });
+        });
+        $("#myModalmessages").on("hidden.bs.modal", function () {
+            $(".messagemaindiv").hide();
+            $(".loadingdiv").show();
         });
     </script>
 
