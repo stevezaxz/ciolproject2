@@ -268,6 +268,7 @@ Your account has been successfully activated in our site. You can now log-on int
     public function getmessagedetails() {
         $message_id = $this->input->post("message_id");
         $result = $this->Adminm->getmessagedetails($message_id);
+//        sleep(1);
         echo json_encode($result);
     }
 
