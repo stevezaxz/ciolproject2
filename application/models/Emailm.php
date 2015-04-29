@@ -17,7 +17,7 @@ class Emailm extends CI_Model {
             'smtp_pass' => '10118023603aAaAqQ',
             'mailtype' => 'html',
             'charset' => 'iso-8859-1'
-        );
+            );
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
 
@@ -26,18 +26,18 @@ class Emailm extends CI_Model {
 
         $this->email->subject('Netzwerk Registration ');
         $this->email->message("<html>
-                    
-                                        <body>
-Dear " . $username . ",\n
+            
+            <body>
+                Dear " . $username . ",\n
 
-<p>We have received your registration to join the Supplier's Network. We thank you for the interest you've shown in our company.
+                <p>We have received your registration to join the Supplier's Network. We thank you for the interest you've shown in our company.
 
-Please be informed that we are in the midst of processing the applications and shall get in touch with you again once your profile is already verified and advertised in our site. 
+                    Please be informed that we are in the midst of processing the applications and shall get in touch with you again once your profile is already verified and advertised in our site. 
 
-You will receive an email containing a successful notification.</p>
-                                        </body>
+                    You will receive an email containing a successful notification.</p>
+                </body>
 
-                                   </html>");
+                </html>");
 
         $this->email->send();
         $this->email->clear();
@@ -46,14 +46,14 @@ You will receive an email containing a successful notification.</p>
 
         $this->email->subject('Netzwerk Registration ');
         $this->email->message("<html>
-                    
-                                        <body>
+            
+            <body>
                 Username " . $username . ",\n
                 Company ID " . $return_id . ",\n
-                 <p>This user needs confirmation, check on the admin module</p>
-                                        </body>
+                <p>This user needs confirmation, check on the admin module</p>
+            </body>
 
-                                   </html>");
+            </html>");
 
         $this->email->send();
     }
@@ -67,7 +67,7 @@ You will receive an email containing a successful notification.</p>
             'smtp_pass' => '10118023603aAaAqQ',
             'mailtype' => 'html',
             'charset' => 'iso-8859-1'
-        );
+            );
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
 
@@ -76,14 +76,14 @@ You will receive an email containing a successful notification.</p>
 
         $this->email->subject('Netzwerk Registration ');
         $this->email->message("<html>
-                    
-                                        <body>
+            
+            <body>
                 Username " . $username . ",\n
                 Company ID " . $return_id . ",\n
-                 <p>This user needs confirmation, check on the admin module</p>
-                                        </body>
+                <p>This user needs confirmation, check on the admin module</p>
+            </body>
 
-                                   </html>");
+            </html>");
 
         $this->email->send();
     }
@@ -97,7 +97,7 @@ You will receive an email containing a successful notification.</p>
             'smtp_pass' => '10118023603aAaAqQ',
             'mailtype' => 'html',
             'charset' => 'iso-8859-1'
-        );
+            );
         return $config;
     }
 
@@ -108,10 +108,10 @@ You will receive an email containing a successful notification.</p>
         $this->email->to($company_email);
         $this->email->subject("Message Notification");
         $this->email->message("<html>
-                                <body>
-                                     <p>You have a new message, please check you account. </p>
-                                </body>
-                               </html>");
+            <body>
+               <p>You have a new message, please check you account. </p>
+           </body>
+           </html>");
     }
 
 }

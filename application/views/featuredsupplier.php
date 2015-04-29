@@ -11,65 +11,149 @@
             </div>
 
         </div>
-
+        <!--OLD ADVERTISEMENT CODE-->
+        <!--        <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Advertisement Photos
+                                <div class="pull-right">
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <label class="col-md-2" for="textinput"> Select a Photo:</label>
+                                <div class="col-md-10">
+                                    <form action="<?php echo site_url("Adminc/uploadads"); ?>" method="POST" enctype="multipart/form-data">
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <span class="btn btn-primary btn-file">
+                                                    Browse&hellip; <input  type="file"   name="uploadads1" id="uploadads">
+                                                </span>
+                                            </span>
+                                            <input type="text" class="form-control" readonly>
+                                        </div>
+        
+                                        <br/>
+                                        <button type="submit" class="btn btn-primary btn-sm " id="upload">Upload</button>
+                                    </form>
+                                </div>
+                                <br/>
+        
+                                <div class="col-md-12">
+                                    <div class="col-lg-12">
+                                        <h1 class="page-header">Thumbnail Gallery</h1>
+                                    </div>
+        
+                                                                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                                                    <a class="thumbnail" href="#">
+                                                                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                                                                    </a>
+                                                                </div>
+        <?php
+//                            if (isset($ads)) {
+//
+//                                foreach ($ads as $value) {
+//                                    $imgarr = explode("/", $value['ads_full_path']);
+//                                    $path = $imgarr[4] . "/" . $imgarr[5];
+//                                    echo " <div class='col-lg-3 col-md-4 col-xs-6 thumb'>
+//                                            <a class='thumbnail' href='#'>
+//                                              <img value='" . $value['ads_id'] . "'href='#myModal' data-toggle='modal' width='400' height='300' class='img-responsive clickimg' src='" . base_url($path) . "' >
+//                                            </a>
+//                                           </div>";
+//                                }
+//                            } else {
+//                                echo "<h4>No data found</h4>";
+//                            }
+        ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>-->
         <div class="row">
+            <!--<form action="" method="">-->
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="fa fa-bar-chart-o fa-fw"></i> Advertisement Photos
+                        <i class="fa fa-bar-chart-o fa-fw"></i> List of Company
                         <div class="pull-right">
+
                         </div>
                     </div>
                     <div class="panel-body">
-                        <label class="col-md-2" for="textinput"> Select a Photo:</label>
-                        <div class="col-md-10">
-                            <form action="<?php echo site_url("Adminc/uploadads"); ?>" method="POST" enctype="multipart/form-data">
-                                <div class="input-group">
-                                    <span class="input-group-btn">
-                                        <span class="btn btn-primary btn-file">
-                                            Browse&hellip; <input  type="file"   name="uploadads1" id="uploadads">
-                                        </span>
-                                    </span>
-                                    <input type="text" class="form-control" readonly>
-                                </div>
+                        <div class="dataTable_wrapper">
+                            <table class="table table-striped table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>Company ID</th>
+                                        <th>Trade Name</th>
+                                        <th></th>
 
-                                <br/>
-                                <button type="submit" class="btn btn-primary btn-sm " id="upload">Upload</button>
-                            </form>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    if (isset($companylist)) {
+                                        foreach ($companylist as $value) {
+                                            echo "<tr>";
+                                            echo "<td>" . $value['company_id'] . "</td>";
+                                            echo "<td>" . $value['company_trade_name'] . "</td>";
+                                            echo "<td ><button class=' btn btn-success btn-sm' value='" . $value['company_id'] . "' id='company_id' name='company_id' >Add</button></td>";
+                                            echo "</tr>";
+                                        }
+                                    }
+                                    ?>
+
+                                </tbody>
+                            </table>
                         </div>
-                        <br/>
-
-                        <div class="col-md-12">
-                            <div class="col-lg-12">
-                                <h1 class="page-header">Thumbnail Gallery</h1>
-                            </div>
-
-                            <!--                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                                                            <a class="thumbnail" href="#">
-                                                                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                                                            </a>
-                                                        </div>-->
-                            <?php
-                            if (isset($ads)) {
-
-                                foreach ($ads as $value) {
-                                    $imgarr = explode("/", $value['ads_full_path']);
-                                    $path = $imgarr[4] . "/" . $imgarr[5];
-                                    echo " <div class='col-lg-3 col-md-4 col-xs-6 thumb'>
-                                            <a class='thumbnail' href='#'>
-                                              <img value='" . $value['ads_id'] . "'href='#myModal' data-toggle='modal' width='400' height='300' class='img-responsive clickimg' src='" . base_url($path) . "' >
-                                            </a>
-                                           </div>";
-                                }
-                            } else {
-                                echo "<h4>No data found</h4>";
-                            }
-                            ?>
-                        </div>
+                        <!-- /.table-responsive -->
                     </div>
                 </div>
             </div>
+            <!--</form>-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> List of Company
+                    <div class="pull-right">
 
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="dataTable_wrapper">
+                        <table class="table table-striped table-hover" id="dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>Company ID</th>
+                                    <th>Trade Name</th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                if (isset($companylist)) {
+                                    foreach ($companylist as $value) {
+                                        echo "<tr>";
+                                        echo "<td>" . $value['company_id'] . "</td>";
+                                        echo "<td>" . $value['company_trade_name'] . "</td>";
+                                        echo "<td ><button class=' btn btn-success btn-sm' value='" . $value['company_id'] . "' id='company_id' name='company_id' >Add</button></td>";
+                                        echo "</tr>";
+                                    }
+                                }
+                                ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -156,14 +240,14 @@
     </style>
 
     <script type="text/javascript">
-        $(document).on('change', '.btn-file :file', function() {
+        $(document).on('change', '.btn-file :file', function () {
             var input = $(this),
                     numFiles = input.get(0).files ? input.get(0).files.length : 1,
                     label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
             input.trigger('fileselect', [numFiles, label]);
         });
-        $(document).ready(function() {
-            $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+        $(document).ready(function () {
+            $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
 
                 var input = $(this).parents('.input-group').find(':text'),
                         log = numFiles > 1 ? numFiles + ' files selected' : label;
@@ -179,18 +263,18 @@
     </script>
     <script type="text/javascript">
         var ads_id = null;
-        $(".clickimg").click(function() {
+        $(".clickimg").click(function () {
             ads_id = $(this).attr("value");
-            $.post("<?php echo site_url("Adminc/getadsdetail"); ?>", {ads_id: ads_id}, function(json) {
+            $.post("<?php echo site_url("Adminc/getadsdetail"); ?>", {ads_id: ads_id}, function (json) {
                 jsonstring = jQuery.parseJSON(json);
                 $("#ads_title").val(jsonstring.ads_title);
                 $("#ads_description").val(jsonstring.ads_description);
 
             });
         });
-        $("#save").click(function() {
+        $("#save").click(function () {
 
-            $.post("<?php echo site_url("Adminc/setads"); ?>", {ads_id: ads_id, ads_title: $("#ads_title").val(), ads_description: $("#ads_description").val()}, function(res) {
+            $.post("<?php echo site_url("Adminc/setads"); ?>", {ads_id: ads_id, ads_title: $("#ads_title").val(), ads_description: $("#ads_description").val()}, function (res) {
                 if (res === "success") {
                     $("#result").text("Image details saved");
                     $("#hidden").fadeIn(5000);

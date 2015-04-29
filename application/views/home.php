@@ -266,10 +266,10 @@
 ////            alert(1);
 //            var param1 = $(this).attr("href").replace("#", "");
 //            var concept1 = $(this).text();
-//            $('.search-panel1 span#search_concept1').text(concept1);
-//            $('.input-group1 #search_param1').val(param1);
+    //            $('.search-panel1 span#search_concept1').text(concept1);
+    //            $('.input-group1 #search_param1').val(param1);
 //        });
-//    });
+    //    });
     jQuery(document).ready(function ($) {
 
         $('#myCarousel').carousel({
@@ -284,7 +284,6 @@
             var id = parseInt(id);
             $('#myCarousel').carousel(id);
         });
-
 
         // When the carousel slides, auto update the text
         $('#myCarousel').on('slid.bs.carousel', function (e) {

@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/views/supplierprofile.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/views/viewcompanydetails.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/controllers/Supplierc.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/models/Searchm.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/controllers/Searchc.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/controllers/Regc.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/controllers/Mainc.php</file>
-            <file>file:/C:/xampp/htdocs/ciolproject2/application/models/Emailm.php</file>
+            <file>file:/C:/xampp/htdocs/ciolproject2/application/models/Adminm.php</file>
+            <file>file:/C:/xampp/htdocs/ciolproject2/application/views/viewcompanyprofile.php</file>
+            <file>file:/C:/xampp/htdocs/ciolproject2/application/views/featuredsupplier.php</file>
+            <file>file:/C:/xampp/htdocs/ciolproject2/application/controllers/Adminc.php</file>
         </group>
     </open-files>
 </project-private>

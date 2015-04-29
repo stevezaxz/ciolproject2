@@ -39,7 +39,8 @@ class Adminc extends CI_Controller {
     }
 
     public function featuredsupplier($message = null) {
-        $results = $this->Adminm->getads();
+//        $results = $this->Adminm->getads();
+        $results = $this->Adminm->getcompanylist();
         $this->load->view("companyheader");
         $this->load->view("featuredsupplier", $results);
         $this->load->view("companyfooter");
