@@ -5,11 +5,9 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="row">
-
             <div class="col-lg-12">
                 <h1 class="page-header">Advertisement</h1>
             </div>
-
         </div>
         <!--OLD ADVERTISEMENT CODE-->
         <!--        <div class="row">
@@ -78,7 +76,6 @@
                     <div class="panel-heading">
                         <i class="fa fa-bar-chart-o fa-fw"></i> List of Company
                         <div class="pull-right">
-
                         </div>
                     </div>
                     <div class="panel-body">
@@ -99,7 +96,7 @@
                                             echo "<tr>";
                                             echo "<td>" . $value['company_id'] . "</td>";
                                             echo "<td>" . $value['company_trade_name'] . "</td>";
-                                            echo "<td ><button class=' btn btn-success btn-sm' value='" . $value['company_id'] . "' id='company_id' name='company_id' >Add</button></td>";
+                                            echo "<td ><button class='btn-comp-id-add btn btn-success btn-sm' value='" . $value['company_id'] . "' id='company_id' name='company_id' >Add</button></td>";
                                             echo "</tr>";
                                         }
                                     }
@@ -108,52 +105,53 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!-- /.table-responsive -->
                     </div>
                 </div>
             </div>
-            <!--</form>-->
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i> List of Company
-                    <div class="pull-right">
-
+        <!--        <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> List of Company
+                                <div class="pull-right">
+        
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="dataTable_wrapper">
+                                    <table class="table table-striped table-hover"  id="dataTables-example1">
+                                        <thead>
+                                            <tr>
+                                                <th>Company ID</th>
+                                                <th>Trade Name</th>
+                                                <th></th>
+        
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+        <?php
+        if (isset($companylist)) {
+            foreach ($companylist as $value) {
+                echo "<tr>";
+                echo "<td>" . $value['company_id'] . "</td>";
+                echo "<td>" . $value['company_trade_name'] . "</td>";
+                echo "<td ><button class=' btn btn-success btn-sm ' value='" . $value['company_id'] . "' id='company_id' name='company_id' >Add</button></td>";
+                echo "</tr>";
+            }
+        }
+        ?>
+        
+                                        </tbody>
+                                    </table>
+                                </div>
+                                /.table-responsive 
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="panel-body">
-                    <div class="dataTable_wrapper">
-                        <table class="table table-striped table-hover" id="dataTables-example">
-                            <thead>
-                                <tr>
-                                    <th>Company ID</th>
-                                    <th>Trade Name</th>
-                                    <th></th>
+                </div>-->
+        <div id="loaddiv">
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                if (isset($companylist)) {
-                                    foreach ($companylist as $value) {
-                                        echo "<tr>";
-                                        echo "<td>" . $value['company_id'] . "</td>";
-                                        echo "<td>" . $value['company_trade_name'] . "</td>";
-                                        echo "<td ><button class=' btn btn-success btn-sm' value='" . $value['company_id'] . "' id='company_id' name='company_id' >Add</button></td>";
-                                        echo "</tr>";
-                                    }
-                                }
-                                ?>
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.table-responsive -->
-                </div>
-            </div>
         </div>
     </div>
     <div class="row">
@@ -171,15 +169,12 @@
                             <!-- Form Name -->
                             <!--<legend>Form Name</legend>-->
                             <br/>
-
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="ads_title">Title</label>  
                                 <div class="col-md-4">
                                     <input id="ads_title" name="ads_title" type="text" placeholder="" class="form-control input-md">
-
                                 </div>
                             </div>
-
                             <!-- Textarea -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="ads_description">Description</label>
@@ -289,5 +284,9 @@
 
         });
     </script>
-</body>
-</html>
+
+    <script type="text/javascript">
+        $(".btn-comp-id-add").click(function () {
+            alert($(this).val());
+        });
+    </script>

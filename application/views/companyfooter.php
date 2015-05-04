@@ -27,6 +27,12 @@
         });
       
     });
+    $(document).ready(function() {
+        $('#dataTables-example1').DataTable({
+            responsive: true
+        });
+      
+    });
 </script>
 </body>
 
